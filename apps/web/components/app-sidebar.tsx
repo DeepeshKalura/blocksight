@@ -65,6 +65,11 @@ const data = {
       url: "#",
       icon: UsersIcon,
     },
+    {
+      title: "Founders",
+      url: "/founders",
+      icon: UsersIcon,
+    },
   ],
   navClouds: [
     {
