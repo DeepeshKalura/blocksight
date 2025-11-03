@@ -5,21 +5,21 @@ export function ProblemSection() {
   const challenges = [
     {
       icon: Users,
-      question: "Who are your most active members?",
+      question: "Who are your power users?",
       description:
-        "Identify your power users and understand engagement patterns across your community. BlockSight analyzes on-chain activity to reveal who's truly driving your DAO forward, helping you recognize and reward key contributors.",
+        "Identify your power users and understand engagement patterns across your on-chain ecosystem. BlockSight analyzes on-chain activity to reveal who's truly driving your project forward, helping you recognize and reward key contributors.",
     },
     {
       icon: Activity,
-      question: "Where else do they spend their time?",
+      question: "Where are you losing them?",
       description:
-        "Track member activity across DAOs and protocols to understand loyalty and engagement. Discover which communities overlap with yours, identify potential partnerships, and understand your members' broader Web3 involvement.",
+        "Track user activity across protocols to understand retention and churn. Discover where users migrate, identify potential points of friction, and understand their broader Web3 journey.",
     },
     {
       icon: Wallet,
-      question: "Are they whales or minnows?",
+      question: "How do you drive real growth?",
       description:
-        "Analyze token holdings and transaction patterns to segment your community effectively. Understand voting power distribution, identify token concentration risks, and develop targeted strategies for different member segments.",
+        "Analyze user behavior and on-chain metrics to identify growth opportunities. Understand what drives engagement, optimize your strategies, and attract new users to your Web3 project.",
     },
   ];
 
@@ -28,13 +28,13 @@ export function ProblemSection() {
       <div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16">
         <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 border border-accent/30 backdrop-blur-sm mb-3 sm:mb-4">
           <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
-          <span className="text-xs sm:text-sm text-accent">The Real Challenge Every DAO Faces</span>
+          <span className="text-xs sm:text-sm text-accent">The Real Challenge Every Web3 Project Faces</span>
         </div>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl max-w-3xl mx-auto px-4">
-          Understanding Your Community Is <span className="text-accent">Mission Critical</span>
+          Understanding Your On-Chain Users Is <span className="text-accent">Mission Critical</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg px-4">
-          Every DAO operator asks these questions. BlockSight gives you the answers.
+          Every Web3 project asks these questions. BlockSight gives you the answers.
         </p>
       </div>
       

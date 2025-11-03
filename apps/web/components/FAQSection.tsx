@@ -8,15 +8,15 @@ import {
 export function FAQSection() {
   const faqs = [
     {
-      question: "How does BlockSight access DAO data?",
-      answer: "BlockSight analyzes publicly available on-chain data from blockchain networks. We don't require access to private information or wallets. Simply provide your DAO's contract addresses or community wallet list, and we'll start indexing transactions and activity.",
+      question: "How does BlockSight access on-chain data?",
+      answer: "BlockSight analyzes publicly available on-chain data from blockchain networks. We don't require access to private information or wallets. Simply provide your project's contract addresses or user wallet list, and we'll start indexing transactions and activity.",
     },
     {
       question: "What blockchains do you support?",
       answer: "We currently support Ethereum, Polygon, Arbitrum, Optimism, Base, and Avalanche. We're constantly adding new chains based on customer demand. Enterprise customers can request custom chain integrations.",
     },
     {
-      question: "How is member privacy protected?",
+      question: "How is user privacy protected?",
       answer: "All analysis is done on public blockchain data. We don't collect or store any personal information unless voluntarily provided. Wallet addresses are pseudonymous by default, and we follow best practices for data security and privacy.",
     },
     {
@@ -25,11 +25,11 @@ export function FAQSection() {
     },
     {
       question: "How accurate is the AI analysis?",
-      answer: "Our AI models are trained on millions of on-chain transactions and continuously refined. We achieve 95%+ accuracy in member classification and engagement scoring. All AI insights include confidence scores and raw data for verification.",
+      answer: "Our AI models are trained on millions of on-chain transactions and continuously refined. We achieve 95%+ accuracy in user classification and engagement scoring. All AI insights include confidence scores and raw data for verification.",
     },
     {
       question: "Do you offer custom development?",
-      answer: "Enterprise customers can request custom features, integrations, and white-label solutions. Our team works closely with large DAOs to build tailored analytics solutions that fit their specific needs.",
+      answer: "Enterprise customers can request custom features, integrations, and white-label solutions. Our team works closely with large projects to build tailored analytics solutions that fit their specific needs.",
     },
   ];
 

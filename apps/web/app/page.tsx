@@ -6,7 +6,6 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { PricingSection } from "@/components/PricingSection";
 import { ProblemSection } from "@/components/ProblemSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { UseCases } from "@/components/UseCases";
 
 export default function App() {
@@ -16,7 +15,6 @@ export default function App() {
       <ProblemSection />
       <FeaturesSection />
       <HowItWorks />
-      <TestimonialsSection />
       <PricingSection />
       <UseCases />
       <FAQSection />

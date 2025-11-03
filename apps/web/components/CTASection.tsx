@@ -20,7 +20,7 @@ export function CTASection() {
           </h2>
           
           <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2">
-            Join forward-thinking DAOs that are using BlockSight to understand their communities and make strategic decisions with confidence.
+            Join forward-thinking Web3 projects that are using BlockSight to understand their users and make strategic decisions with confidence.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
