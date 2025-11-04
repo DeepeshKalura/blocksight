@@ -21,7 +21,7 @@ export function Hero() {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mb-4 md:mb-6 leading-relaxed px-2">
-            BlockSight is the intelligence layer for Web3, providing the actionable insights needed to build, grow, and win on-chain.
+            BlockSight is the intelligence layer and marketing tool for Web3, providing the actionable insights needed to build and grow your project.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-10 md:mb-16 items-center justify-center w-full sm:w-auto px-4">
@@ -39,7 +39,6 @@ export function Hero() {
               Demo
             </RippleButton>
           </div>
-
           <MacbookMockup 
             imageSrc={previewImage}
             imageAlt="BlockSight analytics dashboard preview"
