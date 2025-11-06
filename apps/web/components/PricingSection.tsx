@@ -17,7 +17,7 @@ export function PricingSection() {
         "Community support",
         "Weekly reports",
       ],
-      cta: "Get Started",
+      cta: "Joinlist",
       highlighted: false,
     },
     {
