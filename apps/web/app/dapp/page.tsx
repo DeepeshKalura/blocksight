@@ -97,7 +97,7 @@ export default function DaoHomePage() {
                 </EmptyMedia>
                 <EmptyTitle>Welcome to Your Command Center</EmptyTitle>
                 <EmptyDescription>
-                  You haven't added any DAOs to analyze yet. Get started by adding your first one.
+                  You haven&apos;t added any DAOs to analyze yet. Get started by adding your first one.
                 </EmptyDescription>
               </EmptyHeader>
               <EmptyContent>
