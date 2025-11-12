@@ -67,7 +67,7 @@ export function HeroInvestor() {
                   Join Waitlist 
                 </RippleButton>
               </DialogTrigger>
-              <Link href="/dao">
+              <Link href="/dapp">
                 <RippleButton
                   className="w-full sm:w-48 h-11 sm:h-12 bg-transparent hover:bg-accent/10 text-foreground border-accent/50 hover:border-accent rounded-xl"
                   rippleColor="#ff6b35"
