@@ -1,4 +1,3 @@
-import { FAQSectionInvestor } from "@/components/FAQSectionInvestor";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { FoundersSection } from "@/components/FounderSection";
 import { HeroInvestor } from "@/components/HeroInvestor";
@@ -15,7 +14,6 @@ export default function App() {
       <HowItWorks />
       <PricingSection />
       <FoundersSection />
-      <FAQSectionInvestor />
     </div>
   );
 }
