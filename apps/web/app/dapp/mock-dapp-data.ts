@@ -1,10 +1,21 @@
 import type { NFTAnalytics } from "@/app/types/nft";
-import type { OverviewStats, TokenDistributionAnalysis, TransactionInsights, WalletWithActivity } from "@/app/types/result";
+import type {
+  OverviewStats,
+  TokenDistributionAnalysis,
+  TransactionInsights,
+  WalletWithActivity,
+} from "@/app/types/result";
 import type { Dao } from "./_components/DaoCard";
 
 export interface DemoDapp extends Dao {
   dashboardData: {
     overviewStats: OverviewStats;
+    aiSummary: string;
+    tokenAddress: string;
+    socialLinks: {
+      website: string;
+      twitter: string;
+    };
     walletsWithActivity: WalletWithActivity[];
     transactionInsights: TransactionInsights;
     tokenDistribution: TokenDistributionAnalysis;
@@ -19,7 +30,8 @@ export const mockDapps: DemoDapp[] = [
     logo_url: "/logos/karrat.png",
     chain: "Ethereum",
     contract_address: "0x9746378f28a5e61efa4fc1a3ac5fc178b96474e5",
-    description: "Committed to building and supporting a vibrant gaming, entertainment, and AI ecosystem for developers and users.",
+    description:
+      "Committed to building and supporting a vibrant gaming, entertainment, and AI ecosystem for developers and users.",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
@@ -31,44 +43,197 @@ export const mockDapps: DemoDapp[] = [
         inactiveWallets: 63,
         averageActivityIndex: 0.58,
       },
+      aiSummary:
+        "Overall community engagement is moderate. A core group of highly active 'power users' consistently participates in governance, but there is an opportunity to increase broader community involvement. The most recent proposal saw a 5% increase in turnout, a positive trend.",
+      tokenAddress: "0xAcd2c239012D17BEB128B0944D49015104113650", // New Field
+      socialLinks: {
+        // New Field
+        website: "https://karratcoin.com/",
+        twitter: "https://x.com/karratcoin",
+      },
       walletsWithActivity: [
-        { address: "0x12GAUGE...", activityIndex: 0.95, transactionCount: 23, totalVolume: 150.2, balance: 50.1, lastActivityDate: new Date("2025-10-23T10:00:00Z") },
-        { address: "0xosmoke.eth...", activityIndex: 0.88, transactionCount: 15, totalVolume: 88.5, balance: 120.4, lastActivityDate: new Date("2025-10-22T10:00:00Z") },
-        { address: "0xWalletC3...", activityIndex: 0.85, transactionCount: 12, totalVolume: 230.1, balance: 35.7, lastActivityDate: new Date("2025-10-24T10:00:00Z") },
+        {
+          address: "0x12GAUGE...",
+          activityIndex: 0.95,
+          transactionCount: 23,
+          totalVolume: 150.2,
+          balance: 50.1,
+          lastActivityDate: new Date("2025-10-23T10:00:00Z"),
+        },
+        {
+          address: "0xosmoke.eth...",
+          activityIndex: 0.88,
+          transactionCount: 15,
+          totalVolume: 88.5,
+          balance: 120.4,
+          lastActivityDate: new Date("2025-10-22T10:00:00Z"),
+        },
+        {
+          address: "0xWalletC3...",
+          activityIndex: 0.85,
+          transactionCount: 12,
+          totalVolume: 230.1,
+          balance: 35.7,
+          lastActivityDate: new Date("2025-10-24T10:00:00Z"),
+        },
       ],
       transactionInsights: {
         timeline: [
-            { date: "2025-10-20", volume: 1200, count: 50, displayDate: "Oct 20" },
-            { date: "2025-10-21", volume: 1500, count: 65, displayDate: "Oct 21" },
-            { date: "2025-10-22", volume: 1350, count: 58, displayDate: "Oct 22" },
-            { date: "2025-10-23", volume: 1800, count: 75, displayDate: "Oct 23" },
-            { date: "2025-10-24", volume: 2100, count: 90, displayDate: "Oct 24" },
+          {
+            date: "2025-10-20",
+            volume: 1200,
+            count: 50,
+            displayDate: "Oct 20",
+          },
+          {
+            date: "2025-10-21",
+            volume: 1500,
+            count: 65,
+            displayDate: "Oct 21",
+          },
+          {
+            date: "2025-10-22",
+            volume: 1350,
+            count: 58,
+            displayDate: "Oct 22",
+          },
+          {
+            date: "2025-10-23",
+            volume: 1800,
+            count: 75,
+            displayDate: "Oct 23",
+          },
+          {
+            date: "2025-10-24",
+            volume: 2100,
+            count: 90,
+            displayDate: "Oct 24",
+          },
         ],
         mostActiveWallets: [
-            { address: "0x12GAUGE...", transactionCount: 23, totalVolume: 150.2, incomingCount: 10, outgoingCount: 13, averageTransactionSize: 6.53, activityIndex: 0.95 },
-            { address: "0xPowerUser...", transactionCount: 21, totalVolume: 50.5, incomingCount: 15, outgoingCount: 6, averageTransactionSize: 2.40, activityIndex: 0.92 },
+          {
+            address: "0x12GAUGE...",
+            transactionCount: 23,
+            totalVolume: 150.2,
+            incomingCount: 10,
+            outgoingCount: 13,
+            averageTransactionSize: 6.53,
+            activityIndex: 0.95,
+          },
+          {
+            address: "0xPowerUser...",
+            transactionCount: 21,
+            totalVolume: 50.5,
+            incomingCount: 15,
+            outgoingCount: 6,
+            averageTransactionSize: 2.4,
+            activityIndex: 0.92,
+          },
         ],
         patterns: {
-            totalIncoming: 1500, totalOutgoing: 1340, incomingVolume: 6000, outgoingVolume: 6345.67, averageIncomingSize: 4.0, averageOutgoingSize: 4.73, internalTransactions: 200, externalTransactions: 2640, internalVolume: 1500, externalVolume: 10845.67
+          totalIncoming: 1500,
+          totalOutgoing: 1340,
+          incomingVolume: 6000,
+          outgoingVolume: 6345.67,
+          averageIncomingSize: 4.0,
+          averageOutgoingSize: 4.73,
+          internalTransactions: 200,
+          externalTransactions: 2640,
+          internalVolume: 1500,
+          externalVolume: 10845.67,
         },
         gasAnalysis: {
-            totalGasSpent: 1.5, averageGasPerTransaction: 0.00052, estimatedCostUSD: 3750, highestGasTransaction: { hash: "0xabc...", gasSpent: 0.1, from: "0x123...", to: "0x456..."}
-        }
+          totalGasSpent: 1.5,
+          averageGasPerTransaction: 0.00052,
+          estimatedCostUSD: 3750,
+          highestGasTransaction: {
+            hash: "0xabc...",
+            gasSpent: 0.1,
+            from: "0x123...",
+            to: "0x456...",
+          },
+        },
       },
       tokenDistribution: {
-        distribution: [{ range: "0 - 1 ETH", minBalance: 0, maxBalance: 1, count: 50, percentage: 32.9, totalBalance: 25 }],
-        whales: [{ address: "0xWhale...", balance: 10000, percentageOfTotal: 10, rank: 1, activityIndex: 0.7, transactionCount: 50 }],
-        concentration: { giniCoefficient: 0.65, top10Percentage: 75, top20Percentage: 90, herfindahlIndex: 1800, concentrationLevel: "High" },
-        balanceStats: { totalBalance: 100000, averageBalance: 657, medianBalance: 50, maxBalance: 10000, minBalance: 0.01, standardDeviation: 1500 }
+        distribution: [
+          {
+            range: "0 - 1 ETH",
+            minBalance: 0,
+            maxBalance: 1,
+            count: 50,
+            percentage: 32.9,
+            totalBalance: 25,
+          },
+        ],
+        whales: [
+          {
+            address: "0xWhale...",
+            balance: 10000,
+            percentageOfTotal: 10,
+            rank: 1,
+            activityIndex: 0.7,
+            transactionCount: 50,
+          },
+        ],
+        concentration: {
+          giniCoefficient: 0.65,
+          top10Percentage: 75,
+          top20Percentage: 90,
+          herfindahlIndex: 1800,
+          concentrationLevel: "High",
+        },
+        balanceStats: {
+          totalBalance: 100000,
+          averageBalance: 657,
+          medianBalance: 50,
+          maxBalance: 10000,
+          minBalance: 0.01,
+          standardDeviation: 1500,
+        },
       },
       nftAnalytics: {
-          topCollections: [{ contractAddress: "0xabc...", name: "Karrat Krystals", symbol: "KK", tokenType: "ERC721", totalOwned: 50, uniqueHolders: 25, holderPercentage: 16.4, floorPrice: 1.2, imageUrl: "/logos/karrat.png", collectionSlug: "karrat-krystals", isSpam: false }],
-          adoption: { walletsWithNFTs: 76, walletsWithoutNFTs: 76, adoptionRate: 50, totalNFTs: 205, totalLegitimateNFTs: 2, averageNFTsPerWallet: 1.35, averageLegitimateNFTsPerWallet: 0.8 },
-          spamAnalysis: { totalSpam: 203, totalLegitimate: 2, spamPercentage: 99.0, walletsAffectedBySpam: 150, topSpamCollections: [{name: "Gucci", count: 30, affectedWallets: 1}] },
-          recentAcquisitions: [],
-          diversityMetrics: { uniqueCollections: 2, averageCollectionsPerWallet: 2.0, mostDiverseWallet: { address: "0x1C72...", collectionCount: 2 }, collectionConcentration: 0.000 }
-      }
-    }
+        topCollections: [
+          {
+            contractAddress: "0xabc...",
+            name: "Karrat Krystals",
+            symbol: "KK",
+            tokenType: "ERC721",
+            totalOwned: 50,
+            uniqueHolders: 25,
+            holderPercentage: 16.4,
+            floorPrice: 1.2,
+            imageUrl: "/logos/karrat.png",
+            collectionSlug: "karrat-krystals",
+            isSpam: false,
+          },
+        ],
+        adoption: {
+          walletsWithNFTs: 76,
+          walletsWithoutNFTs: 76,
+          adoptionRate: 50,
+          totalNFTs: 205,
+          totalLegitimateNFTs: 2,
+          averageNFTsPerWallet: 1.35,
+          averageLegitimateNFTsPerWallet: 0.8,
+        },
+        spamAnalysis: {
+          totalSpam: 203,
+          totalLegitimate: 2,
+          spamPercentage: 99.0,
+          walletsAffectedBySpam: 150,
+          topSpamCollections: [
+            { name: "Gucci", count: 30, affectedWallets: 1 },
+          ],
+        },
+        recentAcquisitions: [],
+        diversityMetrics: {
+          uniqueCollections: 2,
+          averageCollectionsPerWallet: 2.0,
+          mostDiverseWallet: { address: "0x1C72...", collectionCount: 2 },
+          collectionConcentration: 0.0,
+        },
+      },
+    },
   },
   {
     id: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
@@ -76,7 +241,8 @@ export const mockDapps: DemoDapp[] = [
     logo_url: "/logos/uniswap.png",
     chain: "Ethereum",
     contract_address: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-    description: "A decentralized protocol for automated liquidity provision on Ethereum.",
+    description:
+      "A decentralized protocol for automated liquidity provision on Ethereum.",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
@@ -88,44 +254,180 @@ export const mockDapps: DemoDapp[] = [
         inactiveWallets: 100000,
         averageActivityIndex: 0.8,
       },
+      aiSummary:
+        "Uniswap is the leading decentralized exchange with high liquidity and user activity, though concentration risks exist.",
+      tokenAddress: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+      socialLinks: {
+        website: "https://uniswap.org",
+        twitter: "https://x.com/Uniswap",
+      },
       walletsWithActivity: [
-        { address: "0xAbc...", activityIndex: 0.98, transactionCount: 500, totalVolume: 100000, balance: 50000, lastActivityDate: new Date("2025-11-10T10:00:00Z") },
-        { address: "0xDef...", activityIndex: 0.95, transactionCount: 400, totalVolume: 80000, balance: 40000, lastActivityDate: new Date("2025-11-09T10:00:00Z") },
-        { address: "0xGhi...", activityIndex: 0.92, transactionCount: 300, totalVolume: 60000, balance: 30000, lastActivityDate: new Date("2025-11-08T10:00:00Z") },
+        {
+          address: "0xAbc...",
+          activityIndex: 0.98,
+          transactionCount: 500,
+          totalVolume: 100000,
+          balance: 50000,
+          lastActivityDate: new Date("2025-11-10T10:00:00Z"),
+        },
+        {
+          address: "0xDef...",
+          activityIndex: 0.95,
+          transactionCount: 400,
+          totalVolume: 80000,
+          balance: 40000,
+          lastActivityDate: new Date("2025-11-09T10:00:00Z"),
+        },
+        {
+          address: "0xGhi...",
+          activityIndex: 0.92,
+          transactionCount: 300,
+          totalVolume: 60000,
+          balance: 30000,
+          lastActivityDate: new Date("2025-11-08T10:00:00Z"),
+        },
       ],
       transactionInsights: {
         timeline: [
-            { date: "2025-11-06", volume: 50000000, count: 200000, displayDate: "Nov 06" },
-            { date: "2025-11-07", volume: 60000000, count: 220000, displayDate: "Nov 07" },
-            { date: "2025-11-08", volume: 55000000, count: 210000, displayDate: "Nov 08" },
-            { date: "2025-11-09", volume: 70000000, count: 250000, displayDate: "Nov 09" },
-            { date: "2025-11-10", volume: 80000000, count: 280000, displayDate: "Nov 10" },
+          {
+            date: "2025-11-06",
+            volume: 50000000,
+            count: 200000,
+            displayDate: "Nov 06",
+          },
+          {
+            date: "2025-11-07",
+            volume: 60000000,
+            count: 220000,
+            displayDate: "Nov 07",
+          },
+          {
+            date: "2025-11-08",
+            volume: 55000000,
+            count: 210000,
+            displayDate: "Nov 08",
+          },
+          {
+            date: "2025-11-09",
+            volume: 70000000,
+            count: 250000,
+            displayDate: "Nov 09",
+          },
+          {
+            date: "2025-11-10",
+            volume: 80000000,
+            count: 280000,
+            displayDate: "Nov 10",
+          },
         ],
         mostActiveWallets: [
-            { address: "0xAbc...", transactionCount: 500, totalVolume: 100000, incomingCount: 250, outgoingCount: 250, averageTransactionSize: 200, activityIndex: 0.98 },
-            { address: "0xDef...", transactionCount: 400, totalVolume: 80000, incomingCount: 200, outgoingCount: 200, averageTransactionSize: 200, activityIndex: 0.95 },
+          {
+            address: "0xAbc...",
+            transactionCount: 500,
+            totalVolume: 100000,
+            incomingCount: 250,
+            outgoingCount: 250,
+            averageTransactionSize: 200,
+            activityIndex: 0.98,
+          },
+          {
+            address: "0xDef...",
+            transactionCount: 400,
+            totalVolume: 80000,
+            incomingCount: 200,
+            outgoingCount: 200,
+            averageTransactionSize: 200,
+            activityIndex: 0.95,
+          },
         ],
         patterns: {
-            totalIncoming: 2500000, totalOutgoing: 2500000, incomingVolume: 750000000, outgoingVolume: 750000000, averageIncomingSize: 300, averageOutgoingSize: 300, internalTransactions: 500000, externalTransactions: 4500000, internalVolume: 150000000, externalVolume: 1350000000
+          totalIncoming: 2500000,
+          totalOutgoing: 2500000,
+          incomingVolume: 750000000,
+          outgoingVolume: 750000000,
+          averageIncomingSize: 300,
+          averageOutgoingSize: 300,
+          internalTransactions: 500000,
+          externalTransactions: 4500000,
+          internalVolume: 150000000,
+          externalVolume: 1350000000,
         },
         gasAnalysis: {
-            totalGasSpent: 1000, averageGasPerTransaction: 0.0002, estimatedCostUSD: 2500000, highestGasTransaction: { hash: "0xxyz...", gasSpent: 1, from: "0x123...", to: "0x456..."}
-        }
+          totalGasSpent: 1000,
+          averageGasPerTransaction: 0.0002,
+          estimatedCostUSD: 2500000,
+          highestGasTransaction: {
+            hash: "0xxyz...",
+            gasSpent: 1,
+            from: "0x123...",
+            to: "0x456...",
+          },
+        },
       },
       tokenDistribution: {
-        distribution: [{ range: "0 - 1000 UNI", minBalance: 0, maxBalance: 1000, count: 100000, percentage: 40, totalBalance: 50000000 }],
-        whales: [{ address: "0xWhale1...", balance: 1000000, percentageOfTotal: 1, rank: 1, activityIndex: 0.8, transactionCount: 1000 }],
-        concentration: { giniCoefficient: 0.7, top10Percentage: 80, top20Percentage: 95, herfindahlIndex: 2000, concentrationLevel: "High" },
-        balanceStats: { totalBalance: 1000000000, averageBalance: 4000, medianBalance: 500, maxBalance: 1000000, minBalance: 0.1, standardDeviation: 20000 }
+        distribution: [
+          {
+            range: "0 - 1000 UNI",
+            minBalance: 0,
+            maxBalance: 1000,
+            count: 100000,
+            percentage: 40,
+            totalBalance: 50000000,
+          },
+        ],
+        whales: [
+          {
+            address: "0xWhale1...",
+            balance: 1000000,
+            percentageOfTotal: 1,
+            rank: 1,
+            activityIndex: 0.8,
+            transactionCount: 1000,
+          },
+        ],
+        concentration: {
+          giniCoefficient: 0.7,
+          top10Percentage: 80,
+          top20Percentage: 95,
+          herfindahlIndex: 2000,
+          concentrationLevel: "High",
+        },
+        balanceStats: {
+          totalBalance: 1000000000,
+          averageBalance: 4000,
+          medianBalance: 500,
+          maxBalance: 1000000,
+          minBalance: 0.1,
+          standardDeviation: 20000,
+        },
       },
       nftAnalytics: {
-          topCollections: [],
-          adoption: { walletsWithNFTs: 0, walletsWithoutNFTs: 250000, adoptionRate: 0, totalNFTs: 0, totalLegitimateNFTs: 0, averageNFTsPerWallet: 0, averageLegitimateNFTsPerWallet: 0 },
-          spamAnalysis: { totalSpam: 0, totalLegitimate: 0, spamPercentage: 0, walletsAffectedBySpam: 0, topSpamCollections: [] },
-          recentAcquisitions: [],
-          diversityMetrics: { uniqueCollections: 0, averageCollectionsPerWallet: 0, mostDiverseWallet: null, collectionConcentration: 0 }
-      }
-    }
+        topCollections: [],
+        adoption: {
+          walletsWithNFTs: 0,
+          walletsWithoutNFTs: 250000,
+          adoptionRate: 0,
+          totalNFTs: 0,
+          totalLegitimateNFTs: 0,
+          averageNFTsPerWallet: 0,
+          averageLegitimateNFTsPerWallet: 0,
+        },
+        spamAnalysis: {
+          totalSpam: 0,
+          totalLegitimate: 0,
+          spamPercentage: 0,
+          walletsAffectedBySpam: 0,
+          topSpamCollections: [],
+        },
+        recentAcquisitions: [],
+        diversityMetrics: {
+          uniqueCollections: 0,
+          averageCollectionsPerWallet: 0,
+          mostDiverseWallet: null,
+          collectionConcentration: 0,
+        },
+      },
+    },
   },
   {
     id: "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
@@ -133,7 +435,8 @@ export const mockDapps: DemoDapp[] = [
     logo_url: "/logos/aave.png",
     chain: "Ethereum",
     contract_address: "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
-    description: "A decentralized non-custodial liquidity protocol where users can participate as depositors or borrowers.",
+    description:
+      "A decentralized non-custodial liquidity protocol where users can participate as depositors or borrowers.",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
@@ -145,61 +448,277 @@ export const mockDapps: DemoDapp[] = [
         inactiveWallets: 50000,
         averageActivityIndex: 0.85,
       },
+      aiSummary:
+        "Aave's lending protocol shows strong adoption with stable yields, but monitor for high leverage risks.",
+      tokenAddress: "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+      socialLinks: {
+        website: "https://aave.com",
+        twitter: "https://x.com/aave",
+      },
       walletsWithActivity: [
-        { address: "0xJkl...", activityIndex: 0.99, transactionCount: 600, totalVolume: 120000, balance: 60000, lastActivityDate: new Date("2025-11-10T11:00:00Z") },
-        { address: "0xMno...", activityIndex: 0.96, transactionCount: 500, totalVolume: 100000, balance: 50000, lastActivityDate: new Date("2025-11-09T11:00:00Z") },
-        { address: "0xPqr...", activityIndex: 0.93, transactionCount: 400, totalVolume: 80000, balance: 40000, lastActivityDate: new Date("2025-11-08T11:00:00Z") },
+        {
+          address: "0xJkl...",
+          activityIndex: 0.99,
+          transactionCount: 600,
+          totalVolume: 120000,
+          balance: 60000,
+          lastActivityDate: new Date("2025-11-10T11:00:00Z"),
+        },
+        {
+          address: "0xMno...",
+          activityIndex: 0.96,
+          transactionCount: 500,
+          totalVolume: 100000,
+          balance: 50000,
+          lastActivityDate: new Date("2025-11-09T11:00:00Z"),
+        },
+        {
+          address: "0xPqr...",
+          activityIndex: 0.93,
+          transactionCount: 400,
+          totalVolume: 80000,
+          balance: 40000,
+          lastActivityDate: new Date("2025-11-08T11:00:00Z"),
+        },
       ],
       transactionInsights: {
         timeline: [
-            { date: "2025-11-06", volume: 60000000, count: 220000, displayDate: "Nov 06" },
-            { date: "2025-11-07", volume: 70000000, count: 250000, displayDate: "Nov 07" },
-            { date: "2025-11-08", volume: 65000000, count: 240000, displayDate: "Nov 08" },
-            { date: "2025-11-09", volume: 80000000, count: 280000, displayDate: "Nov 09" },
-            { date: "2025-11-10", volume: 90000000, count: 300000, displayDate: "Nov 10" },
+          {
+            date: "2025-11-06",
+            volume: 60000000,
+            count: 220000,
+            displayDate: "Nov 06",
+          },
+          {
+            date: "2025-11-07",
+            volume: 70000000,
+            count: 250000,
+            displayDate: "Nov 07",
+          },
+          {
+            date: "2025-11-08",
+            volume: 65000000,
+            count: 240000,
+            displayDate: "Nov 08",
+          },
+          {
+            date: "2025-11-09",
+            volume: 80000000,
+            count: 280000,
+            displayDate: "Nov 09",
+          },
+          {
+            date: "2025-11-10",
+            volume: 90000000,
+            count: 300000,
+            displayDate: "Nov 10",
+          },
         ],
         mostActiveWallets: [
-            { address: "0xJkl...", transactionCount: 600, totalVolume: 120000, incomingCount: 300, outgoingCount: 300, averageTransactionSize: 200, activityIndex: 0.99 },
-            { address: "0xMno...", transactionCount: 500, totalVolume: 100000, incomingCount: 250, outgoingCount: 250, averageTransactionSize: 200, activityIndex: 0.96 },
+          {
+            address: "0xJkl...",
+            transactionCount: 600,
+            totalVolume: 120000,
+            incomingCount: 300,
+            outgoingCount: 300,
+            averageTransactionSize: 200,
+            activityIndex: 0.99,
+          },
+          {
+            address: "0xMno...",
+            transactionCount: 500,
+            totalVolume: 100000,
+            incomingCount: 250,
+            outgoingCount: 250,
+            averageTransactionSize: 200,
+            activityIndex: 0.96,
+          },
         ],
         patterns: {
-            totalIncoming: 1500000, totalOutgoing: 1500000, incomingVolume: 1000000000, outgoingVolume: 1000000000, averageIncomingSize: 666, averageOutgoingSize: 666, internalTransactions: 300000, externalTransactions: 2700000, internalVolume: 200000000, externalVolume: 1800000000
+          totalIncoming: 1500000,
+          totalOutgoing: 1500000,
+          incomingVolume: 1000000000,
+          outgoingVolume: 1000000000,
+          averageIncomingSize: 666,
+          averageOutgoingSize: 666,
+          internalTransactions: 300000,
+          externalTransactions: 2700000,
+          internalVolume: 200000000,
+          externalVolume: 1800000000,
         },
         gasAnalysis: {
-            totalGasSpent: 1200, averageGasPerTransaction: 0.0004, estimatedCostUSD: 3000000, highestGasTransaction: { hash: "0xuvw...", gasSpent: 1.2, from: "0x789...", to: "0xabc..."}
-        }
+          totalGasSpent: 1200,
+          averageGasPerTransaction: 0.0004,
+          estimatedCostUSD: 3000000,
+          highestGasTransaction: {
+            hash: "0xuvw...",
+            gasSpent: 1.2,
+            from: "0x789...",
+            to: "0xabc...",
+          },
+        },
       },
       tokenDistribution: {
-        distribution: [{ range: "0 - 100 AAVE", minBalance: 0, maxBalance: 100, count: 80000, percentage: 53.3, totalBalance: 4000000 }],
-        whales: [{ address: "0xWhale2...", balance: 50000, percentageOfTotal: 0.3, rank: 1, activityIndex: 0.9, transactionCount: 800 }],
-        concentration: { giniCoefficient: 0.68, top10Percentage: 78, top20Percentage: 93, herfindahlIndex: 1900, concentrationLevel: "High" },
-        balanceStats: { totalBalance: 16000000, averageBalance: 106, medianBalance: 20, maxBalance: 50000, minBalance: 0.01, standardDeviation: 1000 }
+        distribution: [
+          {
+            range: "0 - 100 AAVE",
+            minBalance: 0,
+            maxBalance: 100,
+            count: 80000,
+            percentage: 53.3,
+            totalBalance: 4000000,
+          },
+        ],
+        whales: [
+          {
+            address: "0xWhale2...",
+            balance: 50000,
+            percentageOfTotal: 0.3,
+            rank: 1,
+            activityIndex: 0.9,
+            transactionCount: 800,
+          },
+        ],
+        concentration: {
+          giniCoefficient: 0.68,
+          top10Percentage: 78,
+          top20Percentage: 93,
+          herfindahlIndex: 1900,
+          concentrationLevel: "High",
+        },
+        balanceStats: {
+          totalBalance: 16000000,
+          averageBalance: 106,
+          medianBalance: 20,
+          maxBalance: 50000,
+          minBalance: 0.01,
+          standardDeviation: 1000,
+        },
       },
       nftAnalytics: {
-          topCollections: [],
-          adoption: { walletsWithNFTs: 0, walletsWithoutNFTs: 150000, adoptionRate: 0, totalNFTs: 0, totalLegitimateNFTs: 0, averageNFTsPerWallet: 0, averageLegitimateNFTsPerWallet: 0 },
-          spamAnalysis: { totalSpam: 0, totalLegitimate: 0, spamPercentage: 0, walletsAffectedBySpam: 0, topSpamCollections: [] },
-          recentAcquisitions: [],
-          diversityMetrics: { uniqueCollections: 0, averageCollectionsPerWallet: 0, mostDiverseWallet: null, collectionConcentration: 0 }
-      }
-    }
+        topCollections: [],
+        adoption: {
+          walletsWithNFTs: 0,
+          walletsWithoutNFTs: 150000,
+          adoptionRate: 0,
+          totalNFTs: 0,
+          totalLegitimateNFTs: 0,
+          averageNFTsPerWallet: 0,
+          averageLegitimateNFTsPerWallet: 0,
+        },
+        spamAnalysis: {
+          totalSpam: 0,
+          totalLegitimate: 0,
+          spamPercentage: 0,
+          walletsAffectedBySpam: 0,
+          topSpamCollections: [],
+        },
+        recentAcquisitions: [],
+        diversityMetrics: {
+          uniqueCollections: 0,
+          averageCollectionsPerWallet: 0,
+          mostDiverseWallet: null,
+          collectionConcentration: 0,
+        },
+      },
+    },
   },
-    {
+  {
     id: "0x10A19e7eE7d7F8a52822f6817de8ea18204F2e4f",
     name: "Balancer DAO",
     logo_url: "/logos/balancer.png",
     chain: "Ethereum",
     contract_address: "0x10A19e7eE7d7F8a52822f6817de8ea18204F2e4f",
-    description: "The ultimate platform for custom liquidity solutions. Balancer v3 perfectly balances simplicity and flexibility to reshape the future of AMMs.",
+    description:
+      "The ultimate platform for custom liquidity solutions. Balancer v3 perfectly balances simplicity and flexibility to reshape the future of AMMs.",
     status: "INDEXING",
     dashboardData: {
       // Intentionally left sparse for demo purposes
-      overviewStats: { totalWallets: 0, totalTransactionVolume: 0, totalTransactions: 0, averageWalletBalance: 0, activeWallets: 0, inactiveWallets: 0, averageActivityIndex: 0 },
+      overviewStats: {
+        totalWallets: 0,
+        totalTransactionVolume: 0,
+        totalTransactions: 0,
+        averageWalletBalance: 0,
+        activeWallets: 0,
+        inactiveWallets: 0,
+        averageActivityIndex: 0,
+      },
+      aiSummary:
+        "Balancer's AMM pools are indexing with growing interest, focus on liquidity incentives.",
+      tokenAddress: "0xba100000625a3754423978a60c9317c58a424e3D",
+      socialLinks: {
+        website: "https://balancer.fi",
+        twitter: "https://x.com/BalancerLabs",
+      },
       walletsWithActivity: [],
-      transactionInsights: { timeline: [], mostActiveWallets: [], patterns: { totalIncoming: 0, totalOutgoing: 0, incomingVolume: 0, outgoingVolume: 0, averageIncomingSize: 0, averageOutgoingSize: 0, internalTransactions: 0, externalTransactions: 0, internalVolume: 0, externalVolume: 0 }, gasAnalysis: { totalGasSpent: 0, averageGasPerTransaction: 0, estimatedCostUSD: 0, highestGasTransaction: null } },
-      tokenDistribution: { distribution: [], whales: [], concentration: { giniCoefficient: 0, top10Percentage: 0, top20Percentage: 0, herfindahlIndex: 0, concentrationLevel: "Very Low" }, balanceStats: { totalBalance: 0, averageBalance: 0, medianBalance: 0, maxBalance: 0, minBalance: 0, standardDeviation: 0 } },
-      nftAnalytics: { topCollections: [], adoption: { walletsWithNFTs: 0, walletsWithoutNFTs: 0, adoptionRate: 0, totalNFTs: 0, totalLegitimateNFTs: 0, averageNFTsPerWallet: 0, averageLegitimateNFTsPerWallet: 0 }, spamAnalysis: { totalSpam: 0, totalLegitimate: 0, spamPercentage: 0, walletsAffectedBySpam: 0, topSpamCollections: [] }, recentAcquisitions: [], diversityMetrics: { uniqueCollections: 0, averageCollectionsPerWallet: 0, mostDiverseWallet: null, collectionConcentration: 0 } }
-    }
+      transactionInsights: {
+        timeline: [],
+        mostActiveWallets: [],
+        patterns: {
+          totalIncoming: 0,
+          totalOutgoing: 0,
+          incomingVolume: 0,
+          outgoingVolume: 0,
+          averageIncomingSize: 0,
+          averageOutgoingSize: 0,
+          internalTransactions: 0,
+          externalTransactions: 0,
+          internalVolume: 0,
+          externalVolume: 0,
+        },
+        gasAnalysis: {
+          totalGasSpent: 0,
+          averageGasPerTransaction: 0,
+          estimatedCostUSD: 0,
+          highestGasTransaction: null,
+        },
+      },
+      tokenDistribution: {
+        distribution: [],
+        whales: [],
+        concentration: {
+          giniCoefficient: 0,
+          top10Percentage: 0,
+          top20Percentage: 0,
+          herfindahlIndex: 0,
+          concentrationLevel: "Very Low",
+        },
+        balanceStats: {
+          totalBalance: 0,
+          averageBalance: 0,
+          medianBalance: 0,
+          maxBalance: 0,
+          minBalance: 0,
+          standardDeviation: 0,
+        },
+      },
+      nftAnalytics: {
+        topCollections: [],
+        adoption: {
+          walletsWithNFTs: 0,
+          walletsWithoutNFTs: 0,
+          adoptionRate: 0,
+          totalNFTs: 0,
+          totalLegitimateNFTs: 0,
+          averageNFTsPerWallet: 0,
+          averageLegitimateNFTsPerWallet: 0,
+        },
+        spamAnalysis: {
+          totalSpam: 0,
+          totalLegitimate: 0,
+          spamPercentage: 0,
+          walletsAffectedBySpam: 0,
+          topSpamCollections: [],
+        },
+        recentAcquisitions: [],
+        diversityMetrics: {
+          uniqueCollections: 0,
+          averageCollectionsPerWallet: 0,
+          mostDiverseWallet: null,
+          collectionConcentration: 0,
+        },
+      },
+    },
   },
   {
     id: "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
@@ -207,7 +726,8 @@ export const mockDapps: DemoDapp[] = [
     logo_url: "/logos/decentraland.png",
     chain: "Ethereum",
     contract_address: "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
-    description: "A virtual reality platform powered by the Ethereum blockchain that allows users to create, experience, and monetize content and applications.",
+    description:
+      "A virtual reality platform powered by the Ethereum blockchain that allows users to create, experience, and monetize content and applications.",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
@@ -219,44 +739,196 @@ export const mockDapps: DemoDapp[] = [
         inactiveWallets: 100000,
         averageActivityIndex: 0.75,
       },
+      aiSummary:
+        "Decentraland's metaverse engagement is robust with NFT adoption, but watch for spam collections.",
+      tokenAddress: "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
+      socialLinks: {
+        website: "https://decentraland.org",
+        twitter: "https://x.com/decentraland",
+      },
       walletsWithActivity: [
-        { address: "0xStu...", activityIndex: 0.97, transactionCount: 700, totalVolume: 150000, balance: 75000, lastActivityDate: new Date("2025-11-10T12:00:00Z") },
-        { address: "0xVwx...", activityIndex: 0.94, transactionCount: 600, totalVolume: 120000, balance: 60000, lastActivityDate: new Date("2025-11-09T12:00:00Z") },
-        { address: "0xYza...", activityIndex: 0.91, transactionCount: 500, totalVolume: 100000, balance: 50000, lastActivityDate: new Date("2025-11-08T12:00:00Z") },
+        {
+          address: "0xStu...",
+          activityIndex: 0.97,
+          transactionCount: 700,
+          totalVolume: 150000,
+          balance: 75000,
+          lastActivityDate: new Date("2025-11-10T12:00:00Z"),
+        },
+        {
+          address: "0xVwx...",
+          activityIndex: 0.94,
+          transactionCount: 600,
+          totalVolume: 120000,
+          balance: 60000,
+          lastActivityDate: new Date("2025-11-09T12:00:00Z"),
+        },
+        {
+          address: "0xYza...",
+          activityIndex: 0.91,
+          transactionCount: 500,
+          totalVolume: 100000,
+          balance: 50000,
+          lastActivityDate: new Date("2025-11-08T12:00:00Z"),
+        },
       ],
       transactionInsights: {
         timeline: [
-            { date: "2025-11-06", volume: 15000000, count: 40000, displayDate: "Nov 06" },
-            { date: "2025-11-07", volume: 20000000, count: 50000, displayDate: "Nov 07" },
-            { date: "2025-11-08", volume: 18000000, count: 45000, displayDate: "Nov 08" },
-            { date: "2025-11-09", volume: 22000000, count: 55000, displayDate: "Nov 09" },
-            { date: "2025-11-10", volume: 25000000, count: 60000, displayDate: "Nov 10" },
+          {
+            date: "2025-11-06",
+            volume: 15000000,
+            count: 40000,
+            displayDate: "Nov 06",
+          },
+          {
+            date: "2025-11-07",
+            volume: 20000000,
+            count: 50000,
+            displayDate: "Nov 07",
+          },
+          {
+            date: "2025-11-08",
+            volume: 18000000,
+            count: 45000,
+            displayDate: "Nov 08",
+          },
+          {
+            date: "2025-11-09",
+            volume: 22000000,
+            count: 55000,
+            displayDate: "Nov 09",
+          },
+          {
+            date: "2025-11-10",
+            volume: 25000000,
+            count: 60000,
+            displayDate: "Nov 10",
+          },
         ],
         mostActiveWallets: [
-            { address: "0xStu...", transactionCount: 700, totalVolume: 150000, incomingCount: 350, outgoingCount: 350, averageTransactionSize: 214, activityIndex: 0.97 },
-            { address: "0xVwx...", transactionCount: 600, totalVolume: 120000, incomingCount: 300, outgoingCount: 300, averageTransactionSize: 200, activityIndex: 0.94 },
+          {
+            address: "0xStu...",
+            transactionCount: 700,
+            totalVolume: 150000,
+            incomingCount: 350,
+            outgoingCount: 350,
+            averageTransactionSize: 214,
+            activityIndex: 0.97,
+          },
+          {
+            address: "0xVwx...",
+            transactionCount: 600,
+            totalVolume: 120000,
+            incomingCount: 300,
+            outgoingCount: 300,
+            averageTransactionSize: 200,
+            activityIndex: 0.94,
+          },
         ],
         patterns: {
-            totalIncoming: 500000, totalOutgoing: 500000, incomingVolume: 250000000, outgoingVolume: 250000000, averageIncomingSize: 500, averageOutgoingSize: 500, internalTransactions: 100000, externalTransactions: 900000, internalVolume: 50000000, externalVolume: 450000000
+          totalIncoming: 500000,
+          totalOutgoing: 500000,
+          incomingVolume: 250000000,
+          outgoingVolume: 250000000,
+          averageIncomingSize: 500,
+          averageOutgoingSize: 500,
+          internalTransactions: 100000,
+          externalTransactions: 900000,
+          internalVolume: 50000000,
+          externalVolume: 450000000,
         },
         gasAnalysis: {
-            totalGasSpent: 800, averageGasPerTransaction: 0.0008, estimatedCostUSD: 2000000, highestGasTransaction: { hash: "0xdef...", gasSpent: 0.8, from: "0x456...", to: "0x789..."}
-        }
+          totalGasSpent: 800,
+          averageGasPerTransaction: 0.0008,
+          estimatedCostUSD: 2000000,
+          highestGasTransaction: {
+            hash: "0xdef...",
+            gasSpent: 0.8,
+            from: "0x456...",
+            to: "0x789...",
+          },
+        },
       },
       tokenDistribution: {
-        distribution: [{ range: "0 - 1000 MANA", minBalance: 0, maxBalance: 1000, count: 150000, percentage: 50, totalBalance: 75000000 }],
-        whales: [{ address: "0xWhale3...", balance: 2000000, percentageOfTotal: 0.4, rank: 1, activityIndex: 0.85, transactionCount: 1200 }],
-        concentration: { giniCoefficient: 0.72, top10Percentage: 82, top20Percentage: 96, herfindahlIndex: 2100, concentrationLevel: "High" },
-        balanceStats: { totalBalance: 2200000000, averageBalance: 7333, medianBalance: 1000, maxBalance: 2000000, minBalance: 1, standardDeviation: 30000 }
+        distribution: [
+          {
+            range: "0 - 1000 MANA",
+            minBalance: 0,
+            maxBalance: 1000,
+            count: 150000,
+            percentage: 50,
+            totalBalance: 75000000,
+          },
+        ],
+        whales: [
+          {
+            address: "0xWhale3...",
+            balance: 2000000,
+            percentageOfTotal: 0.4,
+            rank: 1,
+            activityIndex: 0.85,
+            transactionCount: 1200,
+          },
+        ],
+        concentration: {
+          giniCoefficient: 0.72,
+          top10Percentage: 82,
+          top20Percentage: 96,
+          herfindahlIndex: 2100,
+          concentrationLevel: "High",
+        },
+        balanceStats: {
+          totalBalance: 2200000000,
+          averageBalance: 7333,
+          medianBalance: 1000,
+          maxBalance: 2000000,
+          minBalance: 1,
+          standardDeviation: 30000,
+        },
       },
       nftAnalytics: {
-          topCollections: [{ contractAddress: "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942", name: "Decentraland Wearables", symbol: "DCLW", tokenType: "ERC721", totalOwned: 100000, uniqueHolders: 50000, holderPercentage: 16.7, floorPrice: 0.5, imageUrl: "/logos/decentraland.png", collectionSlug: "decentraland-wearables", isSpam: false }],
-          adoption: { walletsWithNFTs: 150000, walletsWithoutNFTs: 150000, adoptionRate: 50, totalNFTs: 500000, totalLegitimateNFTs: 400000, averageNFTsPerWallet: 1.67, averageLegitimateNFTsPerWallet: 1.33 },
-          spamAnalysis: { totalSpam: 100000, totalLegitimate: 400000, spamPercentage: 20, walletsAffectedBySpam: 80000, topSpamCollections: [{name: "Fake Wearables", count: 5000, affectedWallets: 1000}] },
-          recentAcquisitions: [],
-          diversityMetrics: { uniqueCollections: 100, averageCollectionsPerWallet: 5, mostDiverseWallet: { address: "0xCollector...", collectionCount: 50 }, collectionConcentration: 0.1 }
-      }
-    }
+        topCollections: [
+          {
+            contractAddress: "0x0F5D2fB29fb7d3CFeE444a200298f468908cC942",
+            name: "Decentraland Wearables",
+            symbol: "DCLW",
+            tokenType: "ERC721",
+            totalOwned: 100000,
+            uniqueHolders: 50000,
+            holderPercentage: 16.7,
+            floorPrice: 0.5,
+            imageUrl: "/logos/decentraland.png",
+            collectionSlug: "decentraland-wearables",
+            isSpam: false,
+          },
+        ],
+        adoption: {
+          walletsWithNFTs: 150000,
+          walletsWithoutNFTs: 150000,
+          adoptionRate: 50,
+          totalNFTs: 500000,
+          totalLegitimateNFTs: 400000,
+          averageNFTsPerWallet: 1.67,
+          averageLegitimateNFTsPerWallet: 1.33,
+        },
+        spamAnalysis: {
+          totalSpam: 100000,
+          totalLegitimate: 400000,
+          spamPercentage: 20,
+          walletsAffectedBySpam: 80000,
+          topSpamCollections: [
+            { name: "Fake Wearables", count: 5000, affectedWallets: 1000 },
+          ],
+        },
+        recentAcquisitions: [],
+        diversityMetrics: {
+          uniqueCollections: 100,
+          averageCollectionsPerWallet: 5,
+          mostDiverseWallet: { address: "0xCollector...", collectionCount: 50 },
+          collectionConcentration: 0.1,
+        },
+      },
+    },
   },
   {
     id: "0x9e87A22044039434613416957355287834787D31",
@@ -276,44 +948,194 @@ export const mockDapps: DemoDapp[] = [
         inactiveWallets: 3000,
         averageActivityIndex: 0.6,
       },
+      aiSummary:
+        "Developer DAO fosters builder community with moderate activity, potential for increased participation.",
+      tokenAddress: "0xA4Ef4b0B23C1fc81d3f9ecF93510e64f58A4A516",
+      socialLinks: {
+        website: "https://www.developerdao.com",
+        twitter: "https://x.com/developer_dao",
+      },
       walletsWithActivity: [
-        { address: "0xBuilder...", activityIndex: 0.9, transactionCount: 100, totalVolume: 20000, balance: 10000, lastActivityDate: new Date("2025-11-10T14:00:00Z") },
-        { address: "0xContributor...", activityIndex: 0.8, transactionCount: 80, totalVolume: 15000, balance: 7500, lastActivityDate: new Date("2025-11-09T14:00:00Z") },
-        { address: "0xMember...", activityIndex: 0.7, transactionCount: 60, totalVolume: 10000, balance: 5000, lastActivityDate: new Date("2025-11-08T14:00:00Z") },
+        {
+          address: "0xBuilder...",
+          activityIndex: 0.9,
+          transactionCount: 100,
+          totalVolume: 20000,
+          balance: 10000,
+          lastActivityDate: new Date("2025-11-10T14:00:00Z"),
+        },
+        {
+          address: "0xContributor...",
+          activityIndex: 0.8,
+          transactionCount: 80,
+          totalVolume: 15000,
+          balance: 7500,
+          lastActivityDate: new Date("2025-11-09T14:00:00Z"),
+        },
+        {
+          address: "0xMember...",
+          activityIndex: 0.7,
+          transactionCount: 60,
+          totalVolume: 10000,
+          balance: 5000,
+          lastActivityDate: new Date("2025-11-08T14:00:00Z"),
+        },
       ],
       transactionInsights: {
         timeline: [
-            { date: "2025-11-06", volume: 30000, count: 800, displayDate: "Nov 06" },
-            { date: "2025-11-07", volume: 40000, count: 1000, displayDate: "Nov 07" },
-            { date: "2025-11-08", volume: 35000, count: 900, displayDate: "Nov 08" },
-            { date: "2025-11-09", volume: 45000, count: 1100, displayDate: "Nov 09" },
-            { date: "2025-11-10", volume: 50000, count: 1200, displayDate: "Nov 10" },
+          {
+            date: "2025-11-06",
+            volume: 30000,
+            count: 800,
+            displayDate: "Nov 06",
+          },
+          {
+            date: "2025-11-07",
+            volume: 40000,
+            count: 1000,
+            displayDate: "Nov 07",
+          },
+          {
+            date: "2025-11-08",
+            volume: 35000,
+            count: 900,
+            displayDate: "Nov 08",
+          },
+          {
+            date: "2025-11-09",
+            volume: 45000,
+            count: 1100,
+            displayDate: "Nov 09",
+          },
+          {
+            date: "2025-11-10",
+            volume: 50000,
+            count: 1200,
+            displayDate: "Nov 10",
+          },
         ],
         mostActiveWallets: [
-            { address: "0xBuilder...", transactionCount: 100, totalVolume: 20000, incomingCount: 50, outgoingCount: 50, averageTransactionSize: 200, activityIndex: 0.9 },
-            { address: "0xContributor...", transactionCount: 80, totalVolume: 15000, incomingCount: 40, outgoingCount: 40, averageTransactionSize: 187.5, activityIndex: 0.8 },
+          {
+            address: "0xBuilder...",
+            transactionCount: 100,
+            totalVolume: 20000,
+            incomingCount: 50,
+            outgoingCount: 50,
+            averageTransactionSize: 200,
+            activityIndex: 0.9,
+          },
+          {
+            address: "0xContributor...",
+            transactionCount: 80,
+            totalVolume: 15000,
+            incomingCount: 40,
+            outgoingCount: 40,
+            averageTransactionSize: 187.5,
+            activityIndex: 0.8,
+          },
         ],
         patterns: {
-            totalIncoming: 10000, totalOutgoing: 10000, incomingVolume: 500000, outgoingVolume: 500000, averageIncomingSize: 50, averageOutgoingSize: 50, internalTransactions: 2000, externalTransactions: 18000, internalVolume: 100000, externalVolume: 900000
+          totalIncoming: 10000,
+          totalOutgoing: 10000,
+          incomingVolume: 500000,
+          outgoingVolume: 500000,
+          averageIncomingSize: 50,
+          averageOutgoingSize: 50,
+          internalTransactions: 2000,
+          externalTransactions: 18000,
+          internalVolume: 100000,
+          externalVolume: 900000,
         },
         gasAnalysis: {
-            totalGasSpent: 50, averageGasPerTransaction: 0.0025, estimatedCostUSD: 125000, highestGasTransaction: { hash: "0xghi...", gasSpent: 0.2, from: "0xabc...", to: "0xdef..."}
-        }
+          totalGasSpent: 50,
+          averageGasPerTransaction: 0.0025,
+          estimatedCostUSD: 125000,
+          highestGasTransaction: {
+            hash: "0xghi...",
+            gasSpent: 0.2,
+            from: "0xabc...",
+            to: "0xdef...",
+          },
+        },
       },
       tokenDistribution: {
-        distribution: [{ range: "0 - 100 CODE", minBalance: 0, maxBalance: 100, count: 4000, percentage: 50, totalBalance: 200000 }],
-        whales: [{ address: "0xWhale4...", balance: 50000, percentageOfTotal: 5, rank: 1, activityIndex: 0.9, transactionCount: 500 }],
-        concentration: { giniCoefficient: 0.6, top10Percentage: 70, top20Percentage: 85, herfindahlIndex: 1500, concentrationLevel: "Moderate" },
-        balanceStats: { totalBalance: 10000000, averageBalance: 1250, medianBalance: 200, maxBalance: 50000, minBalance: 10, standardDeviation: 5000 }
+        distribution: [
+          {
+            range: "0 - 100 CODE",
+            minBalance: 0,
+            maxBalance: 100,
+            count: 4000,
+            percentage: 50,
+            totalBalance: 200000,
+          },
+        ],
+        whales: [
+          {
+            address: "0xWhale4...",
+            balance: 50000,
+            percentageOfTotal: 5,
+            rank: 1,
+            activityIndex: 0.9,
+            transactionCount: 500,
+          },
+        ],
+        concentration: {
+          giniCoefficient: 0.6,
+          top10Percentage: 70,
+          top20Percentage: 85,
+          herfindahlIndex: 1500,
+          concentrationLevel: "Moderate",
+        },
+        balanceStats: {
+          totalBalance: 10000000,
+          averageBalance: 1250,
+          medianBalance: 200,
+          maxBalance: 50000,
+          minBalance: 10,
+          standardDeviation: 5000,
+        },
       },
       nftAnalytics: {
-          topCollections: [{ contractAddress: "0x25ed58c027921E14D86380eA2646E3a1B5C55A8b", name: "Developer DAO", symbol: "D4D", tokenType: "ERC721", totalOwned: 8000, uniqueHolders: 5500, holderPercentage: 68.75, floorPrice: 1.5, imageUrl: "/logos/developer-dao.png", collectionSlug: "developer-dao", isSpam: false }],
-          adoption: { walletsWithNFTs: 5500, walletsWithoutNFTs: 2500, adoptionRate: 68.75, totalNFTs: 8000, totalLegitimateNFTs: 8000, averageNFTsPerWallet: 1, averageLegitimateNFTsPerWallet: 1 },
-          spamAnalysis: { totalSpam: 0, totalLegitimate: 8000, spamPercentage: 0, walletsAffectedBySpam: 0, topSpamCollections: [] },
-          recentAcquisitions: [],
-          diversityMetrics: { uniqueCollections: 1, averageCollectionsPerWallet: 1, mostDiverseWallet: null, collectionConcentration: 1 }
-      }
-    }
+        topCollections: [
+          {
+            contractAddress: "0x25ed58c027921E14D86380eA2646E3a1B5C55A8b",
+            name: "Developer DAO",
+            symbol: "D4D",
+            tokenType: "ERC721",
+            totalOwned: 8000,
+            uniqueHolders: 5500,
+            holderPercentage: 68.75,
+            floorPrice: 1.5,
+            imageUrl: "/logos/developer-dao.png",
+            collectionSlug: "developer-dao",
+            isSpam: false,
+          },
+        ],
+        adoption: {
+          walletsWithNFTs: 5500,
+          walletsWithoutNFTs: 2500,
+          adoptionRate: 68.75,
+          totalNFTs: 8000,
+          totalLegitimateNFTs: 8000,
+          averageNFTsPerWallet: 1,
+          averageLegitimateNFTsPerWallet: 1,
+        },
+        spamAnalysis: {
+          totalSpam: 0,
+          totalLegitimate: 8000,
+          spamPercentage: 0,
+          walletsAffectedBySpam: 0,
+          topSpamCollections: [],
+        },
+        recentAcquisitions: [],
+        diversityMetrics: {
+          uniqueCollections: 1,
+          averageCollectionsPerWallet: 1,
+          mostDiverseWallet: null,
+          collectionConcentration: 1,
+        },
+      },
+    },
   },
   {
     id: "0x0e3a2a1f2146d86a604adc220b4967a898d7fe07",
@@ -321,7 +1143,8 @@ export const mockDapps: DemoDapp[] = [
     logo_url: "/logos/gods-unchained.png",
     chain: "Ethereum",
     contract_address: "0x0e3a2a1f2146d86a604adc220b4967a898d7fe07",
-    description: "A free-to-play tactical card game that gives players true ownership of their collection.",
+    description:
+      "A free-to-play tactical card game that gives players true ownership of their collection.",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
@@ -333,43 +1156,198 @@ export const mockDapps: DemoDapp[] = [
         inactiveWallets: 200000,
         averageActivityIndex: 0.7,
       },
+      aiSummary:
+        "Gods Unchained's gaming ecosystem drives NFT transactions, with opportunities in spam reduction.",
+      tokenAddress: "0xccc8cb5229b0ac8069c51fd58367fd1e622a5d",
+      socialLinks: {
+        website: "https://godsunchained.com",
+        twitter: "https://x.com/GodsUnchained",
+      },
       walletsWithActivity: [
-        { address: "0xPlayer1...", activityIndex: 0.95, transactionCount: 400, totalVolume: 80000, balance: 40000, lastActivityDate: new Date("2025-11-10T15:00:00Z") },
-        { address: "0xPlayer2...", activityIndex: 0.9, transactionCount: 300, totalVolume: 60000, balance: 30000, lastActivityDate: new Date("2025-11-09T15:00:00Z") },
-        { address: "0xPlayer3...", activityIndex: 0.85, transactionCount: 200, totalVolume: 40000, balance: 20000, lastActivityDate: new Date("2025-11-08T15:00:00Z") },
+        {
+          address: "0xPlayer1...",
+          activityIndex: 0.95,
+          transactionCount: 400,
+          totalVolume: 80000,
+          balance: 40000,
+          lastActivityDate: new Date("2025-11-10T15:00:00Z"),
+        },
+        {
+          address: "0xPlayer2...",
+          activityIndex: 0.9,
+          transactionCount: 300,
+          totalVolume: 60000,
+          balance: 30000,
+          lastActivityDate: new Date("2025-11-09T15:00:00Z"),
+        },
+        {
+          address: "0xPlayer3...",
+          activityIndex: 0.85,
+          transactionCount: 200,
+          totalVolume: 40000,
+          balance: 20000,
+          lastActivityDate: new Date("2025-11-08T15:00:00Z"),
+        },
       ],
       transactionInsights: {
         timeline: [
-            { date: "2025-11-06", volume: 3000000, count: 80000, displayDate: "Nov 06" },
-            { date: "2025-11-07", volume: 4000000, count: 100000, displayDate: "Nov 07" },
-            { date: "2025-11-08", volume: 3500000, count: 90000, displayDate: "Nov 08" },
-            { date: "2025-11-09", volume: 4500000, count: 110000, displayDate: "Nov 09" },
-            { date: "2025-11-10", volume: 5000000, count: 120000, displayDate: "Nov 10" },
+          {
+            date: "2025-11-06",
+            volume: 3000000,
+            count: 80000,
+            displayDate: "Nov 06",
+          },
+          {
+            date: "2025-11-07",
+            volume: 4000000,
+            count: 100000,
+            displayDate: "Nov 07",
+          },
+          {
+            date: "2025-11-08",
+            volume: 3500000,
+            count: 90000,
+            displayDate: "Nov 08",
+          },
+          {
+            date: "2025-11-09",
+            volume: 4500000,
+            count: 110000,
+            displayDate: "Nov 09",
+          },
+          {
+            date: "2025-11-10",
+            volume: 5000000,
+            count: 120000,
+            displayDate: "Nov 10",
+          },
         ],
         mostActiveWallets: [
-            { address: "0xPlayer1...", transactionCount: 400, totalVolume: 80000, incomingCount: 200, outgoingCount: 200, averageTransactionSize: 200, activityIndex: 0.95 },
-            { address: "0xPlayer2...", transactionCount: 300, totalVolume: 60000, incomingCount: 150, outgoingCount: 150, averageTransactionSize: 200, activityIndex: 0.9 },
+          {
+            address: "0xPlayer1...",
+            transactionCount: 400,
+            totalVolume: 80000,
+            incomingCount: 200,
+            outgoingCount: 200,
+            averageTransactionSize: 200,
+            activityIndex: 0.95,
+          },
+          {
+            address: "0xPlayer2...",
+            transactionCount: 300,
+            totalVolume: 60000,
+            incomingCount: 150,
+            outgoingCount: 150,
+            averageTransactionSize: 200,
+            activityIndex: 0.9,
+          },
         ],
         patterns: {
-            totalIncoming: 1000000, totalOutgoing: 1000000, incomingVolume: 50000000, outgoingVolume: 50000000, averageIncomingSize: 50, averageOutgoingSize: 50, internalTransactions: 200000, externalTransactions: 1800000, internalVolume: 10000000, externalVolume: 90000000
+          totalIncoming: 1000000,
+          totalOutgoing: 1000000,
+          incomingVolume: 50000000,
+          outgoingVolume: 50000000,
+          averageIncomingSize: 50,
+          averageOutgoingSize: 50,
+          internalTransactions: 200000,
+          externalTransactions: 1800000,
+          internalVolume: 10000000,
+          externalVolume: 90000000,
         },
         gasAnalysis: {
-            totalGasSpent: 600, averageGasPerTransaction: 0.0003, estimatedCostUSD: 1500000, highestGasTransaction: { hash: "0xjkl...", gasSpent: 0.5, from: "0xdef...", to: "0xghi..."}
-        }
+          totalGasSpent: 600,
+          averageGasPerTransaction: 0.0003,
+          estimatedCostUSD: 1500000,
+          highestGasTransaction: {
+            hash: "0xjkl...",
+            gasSpent: 0.5,
+            from: "0xdef...",
+            to: "0xghi...",
+          },
+        },
       },
       tokenDistribution: {
-        distribution: [{ range: "0 - 100 GODS", minBalance: 0, maxBalance: 100, count: 250000, percentage: 50, totalBalance: 12500000 }],
-        whales: [{ address: "0xWhale5...", balance: 100000, percentageOfTotal: 0.1, rank: 1, activityIndex: 0.8, transactionCount: 1000 }],
-        concentration: { giniCoefficient: 0.65, top10Percentage: 75, top20Percentage: 90, herfindahlIndex: 1800, concentrationLevel: "High" },
-        balanceStats: { totalBalance: 250000000, averageBalance: 500, medianBalance: 50, maxBalance: 100000, minBalance: 1, standardDeviation: 5000 }
+        distribution: [
+          {
+            range: "0 - 100 GODS",
+            minBalance: 0,
+            maxBalance: 100,
+            count: 250000,
+            percentage: 50,
+            totalBalance: 12500000,
+          },
+        ],
+        whales: [
+          {
+            address: "0xWhale5...",
+            balance: 100000,
+            percentageOfTotal: 0.1,
+            rank: 1,
+            activityIndex: 0.8,
+            transactionCount: 1000,
+          },
+        ],
+        concentration: {
+          giniCoefficient: 0.65,
+          top10Percentage: 75,
+          top20Percentage: 90,
+          herfindahlIndex: 1800,
+          concentrationLevel: "High",
+        },
+        balanceStats: {
+          totalBalance: 250000000,
+          averageBalance: 500,
+          medianBalance: 50,
+          maxBalance: 100000,
+          minBalance: 1,
+          standardDeviation: 5000,
+        },
       },
       nftAnalytics: {
-          topCollections: [{ contractAddress: "0x0e3a2a1f2146d86a604adc220b4967a898d7fe07", name: "Gods Unchained Cards", symbol: "GODS", tokenType: "ERC721", totalOwned: 1000000, uniqueHolders: 200000, holderPercentage: 40, floorPrice: 0.1, imageUrl: "/logos/gods-unchained.png", collectionSlug: "gods-unchained", isSpam: false }],
-          adoption: { walletsWithNFTs: 300000, walletsWithoutNFTs: 200000, adoptionRate: 60, totalNFTs: 5000000, totalLegitimateNFTs: 4500000, averageNFTsPerWallet: 10, averageLegitimateNFTsPerWallet: 9 },
-          spamAnalysis: { totalSpam: 500000, totalLegitimate: 4500000, spamPercentage: 10, walletsAffectedBySpam: 100000, topSpamCollections: [{name: "Fake Cards", count: 10000, affectedWallets: 2000}] },
-          recentAcquisitions: [],
-          diversityMetrics: { uniqueCollections: 500, averageCollectionsPerWallet: 10, mostDiverseWallet: { address: "0xCollector2...", collectionCount: 100 }, collectionConcentration: 0.05 }
-      }
-    }
-  }
+        topCollections: [
+          {
+            contractAddress: "0x0e3a2a1f2146d86a604adc220b4967a898d7fe07",
+            name: "Gods Unchained Cards",
+            symbol: "GODS",
+            tokenType: "ERC721",
+            totalOwned: 1000000,
+            uniqueHolders: 200000,
+            holderPercentage: 40,
+            floorPrice: 0.1,
+            imageUrl: "/logos/gods-unchained.png",
+            collectionSlug: "gods-unchained",
+            isSpam: false,
+          },
+        ],
+        adoption: {
+          walletsWithNFTs: 300000,
+          walletsWithoutNFTs: 200000,
+          adoptionRate: 60,
+          totalNFTs: 5000000,
+          totalLegitimateNFTs: 4500000,
+          averageNFTsPerWallet: 10,
+          averageLegitimateNFTsPerWallet: 9,
+        },
+        spamAnalysis: {
+          totalSpam: 500000,
+          totalLegitimate: 4500000,
+          spamPercentage: 10,
+          walletsAffectedBySpam: 100000,
+          topSpamCollections: [
+            { name: "Fake Cards", count: 10000, affectedWallets: 2000 },
+          ],
+        },
+        recentAcquisitions: [],
+        diversityMetrics: {
+          uniqueCollections: 500,
+          averageCollectionsPerWallet: 10,
+          mostDiverseWallet: {
+            address: "0xCollector2...",
+            collectionCount: 100,
+          },
+          collectionConcentration: 0.05,
+        },
+      },
+    },
+  },
 ];

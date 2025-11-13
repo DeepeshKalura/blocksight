@@ -1,114 +1,90 @@
-'use client';
+"use client"
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState } from 'react';
-import { mockDapps, type DemoDapp } from '../mock-dapp-data';
+import { AppSidebar } from "@/components/app-sidebar"
+import { SiteHeader } from "@/components/site-header"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import { useRouter, useSearchParams } from "next/navigation"
+import { Suspense, useEffect, useState } from "react"
+import { type DemoDapp, mockDapps } from "../mock-dapp-data"
+import { AboutView } from "./views/AboutView"
+import { NFTsView } from "./views/NFTsView"
+import { TokensView } from "./views/TokensView"
+import { TransactionsView } from "./views/TransactionsView"
+import { WalletsView } from "./views/WalletsView"
 
-import ActivityDistribution from '@/app/dashboard/_components/ActivityDistribution';
-import BalanceDistributionChart from '@/app/dashboard/_components/BalanceDistributionChart';
-import ConcentrationMetricsCard from '@/app/dashboard/_components/ConcentrationMetrics';
-import GasAnalysisCard from '@/app/dashboard/_components/GasAnalysis';
-import MostActiveWallets from '@/app/dashboard/_components/MostActiveWallet';
-import NFTAdoption from '@/app/dashboard/_components/NftAdoption';
-import TopNFTCollections from '@/app/dashboard/_components/NftCollections';
-import NFTDiversityMetricsCard from '@/app/dashboard/_components/NftDiversityMetrics';
-import SpamNFTAnalysis from '@/app/dashboard/_components/NftSpamAnalysis';
-import OverviewCards from '@/app/dashboard/_components/OverviewCard';
-import RecentNFTAcquisitions from '@/app/dashboard/_components/RecentNftAcquisition';
-import TransactionPatternsCard from '@/app/dashboard/_components/TransactionPattern';
-import TransactionTimeline from '@/app/dashboard/_components/TransactionTimeline';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { QueryInterface } from './_components/QueryInterface';
-
-function DashboardComponent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [dapp, setDapp] = useState<DemoDapp | null>(null);
-  const [timelineGroupBy, setTimelineGroupBy] = useState<'day' | 'week' | 'month'>('day');
+function NewDashboardPage() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const [dapp, setDapp] = useState<DemoDapp | null>(null)
+  const view = searchParams.get("view") || "about" 
 
   useEffect(() => {
-    const address = searchParams.get('address');
+    const address = searchParams.get("address")
     if (!address) {
-      router.push('/dao');
-      return;
+      router.push("/dapp") 
+      return
     }
-    const foundDapp = mockDapps.find(d => d.contract_address.toLowerCase() === address.toLowerCase());
+    const foundDapp = mockDapps.find(
+      (d) => d.contract_address.toLowerCase() === address.toLowerCase()
+    )
     if (foundDapp) {
-      setDapp(foundDapp);
+      setDapp(foundDapp)
     } else {
-      // Handle case where dapp is not found, maybe redirect or show an error
-      router.push('/dao');
+      console.error("DAO not found for address:", address)
+      router.push("/dapp") 
     }
-  }, [searchParams, router]);
+  }, [searchParams, router])
 
   if (!dapp) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading dApp Data...</p>
-        </div>
+      <div className="flex h-screen w-full items-center justify-center bg-background text-foreground">
+        Loading DAO data...
       </div>
-    );
+    )
   }
 
-  const { overviewStats, walletsWithActivity, transactionInsights, tokenDistribution, nftAnalytics } = dapp.dashboardData;
+  const renderView = () => {
+    switch (view) {
+      case "wallets":
+        return <WalletsView walletsWithActivity={dapp.dashboardData.walletsWithActivity} />
+      case "about":
+        return <AboutView dapp={dapp} />
+      case "tokens":
+        return <TokensView tokenDistribution={dapp.dashboardData.tokenDistribution} />
+      case "transactions":
+        return <TransactionsView transactionInsights={dapp.dashboardData.transactionInsights} />
+      case "nfts":
+        return <NFTsView nftAnalytics={dapp.dashboardData.nftAnalytics} />
+      default:
+        return <AboutView dapp={dapp} />
+    }
+  }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      <main className="container mx-auto px-4 py-8 max-w-7xl space-y-8">
-        <div>
-          <h1 className="text-4xl font-bold text-white mb-2 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
-            {dapp.name} - dApp Intelligence
-          </h1>
-          <p className="text-gray-400">
-            Analysis results for {dapp.name} community
-          </p>
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar variant="floating" dao={dapp} />
+      <SidebarInset>
+        <SiteHeader dappName={view || "Dashboard"} />
+        <div className="flex flex-1 flex-col p-4 md:p-6 overflow-y-auto">
+          {renderView()}
         </div>
-
-        <Tabs defaultValue="dashboard" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 max-w-lg mx-auto bg-gray-800">
-            <TabsTrigger value="dashboard">📊 Dashboard</TabsTrigger>
-            <TabsTrigger value="ai">🤖 AI Query</TabsTrigger>
-            <TabsTrigger value="nft">🖼️ NFT</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="dashboard" className="mt-6 space-y-8">
-            <OverviewCards data={overviewStats} />
-            <ActivityDistribution wallets={walletsWithActivity} />
-            <TransactionTimeline data={transactionInsights.timeline} groupBy={timelineGroupBy} onGroupByChange={setTimelineGroupBy} />
-            <MostActiveWallets wallets={transactionInsights.mostActiveWallets} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <TransactionPatternsCard data={transactionInsights.patterns} />
-              <GasAnalysisCard data={transactionInsights.gasAnalysis} />
-            </div>
-            <BalanceDistributionChart data={tokenDistribution.distribution} />
-            <ConcentrationMetricsCard concentration={tokenDistribution.concentration} stats={tokenDistribution.balanceStats} />
-          </TabsContent>
-
-          <TabsContent value="ai" className="mt-6">
-            <QueryInterface />
-          </TabsContent>
-
-          <TabsContent value="nft" className="mt-6 space-y-8">
-            <NFTAdoption data={nftAnalytics.adoption} />
-            <TopNFTCollections collections={nftAnalytics.topCollections} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <NFTDiversityMetricsCard data={nftAnalytics.diversityMetrics} />
-              <SpamNFTAnalysis data={nftAnalytics.spamAnalysis} />
-            </div>
-            <RecentNFTAcquisitions acquisitions={nftAnalytics.recentAcquisitions} />
-          </TabsContent>
-        </Tabs>
-      </main>
-    </div>
-  );
+      </SidebarInset>
+    </SidebarProvider>
+  )
 }
 
-export default function DaoDashboardPage() {
+export default function Page() {
   return (
+    // Suspense is required by Next.js when using useSearchParams
     <Suspense fallback={<div>Loading...</div>}>
-      <DashboardComponent />
+      <NewDashboardPage />
     </Suspense>
   )
 }
