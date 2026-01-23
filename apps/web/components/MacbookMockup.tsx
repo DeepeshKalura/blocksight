@@ -27,7 +27,7 @@ export function MacbookMockup({ imageSrc, imageAlt }: MacbookMockupProps) {
         <img
           src={imageSrc}
           alt={imageAlt}
-          className="aspect-[16/9] h-auto w-full object-cover"
+          className="aspect-video h-auto w-full object-cover"
           height={1000}
           width={1000}
         />
