@@ -102,8 +102,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0
       '@vidstack/react':
-        specifier: ^0.6.15
-        version: 0.6.15(@types/react@19.1.0)(maverick.js@0.37.0)(react@19.2.0)(vidstack@0.6.15)
+        specifier: ^1.12.13
+        version: 1.12.13(@types/react@19.1.0)(react@19.2.0)
       aceternity-ui:
         specifier: ^0.2.2
         version: 0.2.2(typescript@5.9.2)
@@ -173,9 +173,6 @@ importers:
       vaul:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.1.1(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      vidstack:
-        specifier: ^0.6.15
-        version: 0.6.15
       zod:
         specifier: ^4.1.12
         version: 4.1.12
@@ -923,9 +920,6 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
-
-  '@maverick-js/signals@5.11.5':
-    resolution: {integrity: sha512-/GO94awrwN9ROYZDMTeByordjvbhcm3CMvB/2aL/sEUy9Va8nM/2GmNgOOe+rrooTGnz8/DzO73xomuBRrnYWw==}
 
   '@neondatabase/serverless@0.9.5':
     resolution: {integrity: sha512-siFas6gItqv6wD/pZnvdu34wEqgG3nSE6zWZdq5j2DEsa+VvX8i/5HXJOo06qrw5axPXn+lGCxeR+NLaSPIXug==}
@@ -1847,14 +1841,12 @@ packages:
     resolution: {integrity: sha512-fSD23DxGND40IzSkXjcFcxr53t3Tiym59Is0jSYIFpG4/0f0KO9SGtcp1sXiebvPaGe7N/tU05cH4yt2S6/IPg==}
     engines: {node: '>=18.14'}
 
-  '@vidstack/react@0.6.15':
-    resolution: {integrity: sha512-S8KkYCte84Pqwb8Zd9vuOCe2YuaXqRdtYQ22zSvDUPlS7m8ilYs6ypfHwZzmgSVZdayVU1C703aFMSdcLfpxpg==}
-    engines: {node: '>=16'}
+  '@vidstack/react@1.12.13':
+    resolution: {integrity: sha512-zyNydy1+HtoK6cJ8EmqFNkPPGHIFMrr2KH+ef3654EqXx4IcJ8A5LCNMXBuALQE8IMxtk040JMoR9OKyeXjBOQ==}
+    engines: {node: '>=18'}
     peerDependencies:
-      '@types/react': ^18.0.0
-      maverick.js: 0.37.0
-      react: ^18.0.0
-      vidstack: 0.6.15
+      '@types/react': ^18.0.0 || ^19.0.0
+      react: ^18.0.0 || ^19.0.0
 
   aceternity-ui@0.2.2:
     resolution: {integrity: sha512-Z+3dearhf4+NilAf4fCqM4POAMNsWkUNNFjj/2YilNfd4DIghbZk3IU5eu7nsECkMFFzWup2JLKcprNURp0Big==}
@@ -2987,12 +2979,8 @@ packages:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
 
-  maverick.js@0.37.0:
-    resolution: {integrity: sha512-1Dk/9rienLiihlktVvH04ADC2UJTMflC1fOMVQCCaQAaz7hgzDI5i0p/arFbDM52hFFiIcq4RdXtYz47SgsLgw==}
-    engines: {node: '>=16'}
-
-  media-captions@0.0.18:
-    resolution: {integrity: sha512-JW18P6FuHdyLSGwC4TQ0kF3WdNj/+wMw2cKOb8BnmY6vSJGtnwJ+vkYj+IjHOV34j3XMc70HDeB/QYKR7E7fuQ==}
+  media-captions@1.0.4:
+    resolution: {integrity: sha512-cyDNmuZvvO4H27rcBq2Eudxo9IZRDCOX/I7VEyqbxsEiD2Ei7UYUhG/Sc5fvMZjmathgz3fEK7iAKqvpY+Ux1w==}
     engines: {node: '>=16'}
 
   merge-stream@2.0.0:
@@ -3668,10 +3656,6 @@ packages:
     resolution: {integrity: sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==}
     engines: {node: '>=10'}
 
-  type-fest@3.13.1:
-    resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
-    engines: {node: '>=14.16'}
-
   typed-array-buffer@1.0.3:
     resolution: {integrity: sha512-nAYYwfY3qnzX30IkA6AQZjVbtK6duGontcQm1WSG1MD94YLqK0515GNApXkoxKOWMusVssAHWLh9SeaoefYFGw==}
     engines: {node: '>= 0.4'}
@@ -3766,10 +3750,6 @@ packages:
 
   victory-vendor@36.9.2:
     resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
-
-  vidstack@0.6.15:
-    resolution: {integrity: sha512-pI2aixBuOpu/LSnRgNJ40tU/KFW+x1X+O2bW1hz946ZZShDM5oqRXF9pavDOuckHAHPgUN9HYUr9vUNTBUPF1Q==}
-    engines: {node: '>=16'}
 
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
@@ -4390,8 +4370,6 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
-
-  '@maverick-js/signals@5.11.5': {}
 
   '@neondatabase/serverless@0.9.5':
     dependencies:
@@ -5363,12 +5341,12 @@ snapshots:
     transitivePeerDependencies:
       - utf-8-validate
 
-  '@vidstack/react@0.6.15(@types/react@19.1.0)(maverick.js@0.37.0)(react@19.2.0)(vidstack@0.6.15)':
+  '@vidstack/react@1.12.13(@types/react@19.1.0)(react@19.2.0)':
     dependencies:
+      '@floating-ui/dom': 1.7.4
       '@types/react': 19.1.0
-      maverick.js: 0.37.0
+      media-captions: 1.0.4
       react: 19.2.0
-      vidstack: 0.6.15
 
   aceternity-ui@0.2.2(typescript@5.9.2):
     dependencies:
@@ -6585,12 +6563,7 @@ snapshots:
 
   math-intrinsics@1.1.0: {}
 
-  maverick.js@0.37.0:
-    dependencies:
-      '@maverick-js/signals': 5.11.5
-      type-fest: 3.13.1
-
-  media-captions@0.0.18: {}
+  media-captions@1.0.4: {}
 
   merge-stream@2.0.0: {}
 
@@ -7302,8 +7275,6 @@ snapshots:
 
   type-fest@1.4.0: {}
 
-  type-fest@3.13.1: {}
-
   typed-array-buffer@1.0.3:
     dependencies:
       call-bound: 1.0.4
@@ -7427,12 +7398,6 @@ snapshots:
       d3-shape: 3.2.0
       d3-time: 3.1.0
       d3-timer: 3.0.1
-
-  vidstack@0.6.15:
-    dependencies:
-      maverick.js: 0.37.0
-      media-captions: 0.0.18
-      type-fest: 3.13.1
 
   wcwidth@1.0.1:
     dependencies:

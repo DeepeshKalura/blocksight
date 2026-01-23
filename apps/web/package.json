@@ -38,7 +38,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
     "@vercel/postgres": "^0.10.0",
-    "@vidstack/react": "^0.6.15",
+    "@vidstack/react": "^1.12.13",
     "aceternity-ui": "^0.2.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -62,7 +62,6 @@
     "tailwindcss": "^4.1.14",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
-    "vidstack": "^0.6.15",
     "zod": "^4.1.12"
   },
   "devDependencies": {
