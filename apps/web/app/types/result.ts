@@ -136,6 +136,8 @@ export type WalletWithActivity = {
   address: string;
   activityIndex: number;
   transactionCount: number;
+  incomingCount: number;
+  outgoingCount: number;
   totalVolume: number;
   balance: number;
   lastActivityDate: Date | null;
