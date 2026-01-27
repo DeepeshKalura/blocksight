@@ -6,7 +6,7 @@ import {
     useMediaState,
     useMediaRemote,
 } from "@vidstack/react";
-import { Play, Pause, Volume2, VolumeX, Maximize2 } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, Maximize2, Minimize2 } from "lucide-react";
 import { Safari } from "./ui/safari";
 import { useState, useRef, useEffect } from "react";
 import "@vidstack/react/player/styles/base.css";
@@ -49,6 +49,7 @@ function VideoControls({ isHovering }: { isHovering: boolean }) {
     const currentTime = useMediaState("currentTime");
     const duration = useMediaState("duration");
     const canFullscreen = useMediaState("canFullscreen");
+    const isFullscreen = useMediaState("fullscreen");
 
     // Local state for smooth seeking visual
     const [seekValue, setSeekValue] = useState(0);
@@ -108,7 +109,7 @@ function VideoControls({ isHovering }: { isHovering: boolean }) {
                             <div className="relative w-full h-1 bg-white/20 rounded-full group/progress cursor-pointer">
                                 {/* Track Fill */}
                                 <div
-                                    className="absolute top-0 left-0 h-full bg-blue-500 rounded-full"
+                                    className="absolute top-0 left-0 h-full bg-accent rounded-full"
                                     style={{ width: `${seekValue}%` }}
                                 />
                                 {/* Thumb */}
@@ -157,33 +158,35 @@ function VideoControls({ isHovering }: { isHovering: boolean }) {
 
                                 {canFullscreen && (
                                     <button
-                                        onClick={(e) => { e.stopPropagation(); remote.enterFullscreen(); }}
+                                        onClick={(e) => { e.stopPropagation(); isFullscreen ? remote.exitFullscreen() : remote.enterFullscreen(); }}
                                         className="p-2 rounded-full hover:bg-white/10 text-white transition-colors"
                                     >
-                                        <Maximize2 size={20} />
+                                        {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
                                     </button>
                                 )}
                             </div>
                         </div>
                     </motion.div>
                 )}
-            </AnimatePresence>
+            </AnimatePresence >
 
             {/* Center Play Button (only when paused) */}
             <AnimatePresence>
-                {isPaused && (
-                    <motion.div
-                        initial={{ scale: 0.5, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.5, opacity: 0 }}
-                        className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
-                    >
-                        <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
-                            <Play size={32} fill="currentColor" className="text-white ml-1" />
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                {
+                    isPaused && (
+                        <motion.div
+                            initial={{ scale: 0.5, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.5, opacity: 0 }}
+                            className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
+                        >
+                            <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl">
+                                <Play size={32} fill="currentColor" className="text-white ml-1" />
+                            </div>
+                        </motion.div>
+                    )
+                }
+            </AnimatePresence >
         </>
     );
 }

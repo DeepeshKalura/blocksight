@@ -77,8 +77,8 @@ export function HeroInvestor() {
                 </RippleButton>
               </Link>
             </div>
-            <LayeredCube3D />
-
+            {/* <LayeredCube3D /> */}
+            <MacbookVideo />
 
           </div>
         </div>
