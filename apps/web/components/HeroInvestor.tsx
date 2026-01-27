@@ -50,7 +50,18 @@ export function HeroInvestor() {
             <div className="mb-6 md:mb-8 inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 border border-accent/30 backdrop-blur-sm">
               <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
               <span className="text-xs sm:text-sm text-accent">
-                Investor Demo & Waitlist
+
+                <Link
+                  href="https://ethglobal.com/showcase/blocksight-vcsh3"
+                  target="_blank"
+                >
+                  <span className="text-xs sm:text-sm text-muted-foreground group-hover:text-accent transition-colors">
+                    View our <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wide">ETHGlobal</span> Hackathon Demo
+                  </span>
+                  <span className="text-xs sm:text-sm text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all duration-300">
+                    →
+                  </span>
+                </Link>
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-tight mb-4 md:mb-6 text-balance px-2">
@@ -77,8 +88,8 @@ export function HeroInvestor() {
                 </RippleButton>
               </Link>
             </div>
-            {/* <LayeredCube3D /> */}
-            <MacbookVideo />
+            <LayeredCube3D />
+            {/* <MacbookVideo /> */}
 
           </div>
         </div>
