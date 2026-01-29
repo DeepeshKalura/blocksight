@@ -1,5 +1,6 @@
 "use client"
 
+import { ArrowDown, ThumbsDown, ThumbsUp } from "lucide-react"
 import {
   forwardRef,
   useCallback,
@@ -7,16 +8,15 @@ import {
   useState,
   type ReactElement,
 } from "react"
-import { ArrowDown, ThumbsDown, ThumbsUp } from "lucide-react"
 
-import { cn } from "@/lib/utils"
-import { useAutoScroll } from "@/hooks/use-auto-scroll"
 import { Button } from "@/components/ui/button"
 import { type Message } from "@/components/ui/chat-message"
 import { CopyButton } from "@/components/ui/copy-button"
 import { MessageInput } from "@/components/ui/message-input"
 import { MessageList } from "@/components/ui/message-list"
 import { PromptSuggestions } from "@/components/ui/prompt-suggestions"
+import { useAutoScroll } from "@/hooks/use-auto-scroll"
+import { cn } from "@/lib/utils"
 
 interface ChatPropsBase {
   handleSubmit: (
@@ -160,7 +160,7 @@ export function Chat({
         <>
           <div className="border-r pr-1">
             <CopyButton
-              content={message.content}
+              content={message.content ?? ""}
               copyMessage="Copied response to clipboard!"
             />
           </div>
@@ -183,7 +183,7 @@ export function Chat({
         </>
       ) : (
         <CopyButton
-          content={message.content}
+          content={message.content ?? ""}
           copyMessage="Copied response to clipboard!"
         />
       ),
@@ -255,7 +255,7 @@ export function ChatMessages({
       onScroll={handleScroll}
       onTouchStart={handleTouchStart}
     >
-      <div className="max-w-full [grid-column:1/1] [grid-row:1/1]">
+      <div className="max-w-full col-[1/1] row-[1/1]">
         {children}
       </div>
 

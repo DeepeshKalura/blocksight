@@ -16,6 +16,7 @@ export function useAudioRecording({
   const [isRecording, setIsRecording] = useState(false)
   const [isTranscribing, setIsTranscribing] = useState(false)
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const activeRecordingRef = useRef<any>(null)
 
   useEffect(() => {

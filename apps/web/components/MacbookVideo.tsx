@@ -1,15 +1,15 @@
 "use client"
-import { motion, AnimatePresence } from "motion/react";
 import {
     MediaPlayer,
     MediaProvider,
-    useMediaState,
     useMediaRemote,
+    useMediaState,
 } from "@vidstack/react";
-import { Play, Pause, Volume2, VolumeX, Maximize2, Minimize2 } from "lucide-react";
-import { Safari } from "./ui/safari";
-import { useState, useRef, useEffect } from "react";
 import "@vidstack/react/player/styles/base.css";
+import { Maximize2, Minimize2, Pause, Play, Volume2, VolumeX } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
+import { Safari } from "./ui/safari";
 
 export function MacbookVideo() {
     const [isHovering, setIsHovering] = useState(false);
@@ -55,12 +55,8 @@ function VideoControls({ isHovering }: { isHovering: boolean }) {
     const [seekValue, setSeekValue] = useState(0);
     const [isSeeking, setIsSeeking] = useState(false);
 
-    // Sync seekbar with video time when not seeking
-    useEffect(() => {
-        if (!isSeeking && duration > 0) {
-            setSeekValue((currentTime / duration) * 100);
-        }
-    }, [currentTime, duration, isSeeking]);
+    // Calculate seek percentage, use seekValue while dragging, otherwise use calculated value
+    const displaySeekValue = isSeeking ? seekValue : (duration > 0 ? (currentTime / duration) * 100 : 0);
 
     const formatTime = (time: number) => {
         const minutes = Math.floor(time / 60);
@@ -110,12 +106,12 @@ function VideoControls({ isHovering }: { isHovering: boolean }) {
                                 {/* Track Fill */}
                                 <div
                                     className="absolute top-0 left-0 h-full bg-accent rounded-full"
-                                    style={{ width: `${seekValue}%` }}
+                                    style={{ width: `${displaySeekValue}%` }}
                                 />
                                 {/* Thumb */}
                                 <div
                                     className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover/progress:opacity-100 transition-opacity pointer-events-none"
-                                    style={{ left: `${seekValue}%`, transform: `translate(-50%, -50%)` }}
+                                    style={{ left: `${displaySeekValue}%`, transform: `translate(-50%, -50%)` }}
                                 />
                                 {/* Hidden Input for Interaction */}
                                 <input

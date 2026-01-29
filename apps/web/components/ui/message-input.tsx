@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUp,
@@ -8,18 +7,18 @@ import {
   Loader2,
   Mic,
   Paperclip,
-  Square,
-  X,
+  Square
 } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 import { omit } from "remeda";
 
-import { cn } from "@/lib/utils";
-import { useAudioRecording } from "@/hooks/use-audio-recording";
-import { useAutosizeTextArea } from "@/hooks/use-autosize-textarea";
 import { AudioVisualizer } from "@/components/ui/audio-visualizer";
 import { Button } from "@/components/ui/button";
 import { FilePreview } from "@/components/ui/file-preview";
 import { InterruptPrompt } from "@/components/ui/interrupt-prompt";
+import { useAudioRecording } from "@/hooks/use-audio-recording";
+import { useAutosizeTextArea } from "@/hooks/use-autosize-textarea";
+import { cn } from "@/lib/utils";
 
 interface MessageInputBaseProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -126,9 +125,10 @@ export function MessageInput({
     if (text && text.length > 500 && props.allowAttachments) {
       event.preventDefault();
       const blob = new Blob([text], { type: "text/plain" });
+      const now = Date.now();
       const file = new File([blob], "Pasted text", {
         type: "text/plain",
-        lastModified: Date.now(),
+        lastModified: now,
       });
       addFiles([file]);
       return;
