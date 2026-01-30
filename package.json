@@ -1,5 +1,5 @@
 {
-  "name": "eth-global-2025",
+  "name": "blocksight",
   "private": true,
   "scripts": {
     "build": "turbo run build",
