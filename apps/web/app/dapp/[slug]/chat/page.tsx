@@ -3,12 +3,12 @@
 import { Chat } from "@/components/ui/chat";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import React, { Suspense } from "react";
 
 function ChatContent() {
-  const searchParams = useSearchParams();
-  const slug = searchParams.get("slug");
+  const params = useParams();
+  const slug = params.slug as string;
 
   const { messages, sendMessage, status, stop, error } = useChat({
     transport: new DefaultChatTransport({

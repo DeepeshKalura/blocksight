@@ -11,7 +11,9 @@ const google = createGoogleGenerativeAI({
 
 export async function POST(req: Request) {
   try {
-    const { messages, id } = await req.json();
+    const url = new URL(req.url);
+    const slug = url.searchParams.get("slug");
+    const { messages } = await req.json();
 
     // Validate input
     if (!Array.isArray(messages)) {
@@ -25,33 +27,10 @@ export async function POST(req: Request) {
     }
 
     console.log("--- CHAT API REQUEST ---");
-    console.log(`DApp ID: ${id || "None"}`);
+    console.log(`DApp Slug: ${slug || "None"}`);
     console.log(`Message count: ${messages.length}`);
 
-    const lastUserMessage = messages
-      .reverse()
-      .find((m: any) => m.role === "user");
-    if (lastUserMessage) {
-      // Extract text content from either AI SDK v6 parts format or legacy content format
-      let content = lastUserMessage.content;
-
-      if (!content && lastUserMessage.parts) {
-        content = lastUserMessage.parts
-          .filter((part: any) => part.type === "text")
-          .map((part: any) => part.text)
-          .join("");
-      }
-
-      if (content) {
-        console.log(`Last User Message: ${content.substring(0, 100)}...`);
-      } else {
-        console.log("Last User Message: [No text content found]");
-      }
-    } else {
-      console.log("No user message found.");
-    }
-
-    const activeDapp = id ? mockDapps.find((d) => d.id === id) : null;
+    const activeDapp = slug ? mockDapps.find((d) => d.slug === slug) : null;
 
     const systemMessage = activeDapp
       ? `You are a helpful AI assistant for the ${activeDapp.name} dApp on ${activeDapp.chain}.
