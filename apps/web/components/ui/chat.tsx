@@ -1,53 +1,54 @@
-"use client"
+"use client";
 
-import { ArrowDown, ThumbsDown, ThumbsUp } from "lucide-react"
+import { ArrowDown, ThumbsDown, ThumbsUp } from "lucide-react";
 import {
   forwardRef,
   useCallback,
   useRef,
   useState,
+  useEffect,
   type ReactElement,
-} from "react"
+} from "react";
 
-import { Button } from "@/components/ui/button"
-import { type Message } from "@/components/ui/chat-message"
-import { CopyButton } from "@/components/ui/copy-button"
-import { MessageInput } from "@/components/ui/message-input"
-import { MessageList } from "@/components/ui/message-list"
-import { PromptSuggestions } from "@/components/ui/prompt-suggestions"
-import { useAutoScroll } from "@/hooks/use-auto-scroll"
-import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button";
+import { type Message } from "@/components/ui/chat-message";
+import { CopyButton } from "@/components/ui/copy-button";
+import { MessageInput } from "@/components/ui/message-input";
+import { MessageList } from "@/components/ui/message-list";
+import { PromptSuggestions } from "@/components/ui/prompt-suggestions";
+import { useAutoScroll } from "@/hooks/use-auto-scroll";
+import { cn } from "@/lib/utils";
 
 interface ChatPropsBase {
   handleSubmit: (
     event?: { preventDefault?: () => void },
-    options?: { experimental_attachments?: FileList }
-  ) => void
-  messages: Array<Message>
-  input: string
-  className?: string
-  handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement>
-  isGenerating: boolean
-  stop?: () => void
+    options?: { experimental_attachments?: FileList },
+  ) => void;
+  messages: Array<Message>;
+  input: string;
+  className?: string;
+  handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+  isGenerating: boolean;
+  stop?: () => void;
   onRateResponse?: (
     messageId: string,
-    rating: "thumbs-up" | "thumbs-down"
-  ) => void
-  setMessages?: (messages: any[]) => void
-  transcribeAudio?: (blob: Blob) => Promise<string>
+    rating: "thumbs-up" | "thumbs-down",
+  ) => void;
+  setMessages?: (messages: any[]) => void;
+  transcribeAudio?: (blob: Blob) => Promise<string>;
 }
 
 interface ChatPropsWithoutSuggestions extends ChatPropsBase {
-  append?: never
-  suggestions?: never
+  append?: never;
+  suggestions?: never;
 }
 
 interface ChatPropsWithSuggestions extends ChatPropsBase {
-  append: (message: { role: "user"; content: string }) => void
-  suggestions: string[]
+  append: (message: { role: "user"; content: string }) => void;
+  suggestions: string[];
 }
 
-type ChatProps = ChatPropsWithoutSuggestions | ChatPropsWithSuggestions
+type ChatProps = ChatPropsWithoutSuggestions | ChatPropsWithSuggestions;
 
 export function Chat({
   messages,
@@ -63,34 +64,55 @@ export function Chat({
   setMessages,
   transcribeAudio,
 }: ChatProps) {
-  const lastMessage = messages.at(-1)
-  const isEmpty = messages.length === 0
-  const isTyping = lastMessage?.role === "user"
+  const lastMessage = messages.at(-1);
+  const isEmpty = messages.length === 0;
+  const isTyping = lastMessage?.role === "user";
 
-  const messagesRef = useRef(messages)
-  messagesRef.current = messages
+  const messagesRef = useRef(messages);
+
+  useEffect(() => {
+    messagesRef.current = messages;
+    console.log("--- Chat Component: Messages Updated ---");
+    console.log("Total messages:", messages.length);
+    console.log("Is empty:", isEmpty);
+    console.log("Is typing:", isTyping);
+    console.log("Is generating:", isGenerating);
+    console.log(
+      "Last message:",
+      lastMessage
+        ? {
+            id: lastMessage.id,
+            role: lastMessage.role,
+            hasContent: !!lastMessage.content,
+            contentPreview: lastMessage.content
+              ? String(lastMessage.content).substring(0, 100)
+              : "[No content]",
+          }
+        : "[No last message]",
+    );
+  }, [messages, isEmpty, isTyping, isGenerating, lastMessage]);
 
   // Enhanced stop function that marks pending tool calls as cancelled
   const handleStop = useCallback(() => {
-    stop?.()
+    stop?.();
 
-    if (!setMessages) return
+    if (!setMessages) return;
 
-    const latestMessages = [...messagesRef.current]
-    const lastAssistantMessage = [...latestMessages].reverse().find(
-      (m) => m.role === "assistant"
-    )
+    const latestMessages = [...messagesRef.current];
+    const lastAssistantMessage = [...latestMessages]
+      .reverse()
+      .find((m) => m.role === "assistant");
 
-    if (!lastAssistantMessage) return
+    if (!lastAssistantMessage) return;
 
-    let needsUpdate = false
-    let updatedMessage = { ...lastAssistantMessage }
+    let needsUpdate = false;
+    let updatedMessage = { ...lastAssistantMessage };
 
     if (lastAssistantMessage.toolInvocations) {
       const updatedToolInvocations = lastAssistantMessage.toolInvocations.map(
         (toolInvocation) => {
           if (toolInvocation.state === "call") {
-            needsUpdate = true
+            needsUpdate = true;
             return {
               ...toolInvocation,
               state: "result",
@@ -98,17 +120,17 @@ export function Chat({
                 content: "Tool execution was cancelled",
                 __cancelled: true, // Special marker to indicate cancellation
               },
-            } as const
+            } as const;
           }
-          return toolInvocation
-        }
-      )
+          return toolInvocation;
+        },
+      );
 
       if (needsUpdate) {
         updatedMessage = {
           ...updatedMessage,
           toolInvocations: updatedToolInvocations,
-        }
+        };
       }
     }
 
@@ -119,7 +141,7 @@ export function Chat({
           part.toolInvocation &&
           part.toolInvocation.state === "call"
         ) {
-          needsUpdate = true
+          needsUpdate = true;
           return {
             ...part,
             toolInvocation: {
@@ -130,29 +152,29 @@ export function Chat({
                 __cancelled: true,
               },
             },
-          }
+          };
         }
-        return part
-      })
+        return part;
+      });
 
       if (needsUpdate) {
         updatedMessage = {
           ...updatedMessage,
           parts: updatedParts,
-        }
+        };
       }
     }
 
     if (needsUpdate) {
       const messageIndex = latestMessages.findIndex(
-        (m) => m.id === lastAssistantMessage.id
-      )
+        (m) => m.id === lastAssistantMessage.id,
+      );
       if (messageIndex !== -1) {
-        latestMessages[messageIndex] = updatedMessage
-        setMessages(latestMessages)
+        latestMessages[messageIndex] = updatedMessage;
+        setMessages(latestMessages);
       }
     }
-  }, [stop, setMessages, messagesRef])
+  }, [stop, setMessages, messagesRef]);
 
   const messageOptions = useCallback(
     (message: Message) => ({
@@ -188,8 +210,8 @@ export function Chat({
         />
       ),
     }),
-    [onRateResponse]
-  )
+    [onRateResponse],
+  );
 
   return (
     <ChatContainer className={className}>
@@ -230,15 +252,15 @@ export function Chat({
         )}
       </ChatForm>
     </ChatContainer>
-  )
+  );
 }
-Chat.displayName = "Chat"
+Chat.displayName = "Chat";
 
 export function ChatMessages({
   messages,
   children,
 }: React.PropsWithChildren<{
-  messages: Message[]
+  messages: Message[];
 }>) {
   const {
     containerRef,
@@ -246,7 +268,7 @@ export function ChatMessages({
     handleScroll,
     shouldAutoScroll,
     handleTouchStart,
-  } = useAutoScroll([messages])
+  } = useAutoScroll([messages]);
 
   return (
     <div
@@ -255,9 +277,7 @@ export function ChatMessages({
       onScroll={handleScroll}
       onTouchStart={handleTouchStart}
     >
-      <div className="max-w-full col-[1/1] row-[1/1]">
-        {children}
-      </div>
+      <div className="max-w-full col-[1/1] row-[1/1]">{children}</div>
 
       {!shouldAutoScroll && (
         <div className="pointer-events-none flex flex-1 items-end justify-end [grid-column:1/1] [grid-row:1/1]">
@@ -274,7 +294,7 @@ export function ChatMessages({
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export const ChatContainer = forwardRef<
@@ -287,51 +307,51 @@ export const ChatContainer = forwardRef<
       className={cn("grid max-h-full w-full grid-rows-[1fr_auto]", className)}
       {...props}
     />
-  )
-})
-ChatContainer.displayName = "ChatContainer"
+  );
+});
+ChatContainer.displayName = "ChatContainer";
 
 interface ChatFormProps {
-  className?: string
-  isPending: boolean
+  className?: string;
+  isPending: boolean;
   handleSubmit: (
     event?: { preventDefault?: () => void },
-    options?: { experimental_attachments?: FileList }
-  ) => void
+    options?: { experimental_attachments?: FileList },
+  ) => void;
   children: (props: {
-    files: File[] | null
-    setFiles: React.Dispatch<React.SetStateAction<File[] | null>>
-  }) => ReactElement
+    files: File[] | null;
+    setFiles: React.Dispatch<React.SetStateAction<File[] | null>>;
+  }) => ReactElement;
 }
 
 export const ChatForm = forwardRef<HTMLFormElement, ChatFormProps>(
   ({ children, handleSubmit, isPending, className }, ref) => {
-    const [files, setFiles] = useState<File[] | null>(null)
+    const [files, setFiles] = useState<File[] | null>(null);
 
     const onSubmit = (event: React.FormEvent) => {
       if (!files) {
-        handleSubmit(event)
-        return
+        handleSubmit(event);
+        return;
       }
 
-      const fileList = createFileList(files)
-      handleSubmit(event, { experimental_attachments: fileList })
-      setFiles(null)
-    }
+      const fileList = createFileList(files);
+      handleSubmit(event, { experimental_attachments: fileList });
+      setFiles(null);
+    };
 
     return (
       <form ref={ref} onSubmit={onSubmit} className={className}>
         {children({ files, setFiles })}
       </form>
-    )
-  }
-)
-ChatForm.displayName = "ChatForm"
+    );
+  },
+);
+ChatForm.displayName = "ChatForm";
 
 function createFileList(files: File[] | FileList): FileList {
-  const dataTransfer = new DataTransfer()
+  const dataTransfer = new DataTransfer();
   for (const file of Array.from(files)) {
-    dataTransfer.items.add(file)
+    dataTransfer.items.add(file);
   }
-  return dataTransfer.files
+  return dataTransfer.files;
 }
