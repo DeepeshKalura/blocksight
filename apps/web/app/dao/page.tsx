@@ -21,7 +21,7 @@ const pucksTips = [
 const PuckMessage = () => {
   const [tip, setTip] = useState('');
   useEffect(() => {
-    setTip(pucksTips[Math.floor(Math.random() * pucksTips.length)]);
+    setTip(pucksTips[Math.floor(Math.random() * pucksTips.length)] ?? '');
   }, []);
 
   return (
