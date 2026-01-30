@@ -13,16 +13,15 @@ export function Hero() {
         <div className="z-10 flex flex-col items-center text-center max-w-6xl mx-auto w-full">
           <div className="mb-6 md:mb-8 inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 border border-accent/30 backdrop-blur-sm">
             <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
-            <span className="text-xs sm:text-sm text-accent">AI-Powered DAO Intelligence</span>
+            <span className="text-xs sm:text-sm text-accent">AI-Powered Blockchain Insights</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl max-w-3xl tracking-tight font-medium mb-6 md:mb-8 text-balance px-4">
-            See Your DAO Like Never Before
+            See Your dApp Like Never Before
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mb-4 md:mb-6 leading-relaxed px-2">
-            BlockSight transforms on-chain data into actionable intelligence. Understand your community, identify power
-            users, and make data-driven decisions with AI-powered insights.
+            BlockSight is the intelligence layer for Web3, providing the actionable insights needed to build, grow, and win on-chain.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-10 md:mb-16 items-center justify-center w-full sm:w-auto px-4">

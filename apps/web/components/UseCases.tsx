@@ -4,27 +4,27 @@ import { Card } from "./ui/card";
 export function UseCases() {
   const useCases = [
     {
-      title: "DAO Operators",
+      title: "Product Managers",
       points: [
-        "Identify and reward top contributors",
-        "Prevent member churn before it happens",
-        "Optimize governance participation"
+        "Identify and reward top users",
+        "Prevent user churn before it happens",
+        "Optimize user engagement"
       ]
     },
     {
-      title: "Community Managers",
+      title: "Marketers",
       points: [
-        "Segment members for targeted campaigns",
-        "Track engagement metrics over time",
-        "Discover influencers in your community"
+        "Segment users for targeted campaigns",
+        "Track growth metrics over time",
+        "Discover influencers in your user base"
       ]
     },
     {
-      title: "Treasury Teams",
+      title: "Developers",
       points: [
-        "Understand token holder behavior",
-        "Analyze voting patterns and power",
-        "Strategic allocation recommendations"
+        "Understand on-chain user behavior",
+        "Analyze usage patterns and trends",
+        "Data-driven development priorities"
       ]
     }
   ];
@@ -33,10 +33,10 @@ export function UseCases() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
       <div className="text-center space-y-3 sm:space-y-4 mb-10 sm:mb-12 md:mb-16">
         <h2 className="text-2xl sm:text-3xl md:text-4xl px-4">
-          Built For Everyone In Your DAO
+          Built For Every Web3 Builder
         </h2>
         <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
-          Whether you're managing the community, operating the DAO, or handling the treasury, BlockSight provides the insights you need.
+          Whether you're a product manager, a marketer, or a developer, BlockSight provides the insights you need.
         </p>
       </div>
       

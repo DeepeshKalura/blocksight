@@ -13,18 +13,18 @@ export function FeaturesSection() {
   const features = [
     {
       icon: Users,
-      title: "Member Intelligence",
-      description: "Deep profiles of every community member with activity scores, engagement patterns, and contribution history."
+      title: "User Intelligence",
+      description: "Deep profiles of every user with activity scores, engagement patterns, and on-chain history."
     },
     {
       icon: Network,
-      title: "Cross-DAO Analysis",
-      description: "See where your members are active across the entire Web3 ecosystem and identify overlap opportunities."
+      title: "Cross-Protocol Analysis",
+      description: "See where your users are active across the entire Web3 ecosystem and identify overlap opportunities."
     },
     {
       icon: BarChart3,
       title: "Wallet Analytics",
-      description: "Understand token holdings, transaction volumes, and on-chain behavior to segment your community."
+      description: "Understand token holdings, transaction volumes, and on-chain behavior to segment your users."
     },
     {
       icon: Brain,
@@ -33,13 +33,13 @@ export function FeaturesSection() {
     },
     {
       icon: Target,
-      title: "Engagement Scoring",
-      description: "Automatic ranking of members by activity, contribution value, and community impact."
+      title: "User Scoring",
+      description: "Automatic ranking of users by activity, on-chain value, and project impact."
     },
     {
       icon: Zap,
       title: "Real-Time Updates",
-      description: "Live monitoring of community activity with instant alerts on significant changes or opportunities."
+      description: "Live monitoring of user activity with instant alerts on significant changes or opportunities."
     }
   ];
 
@@ -52,7 +52,7 @@ export function FeaturesSection() {
             Turn Data Into <span className="text-accent">Strategic Advantage</span>
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
-            Comprehensive tools to understand, analyze, and grow your DAO community.
+            Comprehensive tools to understand, analyze, and grow your Web3 project.
           </p>
         </div>
         

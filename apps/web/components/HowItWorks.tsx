@@ -6,26 +6,26 @@ export function HowItWorks() {
     {
       icon: Database,
       step: "01",
-      title: "Connect Your DAO",
-      description: "Connect your DAO's wallet addresses or smart contracts. We'll start indexing immediately."
+      title: "Connect Your Project",
+      description: "Connect your project's wallet addresses or smart contracts. We'll start indexing immediately."
     },
     {
       icon: Brain,
       step: "02",
       title: "AI Analyzes On-Chain Data",
-      description: "Our AI scans blockchain transactions to build comprehensive profiles of every member."
+      description: "Our AI scans blockchain transactions to build comprehensive profiles of every user."
     },
     {
       icon: LineChart,
       step: "03",
       title: "Get Actionable Insights",
-      description: "View dashboards, reports, and AI-generated recommendations tailored to your community."
+      description: "View dashboards, reports, and AI-generated recommendations tailored to your project."
     },
     {
       icon: Rocket,
       step: "04",
       title: "Grow Strategically",
-      description: "Make data-driven decisions to engage members, prevent churn, and scale your DAO."
+      description: "Make data-driven decisions to engage users, prevent churn, and scale your project."
     }
   ];
 
