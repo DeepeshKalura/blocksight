@@ -3,6 +3,7 @@ import { FeaturesSection } from "@/components/FeaturesSection";
 import { FoundersSection } from "@/components/FounderSection";
 import { HeroInvestor } from "@/components/HeroInvestor";
 import { HowItWorks } from "@/components/HowItWorks";
+import { PricingSection } from "@/components/PricingSection";
 import { ProblemSection } from "@/components/ProblemSection";
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
       <ProblemSection />
       <FeaturesSection />
       <HowItWorks />
+      <PricingSection />
       <FoundersSection />
       <FAQSectionInvestor />
     </div>
