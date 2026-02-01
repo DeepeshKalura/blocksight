@@ -1,4 +1,6 @@
 export type NFTAnalytics = {
+  totalNFTs: number;
+  collections: unknown[];
   topCollections: TopNFTCollection[];
   adoption: NFTAdoption;
   spamAnalysis: SpamAnalysis;
