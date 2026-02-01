@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "question": "Please give me more data about the latest transaction",
+  "sql_query": "SELECT * FROM transactions ORDER BY block_number DESC LIMIT 1;",
+  "result": [
+    {
+      "hash": "0x2dc76a0fde77c5e26eb5741ea74369b3f645c8a0bf2136b504364b08e4af0434",
+      "block_number": 22015507,
+      "chain_id": 1,
+      "from_address": "0x23f4569002a5a07f0ecf688142eeb6bcd883eef8",
+      "to_address": "0x36b18167022876356246d04188c31c0cf1c1d324",
+      "value_eth": 2.2707141
+    }
+  ],
+  "answer": "The most recent transaction has a hash of 0x2dc76a...e4af0434, occurred in block number 22015507 on chain ID 1. It was a transfer of 2.2707141 Ether from address 0x23f45...83eef8 to 0x36b18...cf1c1d324."
+}
