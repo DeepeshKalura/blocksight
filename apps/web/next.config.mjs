@@ -1,11 +1,11 @@
-/** @type {import('next').NextConfig} */
-const { withSentryConfig } = require("@sentry/nextjs");
+import { withSentryConfig } from "@sentry/nextjs";
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: ["local-origin.dev", "*.local-origin.dev"],
 };
 
-module.exports = withSentryConfig(nextConfig, {
+export default withSentryConfig(nextConfig, {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
