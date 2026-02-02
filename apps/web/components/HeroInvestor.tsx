@@ -8,6 +8,7 @@ import { BackgroundRippleEffect } from "./ui/background-ripple-effect";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { RippleButton } from "./ui/ripple-button";
+import { MacbookVideo } from "./MacbookVideo";
 
 export function HeroInvestor() {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ export function HeroInvestor() {
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || "Something went wrong.");
-      
+
       toast.success("You're on the list! We'll be in touch.");
       setIsDialogOpen(false);
       setEmail('');
@@ -42,9 +43,9 @@ export function HeroInvestor() {
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <main className="min-h-screen w-full bg-background text-foreground overflow-hidden relative">
         <div className="absolute inset-0 w-full h-full">
-         <BackgroundRippleEffect />
+          <BackgroundRippleEffect />
         </div>
-        <div className="relative flex flex-col items-center justify-around min-h-screen px-4 sm:px-6 md:px-8">
+        <div className="relative flex flex-col items-center justify-around min-h-screen pt-24 md:pt-32 px-4 sm:px-6 md:px-8">
           <div className="z-10 flex flex-col items-center text-center max-w-6xl mx-auto w-full">
             <div className="mb-6 md:mb-8 inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 border border-accent/30 backdrop-blur-sm">
               <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
@@ -64,10 +65,10 @@ export function HeroInvestor() {
                   className="w-full sm:w-48 h-11 sm:h-12 bg-accent hover:bg-accent/90 text-accent-foreground border-accent rounded-xl"
                   rippleColor="#ff6b35"
                 >
-                  Join Waitlist 
+                  Join Waitlist
                 </RippleButton>
               </DialogTrigger>
-              <Link href="/dapp">
+              <Link href="/dapp" className="w-full sm:w-auto">
                 <RippleButton
                   className="w-full sm:w-48 h-11 sm:h-12 bg-transparent hover:bg-accent/10 text-foreground border-accent/50 hover:border-accent rounded-xl"
                   rippleColor="#ff6b35"
@@ -77,6 +78,8 @@ export function HeroInvestor() {
               </Link>
             </div>
             <LayeredCube3D />
+
+
           </div>
         </div>
       </main>
