@@ -1,29 +1,28 @@
-import { Linkedin, Mail, Twitter } from 'lucide-react';
 
 const founders = [
   {
-    name: "Alex Chen",
-    role: "Co-Founder & CEO",
-    image: "https://images.unsplash.com/photo-1564518534518-e79657852a1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWNoJTIwZm91bmRlcnxlbnwxfHx8fDE3NjI0MDQ4MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    bio: "Former Head of Analytics at a leading DeFi protocol with 10+ years in blockchain and data science. Passionate about making DAO governance more transparent and data-driven.",
+    name: "Stefano",
+    role: "Co-Founder",
+    image: "/founders/stefano.png",
+    bio: "Stefano has 10 years of programming experience, has bootstrapped multiple products, and has worked at various startups. He has mentored aspiring coders and spent the last three years specializing in blockchain development. Now, he is combining his technical expertise with his entrepreneurial drive to lead his own product",
     twitter: "#",
     linkedin: "#",
     email: "alex@blocksight.ai"
   },
   {
-    name: "Sarah Martinez",
-    role: "Co-Founder & CTO",
-    image: "https://images.unsplash.com/photo-1595017734643-07386d930c6a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGFydHVwJTIwY2VvJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzYyMzQxOTg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    bio: "AI researcher and blockchain architect with experience building scalable data pipelines. Previously led engineering teams at top Web3 companies. Believes in the power of AI to unlock community insights.",
+    name: "Devon Martens",
+    role: "Co-Founder",
+    image: "/founders/devon.png",
+    bio: "Devon builds systems where intelligence meets trustless infrastructure. From architecting AI-driven trading engines managing $50M+ in liquidity to leading Studio Chain, a Layer 2 network for adaptive game economies, her work unites blockchain data, machine learning, and decentralized reasoning. Now, she’s shaping the next generation of AI — transparent, autonomous, and analysis of on-chain data.",
     twitter: "#",
     linkedin: "#",
     email: "sarah@blocksight.ai"
   },
   {
-    name: "Jordan Park",
-    role: "Co-Founder & Chief Product Officer",
-    image: "https://images.unsplash.com/photo-1758598497528-d8d9b3f22894?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwZW50cmVwcmVuZXVyJTIwaGVhZHNob3R8ZW58MXx8fHwxNzYyNDA0ODI2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    bio: "Product strategist with a track record of launching successful DAO tools. Expert in community building and governance design. On a mission to help DAOs understand and grow their communities.",
+    name: "Dr. Petrus C. Martens",
+    role: "Head of Research",
+    image: "/founders/petrus.png",
+    bio: "Petrus brings over two decades of NASA- and NSF-funded research in machine learning, solar physics, and predictive modeling to Hybrid Intelligence Systems. As a professor at Georgia State University and co-founder of multiple research initiatives including the Virtual Solar Observatory and Data Mining Lab  he has led pioneering work in large-scale data analysis, AI-driven forecasting, and autonomous scientific systems. His expertise in interpretable AI, scientific data infrastructure, and real-time prediction directly informs the company’s mission to build transparent, human-aligned intelligence on blockchain.",
     twitter: "#",
     linkedin: "#",
     email: "jordan@blocksight.ai"
@@ -72,7 +71,7 @@ export function FoundersSection() {
                 </p>
 
                 {/* Social Links */}
-                <div className="flex gap-3">
+                {/* <div className="flex gap-3">
                   <a
                     href={founder.linkedin}
                     className="w-10 h-10 rounded-lg border border-accent/20 flex items-center justify-center hover:bg-accent/10 hover:border-accent/40 transition-colors"
@@ -94,7 +93,7 @@ export function FoundersSection() {
                   >
                     <Mail className="w-5 h-5 text-muted-foreground" />
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
