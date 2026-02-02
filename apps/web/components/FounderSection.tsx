@@ -20,7 +20,7 @@ const founders = [
   },
   {
     name: "Dr. Petrus C. Martens",
-    role: "Head of Research",
+    role: "Co-Founder",
     image: "/founders/petrus.png",
     bio: "Petrus brings over two decades of NASA- and NSF-funded research in machine learning, solar physics, and predictive modeling to Hybrid Intelligence Systems. As a professor at Georgia State University and co-founder of multiple research initiatives including the Virtual Solar Observatory and Data Mining Lab  he has led pioneering work in large-scale data analysis, AI-driven forecasting, and autonomous scientific systems. His expertise in interpretable AI, scientific data infrastructure, and real-time prediction directly informs the company’s mission to build transparent, human-aligned intelligence on blockchain.",
     twitter: "#",
