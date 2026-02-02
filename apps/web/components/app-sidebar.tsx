@@ -1,161 +1,88 @@
-"use client"
-
-import * as React from "react"
 import {
+  ArrowRightLeftIcon,
   ArrowUpCircleIcon,
-  BarChartIcon,
-  CameraIcon,
-  ClipboardListIcon,
-  DatabaseIcon,
-  FileCodeIcon,
-  FileIcon,
-  FileTextIcon,
-  FolderIcon,
-  HelpCircleIcon,
-  LayoutDashboardIcon,
-  ListIcon,
+  CoinsIcon,
+  ImageIcon,
+  InfoIcon,
   SearchIcon,
   SettingsIcon,
-  UsersIcon,
+  WalletIcon
 } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import * as React from "react"
 
-import { NavDocuments } from "@/components/nav-documents"
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
+import type { DemoDapp } from "@/app/dapp/mock-dapp-data"
 import { NavUser } from "@/components/nav-user"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSkeleton,
 } from "@/components/ui/sidebar"
 
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+// Simplified nav items for our dashboard
+const navMain = (address: string) => [
+  {
+    title: "About",
+    url: `/dapp/dashboard?address=${address}&view=about`,
+    icon: InfoIcon 
   },
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "#",
-      icon: LayoutDashboardIcon,
-    },
-    {
-      title: "Lifecycle",
-      url: "#",
-      icon: ListIcon,
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: BarChartIcon,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: FolderIcon,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: UsersIcon,
-    },
-    {
-      title: "Founders",
-      url: "/founders",
-      icon: UsersIcon,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: CameraIcon,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: FileTextIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: FileCodeIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Settings",
-      url: "#",
-      icon: SettingsIcon,
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: HelpCircleIcon,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: SearchIcon,
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: DatabaseIcon,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: ClipboardListIcon,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: FileIcon,
-    },
-  ],
+  {
+    title: "Wallets",
+    url: `/dapp/dashboard?address=${address}&view=wallets`,
+    icon: WalletIcon,
+  },
+  {
+    title: "Tokens",
+    url: `/dapp/dashboard?address=${address}&view=tokens`,
+    icon: CoinsIcon,
+  },
+  {
+    title: "Transactions",
+    url: `/dapp/dashboard?address=${address}&view=transactions`,
+    icon: ArrowRightLeftIcon,
+  },
+  {
+    title: "NFTs",
+    url: `/dapp/dashboard?address=${address}&view=nfts`,
+    icon: ImageIcon,
+  },
+
+  
+]
+
+const navSecondary = [
+  {
+    title: "Settings",
+    url: "#",
+    icon: SettingsIcon,
+  },
+  {
+    title: "Search",
+    url: "#",
+    icon: SearchIcon,
+  },
+]
+
+// Mock user data as requested for the demo
+const demoUser = {
+  name: "Demo User",
+  email: "user@blocksight.ai",
+  avatar: "/puck-logo.png",
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  dao: DemoDapp | null
+}
+
+export function AppSidebar({ dao, ...props }: AppSidebarProps) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -163,23 +90,71 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
+              className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
-              <a href="#">
-                <ArrowUpCircleIcon className="h-5 w-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+              <a href="/dapp">
+                {dao ? (
+                  <Image
+                    src={dao.logo_url || "/puck-logo.png"}
+                    alt={dao.name || "DAO Logo"}
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 rounded-sm"
+                  />
+                ) : (
+                  <ArrowUpCircleIcon className="h-5 w-5" />
+                )}
+                <span className="text-base font-semibold">
+                  {dao ? dao.name : "Loading..."}
+                </span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {dao ? (
+                navMain(dao.contract_address).map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <Link href={item.url}>
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))
+              ) : (
+                <>
+                  <SidebarMenuSkeleton showIcon />
+                </>
+              )}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        {/* Secondary navigation is now at the bottom of the main content area */}
+        <SidebarGroup className="mt-auto">
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {navSecondary.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={demoUser} />
       </SidebarFooter>
     </Sidebar>
   )
