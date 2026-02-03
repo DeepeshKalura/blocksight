@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   description: "BlockSight is the AI-powered intelligence platform for DAOs and dApps. Turn complex on-chain data into actionable insights on user behavior, engagement, and growth. Join the waitlist",
 };
 
+import { SessionProvider } from "@/components/auth/SessionProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -16,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="dark">
-        <ResultsProvider>
-          {children}
-        </ResultsProvider>
+        <SessionProvider>
+          <ResultsProvider>
+            {children}
+          </ResultsProvider>
+        </SessionProvider>
         <Toaster />
       </body>
     </html>
