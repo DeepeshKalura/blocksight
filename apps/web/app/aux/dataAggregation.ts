@@ -21,7 +21,7 @@ export function hexToEth(hexBalance: string): number {
 function calculatePercentile(value: number, allValues: number[]): number {
   if (allValues.length === 0) return 0;
   if (allValues.length === 1) return 0.5;
-  
+
   const sorted = [...allValues].sort((a, b) => a - b);
   const below = sorted.filter(v => v < value).length;
   return below / allValues.length;
@@ -150,15 +150,15 @@ export function calculateActivityIndex(
 
   // Multiple wallets: use percentile-based scoring
   const allTransferCounts = allResults.map(r => r.data.transfers.length);
-  const allVolumes = allResults.map(r => 
+  const allVolumes = allResults.map(r =>
     r.data.transfers.reduce((sum, t) => sum + (t.value || 0), 0)
   );
-  
-  const allDecayedFrequencies = allResults.map(r => 
+
+  const allDecayedFrequencies = allResults.map(r =>
     calculateTimeDecayedScore(r.data.transfers, now)
   );
-  
-  const allDecayedVolumes = allResults.map(r => 
+
+  const allDecayedVolumes = allResults.map(r =>
     calculateTimeDecayedScore(r.data.transfers, now, (t) => t.value || 0)
   );
 
@@ -183,7 +183,7 @@ export function calculateActivityIndex(
   if (transfers.length > 0) {
     // Find most recent transaction with valid metadata
     let mostRecentTime = 0;
-    
+
     transfers.forEach(t => {
       if (t.metadata && t.metadata.blockTimestamp) {
         const txTime = new Date(t.metadata.blockTimestamp).getTime();
@@ -192,7 +192,7 @@ export function calculateActivityIndex(
         }
       }
     });
-    
+
     if (mostRecentTime > 0) {
       const daysSinceLastTx = (now.getTime() - mostRecentTime) / (1000 * 60 * 60 * 24);
       // Exponential decay with 90-day half-life
@@ -334,8 +334,18 @@ export function getWalletsWithActivity(
   return results
     .map((result) => {
       const activityIndex = calculateActivityIndex(result, results);
-      const transactionCount = result.data.transfers.length;
-      const totalVolume = result.data.transfers.reduce(
+      const transfers = result.data.transfers;
+      const transactionCount = transfers.length;
+
+      const incomingCount = transfers.filter(
+        (t) => t.to.toLowerCase() === result.address.toLowerCase()
+      ).length;
+
+      const outgoingCount = transfers.filter(
+        (t) => t.from.toLowerCase() === result.address.toLowerCase()
+      ).length;
+
+      const totalVolume = transfers.reduce(
         (sum, t) => sum + (t.value || 0),
         0
       );
@@ -346,6 +356,8 @@ export function getWalletsWithActivity(
         address: result.address,
         activityIndex,
         transactionCount,
+        incomingCount,
+        outgoingCount,
         totalVolume: Math.round(totalVolume * 1000) / 1000,
         balance: Math.round(balance * 1000000) / 1000000,
         lastActivityDate,
