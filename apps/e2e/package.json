@@ -11,6 +11,6 @@
   "license": "ISC",
   "packageManager": "pnpm@10.20.0",
   "devDependencies": {
-    "@playwright/test": "^1.56.1"
+    "@playwright/test": "^1.58.0"
   }
 }

@@ -16,12 +16,12 @@ function NewDashboardPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [dapp, setDapp] = useState<DemoDapp | null>(null)
-  const view = searchParams.get("view") || "about" 
+  const view = searchParams.get("view") || "about"
 
   useEffect(() => {
     const address = searchParams.get("address")
     if (!address) {
-      router.push("/dapp") 
+      router.push("/dapp")
       return
     }
     const foundDapp = mockDapps.find(
@@ -31,7 +31,7 @@ function NewDashboardPage() {
       setDapp(foundDapp)
     } else {
       console.error("DAO not found for address:", address)
-      router.push("/dapp") 
+      router.push("/dapp")
     }
   }, [searchParams, router])
 
@@ -71,7 +71,7 @@ function NewDashboardPage() {
     >
       <AppSidebar variant="floating" dao={dapp} />
       <SidebarInset>
-        <SiteHeader dappName={view || "Dashboard"} />
+        <SiteHeader dappName={view || "Dashboard"} dappId={dapp.id} />
         <div className="flex flex-1 flex-col p-4 md:p-6 overflow-y-auto">
           {renderView()}
         </div>
