@@ -1,4 +1,18 @@
-import { nextJsConfig } from "@repo/eslint-config/next-js";
+import { nextJsConfig } from "@blocksight/eslint-config/next-js";
 
 /** @type {import("eslint").Linter.Config[]} */
-export default nextJsConfig;
+export default [
+  {
+    ignores: [
+      ".next/**",
+      "node_modules/**",
+      "out/**",
+      "dist/**",
+      "build/**",
+      "coverage/**",
+      "*.config.js",
+      "*.config.ts",
+    ],
+  },
+  ...nextJsConfig,
+];

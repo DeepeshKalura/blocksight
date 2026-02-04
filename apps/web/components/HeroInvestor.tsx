@@ -8,7 +8,6 @@ import { BackgroundRippleEffect } from "./ui/background-ripple-effect";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { RippleButton } from "./ui/ripple-button";
-import { MacbookVideo } from "./MacbookVideo";
 
 export function HeroInvestor() {
   const [email, setEmail] = useState("");
