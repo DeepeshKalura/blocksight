@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollButton } from "@/components/ui/scroll-button";
+import { PromptSuggestions } from "@/components/ui/prompt-suggestions";
 import { cn } from "@/lib/utils";
 import { ArrowUp, Copy, ThumbsDown, ThumbsUp } from "lucide-react";
 import { useState } from "react";
@@ -33,6 +34,8 @@ interface ChatInterfaceProps {
   isGenerating: boolean;
   stop?: () => void;
   slug?: string;
+  logoUrl?: string;
+  daoName?: string;
 }
 
 export function ChatInterface({
@@ -43,6 +46,8 @@ export function ChatInterface({
   isGenerating,
   stop,
   slug,
+  logoUrl,
+  daoName,
 }: ChatInterfaceProps) {
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
@@ -55,6 +60,24 @@ export function ChatInterface({
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleSubmit(e);
+  };
+
+  // Generate dynamic prompt suggestions based on the dApp name
+  const getPromptSuggestions = () => {
+    const name = daoName || "this token";
+    return [
+      `What is the total market cap of ${name}?`,
+      `Show me the top wallet holders for ${name}`,
+      `Analyze recent transaction patterns of ${name}`,
+      `What are the gas usage statistics for ${name}?`,
+    ];
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    handleInputChange({
+      target: { value: suggestion },
+    } as React.ChangeEvent<HTMLInputElement>);
+    handleSubmit();
   };
 
   return (
@@ -80,12 +103,12 @@ export function ChatInterface({
           <ChatContainerRoot className="h-full w-full">
             <ChatContainerContent className="p-6 space-y-6">
               {messages.length === 0 ? (
-                <div className="flex items-center justify-center h-full text-muted-foreground">
-                  <div className="text-center space-y-4">
-                    <div className="text-4xl">👋</div>
-                    <p className="text-lg">Start a conversation</p>
-                    <p className="text-sm">Ask me anything about this dApp</p>
-                  </div>
+                <div className="flex items-center justify-center h-full text-muted-foreground px-4">
+                  <PromptSuggestions
+                    label={`Ask about ${daoName || "this dApp"}`}
+                    append={(message) => handleSuggestionClick(message.content)}
+                    suggestions={getPromptSuggestions()}
+                  />
                 </div>
               ) : (
                 messages.map((message) => (
@@ -101,8 +124,8 @@ export function ChatInterface({
                     <MessageAvatar
                       src={
                         message.role === "user"
-                          ? "https://api.dicebear.com/7.x/avataaars/svg?seed=user"
-                          : "https://api.dicebear.com/7.x/bottts/svg?seed=assistant"
+                          ? "/puck-logo.png"
+                          : logoUrl || "/puck-logo.png"
                       }
                       alt={message.role}
                       fallback={message.role === "user" ? "U" : "AI"}
@@ -113,7 +136,7 @@ export function ChatInterface({
                         className={cn(
                           "rounded-2xl px-4 py-3",
                           message.role === "user"
-                            ? "bg-primary text-primary-foreground rounded-tr-sm"
+                            ? "bg-muted text-muted-foreground rounded-tr-sm"
                             : "bg-secondary text-secondary-foreground rounded-tl-sm",
                         )}
                       >
