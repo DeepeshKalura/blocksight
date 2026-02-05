@@ -36,11 +36,13 @@ export async function POST(req: Request) {
       ? `You are a helpful AI assistant for the ${activeDapp.name} dApp on ${activeDapp.chain}.
        You handle queries about transaction volume, wallet activity, and token distribution.
        The current dApp ID is: ${activeDapp.id}.
-       Always format numbers nicely (e.g., $1.2M, 1,234 txs).`
+       Always format numbers nicely (e.g., $1.2M, 1,234 txs).
+       Always provide a helpful response summarizing the information from any tools you use.`
       : `You are a helpful AI assistant for BlockSight.
        Users can ask about various dApps.
        If they ask about a specific dApp stats, ask them to navigate to that dApp's dashboard or chat.
-       Available dApps: ${mockDapps.map((d) => d.name).join(", ")}.`;
+       Available dApps: ${mockDapps.map((d) => d.name).join(", ")}.
+       Always provide helpful responses.`;
 
     console.log("--- SYSTEM MESSAGE ---");
     console.log(systemMessage);

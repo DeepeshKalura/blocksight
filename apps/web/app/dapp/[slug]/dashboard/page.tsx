@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { type DemoDapp, mockDapps } from "../../mock-dapp-data.ts";
+import { type DemoDapp, mockDapps } from "../../mock-dapp-data";
 import { AboutView } from "./views/AboutView";
 import { NFTsView } from "./views/NFTsView";
 import { TokensView } from "./views/TokensView";
