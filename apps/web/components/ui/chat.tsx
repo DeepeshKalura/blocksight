@@ -6,12 +6,10 @@ import {
   useCallback,
   useRef,
   useState,
-  useEffect,
   type ReactElement,
 } from "react";
 
 import { Button } from "@/components/ui/button";
-import { type Message } from "@/components/ui/chat-message";
 import { CopyButton } from "@/components/ui/copy-button";
 import { MessageInput } from "@/components/ui/message-input";
 import { MessageList } from "@/components/ui/message-list";
@@ -24,7 +22,7 @@ interface ChatPropsBase {
     event?: { preventDefault?: () => void },
     options?: { experimental_attachments?: FileList },
   ) => void;
-  messages: Array<Message>;
+  messages: Array<any>;
   input: string;
   className?: string;
   handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement>;
@@ -70,28 +68,6 @@ export function Chat({
 
   const messagesRef = useRef(messages);
 
-  useEffect(() => {
-    messagesRef.current = messages;
-    console.log("--- Chat Component: Messages Updated ---");
-    console.log("Total messages:", messages.length);
-    console.log("Is empty:", isEmpty);
-    console.log("Is typing:", isTyping);
-    console.log("Is generating:", isGenerating);
-    console.log(
-      "Last message:",
-      lastMessage
-        ? {
-            id: lastMessage.id,
-            role: lastMessage.role,
-            hasContent: !!lastMessage.content,
-            contentPreview: lastMessage.content
-              ? String(lastMessage.content).substring(0, 100)
-              : "[No content]",
-          }
-        : "[No last message]",
-    );
-  }, [messages, isEmpty, isTyping, isGenerating, lastMessage]);
-
   // Enhanced stop function that marks pending tool calls as cancelled
   const handleStop = useCallback(() => {
     stop?.();
@@ -110,7 +86,7 @@ export function Chat({
 
     if (lastAssistantMessage.toolInvocations) {
       const updatedToolInvocations = lastAssistantMessage.toolInvocations.map(
-        (toolInvocation) => {
+        (toolInvocation: any) => {
           if (toolInvocation.state === "call") {
             needsUpdate = true;
             return {
@@ -118,7 +94,7 @@ export function Chat({
               state: "result",
               result: {
                 content: "Tool execution was cancelled",
-                __cancelled: true, // Special marker to indicate cancellation
+                __cancelled: true,
               },
             } as const;
           }
@@ -177,7 +153,7 @@ export function Chat({
   }, [stop, setMessages, messagesRef]);
 
   const messageOptions = useCallback(
-    (message: Message) => ({
+    (message: any) => ({
       actions: onRateResponse ? (
         <>
           <div className="border-r pr-1">
@@ -260,7 +236,7 @@ export function ChatMessages({
   messages,
   children,
 }: React.PropsWithChildren<{
-  messages: Message[];
+  messages: any[];
 }>) {
   const {
     containerRef,

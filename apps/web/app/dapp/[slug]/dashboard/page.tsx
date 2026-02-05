@@ -1,65 +1,75 @@
-"use client"
+"use client";
 
-import { AppSidebar } from "@/components/app-sidebar"
-import { SiteHeader } from "@/components/site-header"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { useParams, useRouter, useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useState } from "react"
-import { type DemoDapp, mockDapps } from "../../mock-dapp-data.ts"
-import { AboutView } from "./views/AboutView"
-import { NFTsView } from "./views/NFTsView"
-import { TokensView } from "./views/TokensView"
-import { TransactionsView } from "./views/TransactionsView"
-import { WalletsView } from "./views/WalletsView"
+import { AppSidebar } from "@/components/app-sidebar";
+import { SiteHeader } from "@/components/site-header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import { type DemoDapp, mockDapps } from "../../mock-dapp-data.ts";
+import { AboutView } from "./views/AboutView";
+import { NFTsView } from "./views/NFTsView";
+import { TokensView } from "./views/TokensView";
+import { TransactionsView } from "./views/TransactionsView";
+import { WalletsView } from "./views/WalletsView";
 
 function NewDashboardPage() {
-  const router = useRouter()
-  const params = useParams()
-  const searchParams = useSearchParams()
-  const [dapp, setDapp] = useState<DemoDapp | null>(null)
-  const view = searchParams.get("view") || "about"
+  const router = useRouter();
+  const params = useParams();
+  const searchParams = useSearchParams();
+  const [dapp, setDapp] = useState<DemoDapp | null>(null);
+  const view = searchParams.get("view") || "about";
 
   useEffect(() => {
-    const slug = params.slug as string
+    const slug = params.slug as string;
     if (!slug) {
-      router.push("/dapp")
-      return
+      router.push("/dapp");
+      return;
     }
-    const foundDapp = mockDapps.find(
-      (d) => d.slug === slug
-    )
+    const foundDapp = mockDapps.find((d) => d.slug === slug);
     if (foundDapp) {
-      setDapp(foundDapp)
+      setDapp(foundDapp);
     } else {
-      console.error("DAO not found for slug:", slug)
-      router.push("/dapp")
+      console.error("DAO not found for slug:", slug);
+      router.push("/dapp");
     }
-  }, [searchParams, router])
+  }, [searchParams, router]);
 
   if (!dapp) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-background text-foreground">
         Loading DAO data...
       </div>
-    )
+    );
   }
 
   const renderView = () => {
     switch (view) {
       case "wallets":
-        return <WalletsView walletsWithActivity={dapp.dashboardData.walletsWithActivity} />
+        return (
+          <WalletsView
+            walletsWithActivity={dapp.dashboardData.walletsWithActivity}
+          />
+        );
       case "about":
-        return <AboutView dapp={dapp} />
+        return <AboutView dapp={dapp} />;
       case "tokens":
-        return <TokensView tokenDistribution={dapp.dashboardData.tokenDistribution} />
+        return (
+          <TokensView
+            tokenDistribution={dapp.dashboardData.tokenDistribution}
+          />
+        );
       case "transactions":
-        return <TransactionsView transactionInsights={dapp.dashboardData.transactionInsights} />
+        return (
+          <TransactionsView
+            transactionInsights={dapp.dashboardData.transactionInsights}
+          />
+        );
       case "nfts":
-        return <NFTsView nftAnalytics={dapp.dashboardData.nftAnalytics} />
+        return <NFTsView nftAnalytics={dapp.dashboardData.nftAnalytics} />;
       default:
-        return <AboutView dapp={dapp} />
+        return <AboutView dapp={dapp} />;
     }
-  }
+  };
 
   return (
     <SidebarProvider
@@ -72,13 +82,13 @@ function NewDashboardPage() {
     >
       <AppSidebar variant="floating" dao={dapp} />
       <SidebarInset>
-        <SiteHeader dappName={view || "Dashboard"} dappId={dapp.id} />
+        <SiteHeader dappName={view || "Dashboard"} />
         <div className="flex flex-1 flex-col p-4 md:p-6 overflow-y-auto">
           {renderView()}
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }
 
 export default function Page() {
@@ -87,5 +97,5 @@ export default function Page() {
     <Suspense fallback={<div>Loading...</div>}>
       <NewDashboardPage />
     </Suspense>
-  )
+  );
 }

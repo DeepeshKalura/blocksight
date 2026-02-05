@@ -52,6 +52,7 @@
     "ethers": "^6.16.0",
     "framer-motion": "^12.29.2",
     "lucide-react": "^0.563.0",
+    "marked": "^17.0.1",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.29.2",
     "next": "^16.1.6",
@@ -63,6 +64,7 @@
     "react-markdown": "^10.1.0",
     "react-resizable-panels": "^4.5.4",
     "recharts": "^3.7.0",
+    "remark-breaks": "^4.0.0",
     "remark-gfm": "^4.0.1",
     "remeda": "^2.33.4",
     "shiki": "^3.21.0",
@@ -70,6 +72,7 @@
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18",
     "tailwindcss-animate": "^1.0.7",
+    "use-stick-to-bottom": "^1.1.2",
     "vaul": "^1.1.2",
     "zod": "^4.3.6"
   },

@@ -7,14 +7,14 @@ import {
   MessageCircleIcon,
   SearchIcon,
   SettingsIcon,
-  WalletIcon
-} from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import * as React from "react"
+  WalletIcon,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import * as React from "react";
 
-import type { DemoDapp } from "@/app/dapp/mock-dapp-data"
-import { NavUser } from "@/components/nav-user"
+import type { DemoDapp } from "@/app/dapp/mock-dapp-data";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -26,14 +26,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSkeleton,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 // Simplified nav items for our dashboard
 const navMain = (slug: string) => [
   {
     title: "About",
     url: `/dapp/${slug}/dashboard?view=about`,
-    icon: InfoIcon 
+    icon: InfoIcon,
   },
   {
     title: "Wallets",
@@ -57,12 +57,10 @@ const navMain = (slug: string) => [
   },
   {
     title: "Chat",
-    url: `/dapp/chat?slug=${slug}`,
+    url: `/dapp/${slug}/chat`,
     icon: MessageCircleIcon,
   },
-
-  
-]
+];
 
 const navSecondary = [
   {
@@ -75,17 +73,17 @@ const navSecondary = [
     url: "#",
     icon: SearchIcon,
   },
-]
+];
 
 // Mock user data as requested for the demo
 const demoUser = {
   name: "Demo User",
   email: "user@blocksight.ai",
   avatar: "/puck-logo.png",
-}
+};
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
-  dao: DemoDapp | null
+  dao: DemoDapp | null;
 }
 
 export function AppSidebar({ dao, ...props }: AppSidebarProps) {
@@ -163,5 +161,5 @@ export function AppSidebar({ dao, ...props }: AppSidebarProps) {
         <NavUser user={demoUser} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
