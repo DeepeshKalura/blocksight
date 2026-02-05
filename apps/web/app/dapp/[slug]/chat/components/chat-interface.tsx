@@ -36,6 +36,7 @@ interface ChatInterfaceProps {
   slug?: string;
   logoUrl?: string;
   daoName?: string;
+  isDemo?: boolean;
 }
 
 export function ChatInterface({
@@ -48,6 +49,7 @@ export function ChatInterface({
   slug,
   logoUrl,
   daoName,
+  isDemo = true,
 }: ChatInterfaceProps) {
   const [copiedId, setCopiedId] = useState<string | null>(null);
 

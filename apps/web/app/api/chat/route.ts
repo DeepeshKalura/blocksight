@@ -9,6 +9,28 @@ const google = createGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_API_KEY || "",
 });
 
+async function fetchRealDappData(slug: string, cookie: string | null) {
+  try {
+    const dappResponse = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/dapp/${slug}/data`,
+      {
+        headers: {
+          Cookie: cookie || "",
+        },
+      },
+    );
+    if (dappResponse.ok) {
+      const data = await dappResponse.json();
+      if (data.success && data.dapp) {
+        return data.dapp;
+      }
+    }
+  } catch (error) {
+    console.log("Failed to fetch real dApp data:", error);
+  }
+  return null;
+}
+
 export async function POST(req: Request) {
   try {
     const url = new URL(req.url);
@@ -30,12 +52,31 @@ export async function POST(req: Request) {
     console.log(`DApp Slug: ${slug || "None"}`);
     console.log(`Message count: ${messages.length}`);
 
-    const activeDapp = slug ? mockDapps.find((d) => d.slug === slug) : null;
+    let activeDapp = slug ? mockDapps.find((d) => d.slug === slug) : null;
+    let isDemo = true;
+
+    // Try to fetch real dApp data if available
+    if (slug && !activeDapp) {
+      try {
+        const realDapp = await fetchRealDappData(
+          slug,
+          req.headers.get("cookie"),
+        );
+        if (realDapp) {
+          activeDapp = realDapp;
+          isDemo = false;
+          console.log(`Using real dApp data for: ${activeDapp?.name}`);
+        }
+      } catch (error) {
+        console.log("Using demo data, real data fetch failed:", error);
+      }
+    }
 
     const systemMessage = activeDapp
-      ? `You are a helpful AI assistant for the ${activeDapp.name} dApp on ${activeDapp.chain}.
+      ? `You are a helpful AI assistant for the ${activeDapp.name || "Unknown"} dApp on ${activeDapp.chain || "Ethereum"}.
+       ${isDemo ? "NOTE: This is DEMO DATA showing sample analytics." : "NOTE: This is REAL USER DATA from indexed blockchain data."}
        You handle queries about transaction volume, wallet activity, and token distribution.
-       The current dApp ID is: ${activeDapp.id}.
+       The current dApp ID is: ${activeDapp.id || "Unknown"}.
        Always format numbers nicely (e.g., $1.2M, 1,234 txs).
        Always provide a helpful response summarizing the information from any tools you use.`
       : `You are a helpful AI assistant for BlockSight.
@@ -93,6 +134,21 @@ export async function POST(req: Request) {
             console.log("Input:", input);
             try {
               const { dappId } = input as { dappId: string };
+
+              // Try to fetch real data first
+              let realDapp = null;
+              if (slug && !isDemo) {
+                realDapp = await fetchRealDappData(
+                  slug,
+                  req.headers.get("cookie"),
+                );
+              }
+
+              if (realDapp && realDapp.dashboardData?.overviewStats) {
+                return realDapp.dashboardData.overviewStats;
+              }
+
+              // Fallback to demo data
               const dapp = mockDapps.find((d) => d.id === dappId);
               const result = dapp?.dashboardData.overviewStats || {
                 error: "dApp not found",
@@ -125,6 +181,24 @@ export async function POST(req: Request) {
                 dappId: string;
                 limit?: number;
               };
+
+              // Try to fetch real data first
+              let realDapp = null;
+              if (slug && !isDemo) {
+                realDapp = await fetchRealDappData(
+                  slug,
+                  req.headers.get("cookie"),
+                );
+              }
+
+              if (realDapp && realDapp.dashboardData?.walletsWithActivity) {
+                return realDapp.dashboardData.walletsWithActivity.slice(
+                  0,
+                  limit,
+                );
+              }
+
+              // Fallback to demo data
               const dapp = mockDapps.find((d) => d.id === dappId);
               const result = dapp?.dashboardData.walletsWithActivity.slice(
                 0,
@@ -154,6 +228,21 @@ export async function POST(req: Request) {
             console.log("Input:", input);
             try {
               const { dappId } = input as { dappId: string };
+
+              // Try to fetch real data first
+              let realDapp = null;
+              if (slug && !isDemo) {
+                realDapp = await fetchRealDappData(
+                  slug,
+                  req.headers.get("cookie"),
+                );
+              }
+
+              if (realDapp && realDapp.dashboardData?.tokenDistribution) {
+                return realDapp.dashboardData.tokenDistribution;
+              }
+
+              // Fallback to demo data
               const dapp = mockDapps.find((d) => d.id === dappId);
               const result = dapp?.dashboardData.tokenDistribution || {
                 error: "dApp not found",
@@ -175,6 +264,7 @@ export async function POST(req: Request) {
     console.log("--- STARTING STREAM RESPONSE ---");
     console.log("Stream format: UI message stream for useChat hook");
 
+    // @ts-ignore - AI SDK typing issue
     const response = result.toUIMessageStreamResponse();
 
     console.log("Response headers:", {
