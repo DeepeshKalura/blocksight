@@ -4,6 +4,7 @@ import {
   CoinsIcon,
   ImageIcon,
   InfoIcon,
+  MessageCircleIcon,
   SearchIcon,
   SettingsIcon,
   WalletIcon
@@ -28,31 +29,36 @@ import {
 } from "@/components/ui/sidebar"
 
 // Simplified nav items for our dashboard
-const navMain = (address: string) => [
+const navMain = (slug: string) => [
   {
     title: "About",
-    url: `/dapp/dashboard?address=${address}&view=about`,
+    url: `/dapp/${slug}/dashboard?view=about`,
     icon: InfoIcon 
   },
   {
     title: "Wallets",
-    url: `/dapp/dashboard?address=${address}&view=wallets`,
+    url: `/dapp/${slug}/dashboard?view=wallets`,
     icon: WalletIcon,
   },
   {
     title: "Tokens",
-    url: `/dapp/dashboard?address=${address}&view=tokens`,
+    url: `/dapp/${slug}/dashboard?view=tokens`,
     icon: CoinsIcon,
   },
   {
     title: "Transactions",
-    url: `/dapp/dashboard?address=${address}&view=transactions`,
+    url: `/dapp/${slug}/dashboard?view=transactions`,
     icon: ArrowRightLeftIcon,
   },
   {
     title: "NFTs",
-    url: `/dapp/dashboard?address=${address}&view=nfts`,
+    url: `/dapp/${slug}/dashboard?view=nfts`,
     icon: ImageIcon,
+  },
+  {
+    title: "Chat",
+    url: `/dapp/chat?slug=${slug}`,
+    icon: MessageCircleIcon,
   },
 
   
@@ -117,7 +123,7 @@ export function AppSidebar({ dao, ...props }: AppSidebarProps) {
           <SidebarGroupContent>
             <SidebarMenu>
               {dao ? (
-                navMain(dao.contract_address).map((item) => (
+                navMain(dao.slug).map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
                       <Link href={item.url}>

@@ -45,14 +45,18 @@ export function AddDaoDrawer({ onDaoAdded, children }: AddDaoDrawerProps) {
     // The backend would then auto-fill the name and logo.
     // For now, we'll fake it.
     
+    const name = values.daoName || `DAO (${values.contractAddress.slice(0, 6)}...)`;
+    const slug = name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim('-');
+    
     const newDao: Dao = {
       id: values.contractAddress,
-      name: values.daoName || `DAO (${values.contractAddress.slice(0, 6)}...)`,
+      name: name,
       logo_url: "/puck-logo.png", // Use a placeholder logo
       chain: "Ethereum",
       contract_address: values.contractAddress,
       description: "",
-      status: "PENDING"
+      status: "PENDING",
+      slug: slug
     };
     
     onDaoAdded(newDao);

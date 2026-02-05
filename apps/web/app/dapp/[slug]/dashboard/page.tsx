@@ -3,9 +3,9 @@
 import { AppSidebar } from "@/components/app-sidebar"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useParams, useRouter, useSearchParams } from "next/navigation"
 import { Suspense, useEffect, useState } from "react"
-import { type DemoDapp, mockDapps } from "../mock-dapp-data"
+import { type DemoDapp, mockDapps } from "../../mock-dapp-data.ts"
 import { AboutView } from "./views/AboutView"
 import { NFTsView } from "./views/NFTsView"
 import { TokensView } from "./views/TokensView"
@@ -14,12 +14,13 @@ import { WalletsView } from "./views/WalletsView"
 
 function NewDashboardPage() {
   const router = useRouter()
+  const params = useParams()
   const searchParams = useSearchParams()
   const [dapp, setDapp] = useState<DemoDapp | null>(null)
   const view = searchParams.get("view") || "about"
 
   useEffect(() => {
-    const slug = searchParams.get("slug")
+    const slug = params.slug as string
     if (!slug) {
       router.push("/dapp")
       return

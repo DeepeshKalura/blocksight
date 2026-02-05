@@ -14,6 +14,7 @@ export type Dao = {
   contract_address: string;
   description: string | null;
   status: 'PENDING' | 'INDEXING' | 'COMPLETED' | 'FAILED';
+  slug: string;
 };
 
 interface DaoCardProps {
@@ -61,7 +62,7 @@ export function DaoCard({ dao }: DaoCardProps) {
       </CardContent>
       <CardFooter>
         {dao.status === 'COMPLETED' ? (
-          <a href={`/dapp/dashboard?address=${dao.contract_address}`} className="w-full">
+          <a href={`/dapp/${dao.slug}/dashboard`} className="w-full">
             <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
               View Dashboard
             </Button>
