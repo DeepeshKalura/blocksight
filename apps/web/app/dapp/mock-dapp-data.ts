@@ -2440,7 +2440,7 @@ export const mockDapps: DemoDapp[] = [
     chain: "Ethereum",
     contract_address: "0x66a9893cc07d91d95644aedd05d03f95e1dba8af",
     description: "A core DeFi protocol for the Ethereum ecosystem.",
-    slug: "a-core-defi-protocol-for-the-ethereum-ecosystem",
+    slug: "uniswap",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
@@ -3240,7 +3240,7 @@ export const mockDapps: DemoDapp[] = [
     chain: "Ethereum",
     contract_address: "0x0000000000001ff3684f28c67538d4d072c22734",
     description: "A core DeFi protocol for the Ethereum ecosystem.",
-    slug: "a-core-defi-protocol-for-the-ethereum-ecosystem",
+    slug: "0x",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
@@ -4040,7 +4040,7 @@ export const mockDapps: DemoDapp[] = [
     chain: "Ethereum",
     contract_address: "0x5c7bcd6e7de5423a257d81b442095a1a6ced35c5",
     description: "A core DeFi protocol for the Ethereum ecosystem.",
-    slug: "a-core-defi-protocol-for-the-ethereum-ecosystem",
+    slug: "across",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
@@ -4840,7 +4840,7 @@ export const mockDapps: DemoDapp[] = [
     chain: "Ethereum",
     contract_address: "0x881d40237659c251811cec9c364ef91dc08d300c",
     description: "A core DeFi protocol for the Ethereum ecosystem.",
-    slug: "a-core-defi-protocol-for-the-ethereum-ecosystem",
+    slug: "metamask",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
@@ -5640,7 +5640,7 @@ export const mockDapps: DemoDapp[] = [
     chain: "Ethereum",
     contract_address: "0x111111125421ca6dc452d289314280a0f8842a65",
     description: "A core DeFi protocol for the Ethereum ecosystem.",
-    slug: "a-core-defi-protocol-for-the-ethereum-ecosystem",
+    slug: "1inch",
     status: "COMPLETED",
     dashboardData: {
       overviewStats: {
