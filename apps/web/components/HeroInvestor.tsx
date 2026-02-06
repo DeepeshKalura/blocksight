@@ -50,10 +50,10 @@ export function HeroInvestor() {
               <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
               <span className="text-xs sm:text-sm text-accent">
 
-              
-                  <span className="text-xs sm:text-sm text-muted-foreground group-hover:text-accent transition-colors">
-                       Investor Demo <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wide"> Dapp </span> Waitlist 
-                  </span>
+
+                <span className="text-xs sm:text-sm text-muted-foreground group-hover:text-accent transition-colors">
+                  Know Your <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wide"> Dapp </span> Better
+                </span>
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl tracking-tight mb-4 md:mb-6 text-balance px-2">
