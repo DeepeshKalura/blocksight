@@ -106,7 +106,7 @@ export type Token = {
   tokenBalance: string;
 };
 
-type TokenBalance = {
+export type TokenBalance = {
   data: {
     tokens: Token[];
     pageKey: null | any;
