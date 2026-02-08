@@ -267,3 +267,19 @@ export type NewIndexingRequest = typeof indexingRequests.$inferInsert;
 
 export type MockDapp = typeof mockDapps.$inferSelect;
 export type NewMockDapp = typeof mockDapps.$inferInsert;
+
+// ============================================================================
+// WAITLIST TABLE (Keep for compatibility)
+// ============================================================================
+
+export const waitlist = pgTable("waitlist", {
+  id: serial("id").primaryKey(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  typeUser: varchar("type_user", { length: 50 }),
+  planTier: varchar("plan_tier", { length: 50 }),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export type Waitlist = typeof waitlist.$inferSelect;
+export type NewWaitlist = typeof waitlist.$inferInsert;
