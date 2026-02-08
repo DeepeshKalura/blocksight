@@ -1,0 +1,18 @@
+[project]
+name = "analyze"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "alchemy-sdk>=0.1.1",
+    "dataclass-wizard>=0.39.1",
+    "ijson>=3.4.0.post0",
+    "requests>=2.32.5",
+    "tqdm>=4.67.1",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.1.0",
+]
