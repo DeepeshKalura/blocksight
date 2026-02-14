@@ -83,22 +83,10 @@ export function ChatInterface({
   };
 
   return (
-    <div className="flex h-screen w-full bg-background">
+    <div className="flex h-full w-full bg-background">
       {/* Main Chat Area */}
       <div className="flex-1 flex flex-col h-full">
-        {/* Header */}
-        <Card className="rounded-none border-x-0 border-t-0 border-b bg-card/50 backdrop-blur-sm">
-          <CardHeader className="py-4">
-            <CardTitle className="text-lg font-semibold flex items-center gap-2">
-              <span className="text-primary">Chat</span>
-              {slug && (
-                <span className="text-sm text-muted-foreground font-normal">
-                  / {slug}
-                </span>
-              )}
-            </CardTitle>
-          </CardHeader>
-        </Card>
+
 
         {/* Messages Container */}
         <div className="flex-1 relative overflow-hidden">

@@ -7,6 +7,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { type DemoDapp, mockDapps } from "../../mock-dapp-data";
 import { AboutView } from "./views/AboutView";
+import { ChatView } from "./views/ChatView";
 import { NFTsView } from "./views/NFTsView";
 import { TokensView } from "./views/TokensView";
 import { TransactionsView } from "./views/TransactionsView";
@@ -121,6 +122,14 @@ function NewDashboardPage() {
         );
       case "nfts":
         return <NFTsView nftAnalytics={dapp.dashboardData.nftAnalytics} />;
+      case "chat":
+        return (
+          <ChatView
+            slug={dapp.slug}
+            logoUrl={dapp.logo_url || undefined}
+            daoName={dapp.name || undefined}
+          />
+        );
       default:
         return <AboutView dapp={dapp} />;
     }

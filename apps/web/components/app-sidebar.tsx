@@ -57,7 +57,7 @@ const navMain = (slug: string) => [
   },
   {
     title: "Chat",
-    url: `/dapp/${slug}/chat`,
+    url: `/dapp/${slug}/dashboard?view=chat`,
     icon: MessageCircleIcon,
   },
 ];
