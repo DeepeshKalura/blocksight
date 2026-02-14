@@ -1,64 +1,53 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { indexedProjects, userDapps, mockDapps } from "@/lib/db/schema";
-import { eq, and } from "drizzle-orm";
+// import { auth } from "@/lib/auth";
+// import { db } from "@/lib/db";
+// import { indexedProjects, userDapps, mockDapps } from "@/lib/db/schema";
+// import { eq, and } from "drizzle-orm";
 
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ slug: string }> },
 ) {
   try {
-    const session = await auth();
     const { slug } = await params;
 
     if (!slug) {
       return NextResponse.json({ error: "Slug is required" }, { status: 400 });
     }
 
-    // First, check if this is a user-indexed project
-    let project = null;
-    let isUserProject = false;
+    // Demo version - return mock data for demo dapps
+    const mockDapps = [
+      {
+        slug: "uniswap",
+        name: "Uniswap",
+        logoUrl: "/logos/uniswap-uni-logo.png",
+        chain: "ethereum",
+        contractAddress: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+        dashboardData: {
+          overviewStats: {
+            totalTransactions: 4500000,
+            totalWallets: 435000,
+            volume24h: 850000000,
+          },
+        },
+      },
+      {
+        slug: "puck",
+        name: "Puck",
+        logoUrl: "/puck-logo.png",
+        chain: "ethereum",
+        contractAddress: "0x8d5a34...",
+        dashboardData: {
+          overviewStats: {
+            totalTransactions: 120000,
+            totalWallets: 89000,
+            volume24h: 45000000,
+          },
+        },
+      },
+    ];
 
-    if (session?.user?.id) {
-      // Check if user has this dapp
-      const userDapp = await db
-        .select({ contractAddress: userDapps.contractAddress })
-        .from(userDapps)
-        .where(
-          and(eq(userDapps.userId, session.user.id), eq(userDapps.slug, slug)),
-        )
-        .limit(1);
-
-      if (userDapp.length > 0) {
-        // User has this dapp, get the indexed project
-        const indexedProject = await db
-          .select()
-          .from(indexedProjects)
-          .where(
-            eq(indexedProjects.contractAddress, userDapp[0].contractAddress),
-          )
-          .limit(1);
-
-        if (indexedProject.length > 0) {
-          project = indexedProject[0];
-          isUserProject = true;
-        }
-      }
-    }
-
-    // If not found as user project, check mock dapps
-    if (!project) {
-      const mockDapp = await db
-        .select()
-        .from(mockDapps)
-        .where(eq(mockDapps.slug, slug))
-        .limit(1);
-
-      if (mockDapp.length > 0) {
-        project = mockDapp[0];
-      }
-    }
+    const project = mockDapps.find((d) => d.slug === slug);
 
     if (!project) {
       return NextResponse.json({ error: "dApp not found" }, { status: 404 });
@@ -69,12 +58,12 @@ export async function GET(
       data: {
         ...project.dashboardData,
         id: project.contractAddress,
-        name: project.tokenName || project.name,
+        name: project.name,
         logo_url: project.logoUrl,
-        chain: project.chain || "ethereum",
+        chain: project.chain,
         contract_address: project.contractAddress,
         slug: project.slug,
-        isUserProject,
+        isUserProject: false,
       },
     });
   } catch (error) {

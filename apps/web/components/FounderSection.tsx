@@ -1,37 +1,40 @@
-
 const founders = [
-  {
-    name: "Stefano",
-    role: "Co-Founder",
-    image: "/founders/stefano.png",
-    bio: "Stefano has 10 years of programming experience, has bootstrapped multiple products, and has worked at various startups. He has mentored aspiring coders and spent the last three years specializing in blockchain development. Now, he is combining his technical expertise with his entrepreneurial drive to lead his own product",
-    twitter: "#",
-    linkedin: "#",
-    email: "alex@blocksight.ai"
-  },
+  // Stefano commented out for demo version
+  // {
+  //   name: "Stefano",
+  //   role: "Co-Founder",
+  //   image: "/founders/stefano.png",
+  //   bio: "Stefano has 10 years of programming experience, has bootstrapped multiple products, and has worked at various startups. He has mentored aspiring coders and spent the last three years specializing in blockchain development. Now, he is combining his technical expertise with his entrepreneurial drive to lead his own product",
+  //   twitter: "#",
+  //   linkedin: "#",
+  //   email: "alex@blocksight.ai"
+  // },
   {
     name: "Devon Martens",
     role: "Co-Founder",
     image: "/founders/devon.png",
-    bio: "Devon builds systems where intelligence meets trustless infrastructure. From architecting AI-driven trading engines managing $50M+ in liquidity to leading Studio Chain, a Layer 2 network for adaptive game economies, her work unites blockchain data, machine learning, and decentralized reasoning. Now, she’s shaping the next generation of AI — transparent, autonomous, and analysis of on-chain data.",
+    bio: "Devon builds systems where intelligence meets trustless infrastructure. From architecting AI-driven trading engines managing $50M+ in liquidity to leading Studio Chain, a Layer 2 network for adaptive game economies, her work unites blockchain data, machine learning, and decentralized reasoning. Now, she's shaping the next generation of AI — transparent, autonomous, and analysis of on-chain data.",
     twitter: "#",
     linkedin: "#",
-    email: "sarah@blocksight.ai"
+    email: "sarah@blocksight.ai",
   },
   {
     name: "Dr. Petrus C. Martens",
     role: "Co-Founder",
     image: "/founders/petrus.png",
-    bio: "Petrus brings over two decades of NASA- and NSF-funded research in machine learning, solar physics, and predictive modeling to Hybrid Intelligence Systems. As a professor at Georgia State University and co-founder of multiple research initiatives including the Virtual Solar Observatory and Data Mining Lab  he has led pioneering work in large-scale data analysis, AI-driven forecasting, and autonomous scientific systems. His expertise in interpretable AI, scientific data infrastructure, and real-time prediction directly informs the company’s mission to build transparent, human-aligned intelligence on blockchain.",
+    bio: "Petrus brings over two decades of NASA- and NSF-funded research in machine learning, solar physics, and predictive modeling to Hybrid Intelligence Systems. As a professor at Georgia State University and co-founder of multiple research initiatives including the Virtual Solar Observatory and Data Mining Lab  he has led pioneering work in large-scale data analysis, AI-driven forecasting, and autonomous scientific systems. His expertise in interpretable AI, scientific data infrastructure, and real-time prediction directly informs the company's mission to build transparent, human-aligned intelligence on blockchain.",
     twitter: "#",
     linkedin: "#",
-    email: "jordan@blocksight.ai"
-  }
+    email: "jordan@blocksight.ai",
+  },
 ];
 
 export function FoundersSection() {
   return (
-    <section id="founders" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-background">
+    <section
+      id="founders"
+      className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-background"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -42,7 +45,9 @@ export function FoundersSection() {
             The Minds Behind BlockSight
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            We&apos;re a team of blockchain enthusiasts, data scientists, and product builders united by a vision to make DAO analytics accessible and actionable.
+            We&apos;re a team of blockchain enthusiasts, data scientists, and
+            product builders united by a vision to make DAO analytics accessible
+            and actionable.
           </p>
         </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+// import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -28,7 +28,9 @@ export function LoginModal({ onClose, redirectTo = "/dapp" }: LoginModalProps) {
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
     try {
-      await signIn("google", { callbackUrl: redirectTo });
+      // Authentication disabled for demo
+      // await signIn("google", { callbackUrl: redirectTo });
+      alert("Authentication disabled for demo version");
     } catch (error) {
       console.error("Google sign-in error:", error);
     } finally {

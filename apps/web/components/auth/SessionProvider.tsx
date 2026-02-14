@@ -1,7 +1,22 @@
 "use client";
 
-import { SessionProvider as NextAuthSessionProvider } from "next-auth/react";
+import { createContext, useContext } from "react";
+
+const MockSessionContext = createContext({
+  data: null,
+  status: "unauthenticated",
+});
 
 export function SessionProvider({ children }: { children: React.ReactNode }) {
-    return <NextAuthSessionProvider>{children}</NextAuthSessionProvider>;
+  return (
+    <MockSessionContext.Provider
+      value={{ data: null, status: "unauthenticated" }}
+    >
+      {children}
+    </MockSessionContext.Provider>
+  );
+}
+
+export function useSession() {
+  return useContext(MockSessionContext);
 }

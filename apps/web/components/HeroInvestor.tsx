@@ -3,7 +3,7 @@ import { Zap } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
-import { useSession } from "next-auth/react";
+import { useSession } from "@/components/auth/SessionProvider";
 import { LayeredCube3D } from "./LayeredCube3D";
 import { BackgroundRippleEffect } from "./ui/background-ripple-effect";
 import {

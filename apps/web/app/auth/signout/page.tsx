@@ -1,7 +1,7 @@
-import { signOut } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export default async function SignOutPage() {
-  await signOut({ redirectTo: "/" });
+  // Authentication disabled for demo
+  // await signOut({ redirectTo: "/" });
   redirect("/");
 }
