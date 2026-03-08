@@ -34,7 +34,7 @@ function estimateGasSpent(transfer: Transfer): number {
  */
 export function buildTransactionTimeline(
   results: Result[],
-  groupBy: "day" | "week" | "month" = "day"
+  groupBy: "day" | "week" | "month" = "day",
 ): TimelineDataPoint[] {
   const timelineMap = new Map<string, { volume: number; count: number }>();
 
@@ -86,14 +86,26 @@ export function buildTransactionTimeline(
     });
   });
 
-  if (totalTransfers > 0 && (skippedNoMetadata || skippedNoBlockTimestamp || skippedInvalidTimestamp)) {
+  if (
+    totalTransfers > 0 &&
+    (skippedNoMetadata || skippedNoBlockTimestamp || skippedInvalidTimestamp)
+  ) {
     console.log("[Timeline] Skipped transfers in buildTransactionTimeline", {
       totalTransfers,
-      processed: totalTransfers - (skippedNoMetadata + skippedNoBlockTimestamp + skippedInvalidTimestamp),
+      processed:
+        totalTransfers -
+        (skippedNoMetadata + skippedNoBlockTimestamp + skippedInvalidTimestamp),
       skippedNoMetadata,
       skippedNoBlockTimestamp,
       skippedInvalidTimestamp,
-      skippedPercentage: Math.round(((skippedNoMetadata + skippedNoBlockTimestamp + skippedInvalidTimestamp) / totalTransfers) * 1000) / 10,
+      skippedPercentage:
+        Math.round(
+          ((skippedNoMetadata +
+            skippedNoBlockTimestamp +
+            skippedInvalidTimestamp) /
+            totalTransfers) *
+            1000,
+        ) / 10,
     });
   }
 
@@ -112,7 +124,7 @@ export function buildTransactionTimeline(
 
 function formatDisplayDate(
   date: string,
-  groupBy: "day" | "week" | "month"
+  groupBy: "day" | "week" | "month",
 ): string {
   const d = new Date(date);
 
@@ -130,7 +142,7 @@ function formatDisplayDate(
  */
 export function getMostActiveWallets(
   results: Result[],
-  limit: number = 10
+  limit: number = 10,
 ): ActiveWallet[] {
   const wallets = results.map((result) => {
     const transfers = result.data.transfers;
@@ -158,6 +170,8 @@ export function getMostActiveWallets(
       totalVolume: Math.round(totalVolume * 1000) / 1000,
       incomingCount: incoming.length,
       outgoingCount: outgoing.length,
+      incomingVolume: Math.round(incomingVolume * 1000) / 1000,
+      outgoingVolume: Math.round(outgoingVolume * 1000) / 1000,
       averageTransactionSize: Math.round(averageTransactionSize * 1000) / 1000,
       activityIndex: calculateActivityIndex(result, results),
     };
@@ -172,7 +186,7 @@ export function getMostActiveWallets(
  * Analyze transaction patterns (incoming vs outgoing)
  */
 export function analyzeTransactionPatterns(
-  results: Result[]
+  results: Result[],
 ): TransactionPatterns {
   let totalIncoming = 0;
   let totalOutgoing = 0;
@@ -190,7 +204,9 @@ export function analyzeTransactionPatterns(
 
     result.data.transfers.forEach((transfer) => {
       const safeTo = (transfer && transfer.to ? transfer.to : "").toLowerCase();
-      const safeFrom = (transfer && transfer.from ? transfer.from : "").toLowerCase();
+      const safeFrom = (
+        transfer && transfer.from ? transfer.from : ""
+      ).toLowerCase();
       const isIncoming = safeTo === address;
       const isOutgoing = safeFrom === address;
 
@@ -243,7 +259,7 @@ export function analyzeTransactionPatterns(
  */
 export function analyzeGasSpending(
   results: Result[],
-  ethPriceUSD: number = 2500
+  ethPriceUSD: number = 2500,
 ): GasAnalysis {
   let totalGasSpent = 0;
   let transactionCount = 0;
@@ -259,7 +275,7 @@ export function analyzeGasSpending(
         highestGasTransaction = {
           hash: transfer.hash,
           gasSpent: Math.round(gasSpent * 1000000) / 1000000,
-          from: transfer.from,
+          from_address: transfer.from,
           to: transfer.to,
         };
       }
@@ -283,7 +299,7 @@ export function analyzeGasSpending(
  */
 export function getTransactionInsights(
   results: Result[],
-  timelineGroupBy: "day" | "week" | "month" = "day"
+  timelineGroupBy: "day" | "week" | "month" = "day",
 ): TransactionInsights {
   return {
     timeline: buildTransactionTimeline(results, timelineGroupBy),

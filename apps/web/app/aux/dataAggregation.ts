@@ -23,7 +23,7 @@ function calculatePercentile(value: number, allValues: number[]): number {
   if (allValues.length === 1) return 0.5;
 
   const sorted = [...allValues].sort((a, b) => a - b);
-  const below = sorted.filter(v => v < value).length;
+  const below = sorted.filter((v) => v < value).length;
   return below / allValues.length;
 }
 
@@ -34,7 +34,7 @@ function calculatePercentile(value: number, allValues: number[]): number {
 function calculateTimeDecayedScore(
   transfers: any[],
   now: Date,
-  extractValue: (transfer: any) => number = () => 1
+  extractValue: (transfer: any) => number = () => 1,
 ): number {
   const halfLifeDays = 30;
   const decayConstant = Math.log(2) / halfLifeDays;
@@ -69,15 +69,22 @@ function calculateTimeDecayedScore(
 
   // Log grouped skip reasons for testing (only when there are skips)
   if (skippedNoMetadata || skippedNoBlockTimestamp || skippedInvalidTimestamp) {
-    const skippedTotal = skippedNoMetadata + skippedNoBlockTimestamp + skippedInvalidTimestamp;
-    console.log("[ActivityIndex] Skipped transfers in calculateTimeDecayedScore", {
-      totalTransfers,
-      processed: totalTransfers - skippedTotal,
-      skippedNoMetadata,
-      skippedNoBlockTimestamp,
-      skippedInvalidTimestamp,
-      skippedPercentage: totalTransfers > 0 ? Math.round((skippedTotal / totalTransfers) * 1000) / 10 : 0,
-    });
+    const skippedTotal =
+      skippedNoMetadata + skippedNoBlockTimestamp + skippedInvalidTimestamp;
+    console.log(
+      "[ActivityIndex] Skipped transfers in calculateTimeDecayedScore",
+      {
+        totalTransfers,
+        processed: totalTransfers - skippedTotal,
+        skippedNoMetadata,
+        skippedNoBlockTimestamp,
+        skippedInvalidTimestamp,
+        skippedPercentage:
+          totalTransfers > 0
+            ? Math.round((skippedTotal / totalTransfers) * 1000) / 10
+            : 0,
+      },
+    );
   }
 
   return sum;
@@ -91,7 +98,7 @@ function calculateTimeDecayedScore(
  */
 export function calculateActivityIndex(
   result: Result,
-  allResults: Result[]
+  allResults: Result[],
 ): number {
   const transfers = result.data.transfers;
 
@@ -105,7 +112,11 @@ export function calculateActivityIndex(
   const totalTransactions = transfers.length;
   const totalVolume = transfers.reduce((sum, t) => sum + (t.value || 0), 0);
   const decayedFrequency = calculateTimeDecayedScore(transfers, now);
-  const decayedVolume = calculateTimeDecayedScore(transfers, now, (t) => t.value || 0);
+  const decayedVolume = calculateTimeDecayedScore(
+    transfers,
+    now,
+    (t) => t.value || 0,
+  );
 
   // Single wallet: use absolute scoring with reasonable thresholds
   if (allResults.length === 1) {
@@ -129,7 +140,7 @@ export function calculateActivityIndex(
     let recencyScore = 0;
     if (transfers.length > 0) {
       let mostRecentTime = 0;
-      transfers.forEach(t => {
+      transfers.forEach((t) => {
         if (t.metadata && t.metadata.blockTimestamp) {
           const txTime = new Date(t.metadata.blockTimestamp).getTime();
           if (txTime > mostRecentTime) {
@@ -138,40 +149,55 @@ export function calculateActivityIndex(
         }
       });
       if (mostRecentTime > 0) {
-        const daysSinceLastTx = (now.getTime() - mostRecentTime) / (1000 * 60 * 60 * 24);
+        const daysSinceLastTx =
+          (now.getTime() - mostRecentTime) / (1000 * 60 * 60 * 24);
         const decayConstant = Math.log(2) / 90;
         recencyScore = Math.exp(-decayConstant * daysSinceLastTx) * 0.05;
       }
     }
 
-    const totalScore = frequencyScore + volumeScore + countScore + totalVolumeScore + recencyScore;
+    const totalScore =
+      frequencyScore +
+      volumeScore +
+      countScore +
+      totalVolumeScore +
+      recencyScore;
     return Math.round(totalScore * 1000) / 1000;
   }
 
   // Multiple wallets: use percentile-based scoring
-  const allTransferCounts = allResults.map(r => r.data.transfers.length);
-  const allVolumes = allResults.map(r =>
-    r.data.transfers.reduce((sum, t) => sum + (t.value || 0), 0)
+  const allTransferCounts = allResults.map((r) => r.data.transfers.length);
+  const allVolumes = allResults.map((r) =>
+    r.data.transfers.reduce((sum, t) => sum + (t.value || 0), 0),
   );
 
-  const allDecayedFrequencies = allResults.map(r =>
-    calculateTimeDecayedScore(r.data.transfers, now)
+  const allDecayedFrequencies = allResults.map((r) =>
+    calculateTimeDecayedScore(r.data.transfers, now),
   );
 
-  const allDecayedVolumes = allResults.map(r =>
-    calculateTimeDecayedScore(r.data.transfers, now, (t) => t.value || 0)
+  const allDecayedVolumes = allResults.map((r) =>
+    calculateTimeDecayedScore(r.data.transfers, now, (t) => t.value || 0),
   );
 
   // Factor 1: Time-decayed transaction frequency - Weight: 40%
-  const frequencyPercentile = calculatePercentile(decayedFrequency, allDecayedFrequencies);
+  const frequencyPercentile = calculatePercentile(
+    decayedFrequency,
+    allDecayedFrequencies,
+  );
   const frequencyScore = frequencyPercentile * 0.4;
 
   // Factor 2: Time-decayed transaction volume - Weight: 30%
-  const volumePercentile = calculatePercentile(decayedVolume, allDecayedVolumes);
+  const volumePercentile = calculatePercentile(
+    decayedVolume,
+    allDecayedVolumes,
+  );
   const volumeScore = volumePercentile * 0.3;
 
   // Factor 3: Total transaction count (lifetime) - Weight: 15%
-  const countPercentile = calculatePercentile(totalTransactions, allTransferCounts);
+  const countPercentile = calculatePercentile(
+    totalTransactions,
+    allTransferCounts,
+  );
   const countScore = countPercentile * 0.15;
 
   // Factor 4: Total volume (lifetime) - Weight: 10%
@@ -184,7 +210,7 @@ export function calculateActivityIndex(
     // Find most recent transaction with valid metadata
     let mostRecentTime = 0;
 
-    transfers.forEach(t => {
+    transfers.forEach((t) => {
       if (t.metadata && t.metadata.blockTimestamp) {
         const txTime = new Date(t.metadata.blockTimestamp).getTime();
         if (txTime > mostRecentTime) {
@@ -194,7 +220,8 @@ export function calculateActivityIndex(
     });
 
     if (mostRecentTime > 0) {
-      const daysSinceLastTx = (now.getTime() - mostRecentTime) / (1000 * 60 * 60 * 24);
+      const daysSinceLastTx =
+        (now.getTime() - mostRecentTime) / (1000 * 60 * 60 * 24);
       // Exponential decay with 90-day half-life
       const decayConstant = Math.log(2) / 90;
       recencyScore = Math.exp(-decayConstant * daysSinceLastTx) * 0.05;
@@ -227,7 +254,7 @@ export function getWalletBalance(result: Result): number {
 /**
  * Get last activity date for a wallet
  */
-export function getLastActivityDate(result: Result): Date | null {
+export function getLastActivityDate(result: Result): string | null {
   const transfers = result.data.transfers;
 
   if (!transfers || transfers.length === 0) {
@@ -259,14 +286,18 @@ export function getLastActivityDate(result: Result): Date | null {
   }
 
   if (skippedNoMetadata || skippedNoBlockTimestamp || skippedInvalidTimestamp) {
-    const skippedTotal = skippedNoMetadata + skippedNoBlockTimestamp + skippedInvalidTimestamp;
+    const skippedTotal =
+      skippedNoMetadata + skippedNoBlockTimestamp + skippedInvalidTimestamp;
     console.log("[ActivityIndex] Skipped transfers in getLastActivityDate", {
       totalTransfers,
       processed: totalTransfers - skippedTotal,
       skippedNoMetadata,
       skippedNoBlockTimestamp,
       skippedInvalidTimestamp,
-      skippedPercentage: totalTransfers > 0 ? Math.round((skippedTotal / totalTransfers) * 1000) / 10 : 0,
+      skippedPercentage:
+        totalTransfers > 0
+          ? Math.round((skippedTotal / totalTransfers) * 1000) / 10
+          : 0,
     });
   }
 
@@ -275,7 +306,7 @@ export function getLastActivityDate(result: Result): Date | null {
   }
 
   const mostRecentTime = Math.max(...validTimes);
-  return new Date(mostRecentTime);
+  return new Date(mostRecentTime).toISOString();
 }
 
 /**
@@ -293,7 +324,7 @@ export function aggregateOverview(results: Result[]): OverviewStats {
     totalTransactions += transfers.length;
     totalTransactionVolume += transfers.reduce(
       (sum, t) => sum + (t.value || 0),
-      0
+      0,
     );
   });
 
@@ -305,7 +336,7 @@ export function aggregateOverview(results: Result[]): OverviewStats {
 
   // Calculate activity indices
   const activityIndices = results.map((result) =>
-    calculateActivityIndex(result, results)
+    calculateActivityIndex(result, results),
   );
   const averageActivityIndex =
     activityIndices.reduce((sum, index) => sum + index, 0) / totalWallets;
@@ -329,7 +360,7 @@ export function aggregateOverview(results: Result[]): OverviewStats {
  * Get wallets with their activity data
  */
 export function getWalletsWithActivity(
-  results: Result[]
+  results: Result[],
 ): WalletWithActivity[] {
   return results
     .map((result) => {
@@ -338,17 +369,20 @@ export function getWalletsWithActivity(
       const transactionCount = transfers.length;
 
       const incomingCount = transfers.filter(
-        (t) => t.to.toLowerCase() === result.address.toLowerCase()
+        (t) => t.to.toLowerCase() === result.address.toLowerCase(),
       ).length;
 
       const outgoingCount = transfers.filter(
-        (t) => t.from.toLowerCase() === result.address.toLowerCase()
+        (t) => t.from.toLowerCase() === result.address.toLowerCase(),
       ).length;
 
-      const totalVolume = transfers.reduce(
-        (sum, t) => sum + (t.value || 0),
-        0
-      );
+      const totalVolume = transfers.reduce((sum, t) => sum + (t.value || 0), 0);
+      const incomingVolume = transfers
+        .filter((t) => t.to.toLowerCase() === result.address.toLowerCase())
+        .reduce((sum, t) => sum + (t.value || 0), 0);
+      const outgoingVolume = transfers
+        .filter((t) => t.from.toLowerCase() === result.address.toLowerCase())
+        .reduce((sum, t) => sum + (t.value || 0), 0);
       const balance = getWalletBalance(result);
       const lastActivityDate = getLastActivityDate(result);
 
@@ -359,6 +393,8 @@ export function getWalletsWithActivity(
         incomingCount,
         outgoingCount,
         totalVolume: Math.round(totalVolume * 1000) / 1000,
+        incomingVolume: Math.round(incomingVolume * 1000) / 1000,
+        outgoingVolume: Math.round(outgoingVolume * 1000) / 1000,
         balance: Math.round(balance * 1000000) / 1000000,
         lastActivityDate,
       };
