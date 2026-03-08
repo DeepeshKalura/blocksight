@@ -20,7 +20,7 @@ export type Transfer = {
   };
 };
 
-type OwnedNFT = {
+export type OwnedNFT = {
   contract: {
     address: string;
     name: string;

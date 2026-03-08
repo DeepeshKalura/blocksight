@@ -1,12 +1,4 @@
 import {
-  NFTAnalytics,
-  TopNFTCollection,
-  NFTAdoption,
-  SpamAnalysis,
-  RecentNFTAcquisition,
-  NFTDiversityMetrics,
-} from "@/app/types/nft";
-import {
   fetchContractData,
   fetchWalletDetails,
   buildIndexingResult,
@@ -18,6 +10,8 @@ import {
   getWalletsWithActivity,
 } from "@/app/aux/dataAggregation";
 import { getTransactionInsights } from "@/app/aux/transactionAnalysis";
+import { getNFTAnalytics } from "@/app/aux/nftAnalysis";
+import { Result } from "@/app/types/result";
 
 export interface ProcessResult {
   contractAddress: string;
@@ -73,7 +67,7 @@ export async function processContractIndexing(
       results,
       walletAddresses.length,
     ),
-    nftAnalytics: generateNftAnalytics(results),
+    nftAnalytics: getNFTAnalytics(results as Result[]),
   };
 
   console.log(`Successfully processed ${contractAddress}`);
@@ -183,54 +177,3 @@ function generateTokenDistribution(
   };
 }
 
-function generateNftAnalytics(
-  results: Array<{
-    data: { nfts: { ownedNfts: Array<{ contract: { name: string } }> } };
-  }>,
-): NFTAnalytics {
-  const walletsWithNfts = results.filter(
-    (r) => r.data.nfts?.ownedNfts && r.data.nfts.ownedNfts.length > 0,
-  ).length;
-
-  const totalNFTs = results.reduce(
-    (sum, r) => sum + (r.data.nfts?.ownedNfts?.length || 0),
-    0,
-  );
-
-  const topCollections: TopNFTCollection[] = [];
-  const recentAcquisitions: RecentNFTAcquisition[] = [];
-
-  const adoption: NFTAdoption = {
-    walletsWithNFTs,
-    walletsWithoutNFTs: results.length - walletsWithNfts,
-    adoptionRate: results.length > 0 ? walletsWithNfts / results.length : 0,
-    totalNFTs,
-    totalLegitimateNFTs: totalNFTs,
-    averageNFTsPerWallet: results.length > 0 ? totalNFTs / results.length : 0,
-    averageLegitimateNFTsPerWallet:
-      results.length > 0 ? totalNFTs / results.length : 0,
-  };
-
-  const spamAnalysis: SpamAnalysis = {
-    totalSpam: 0,
-    totalLegitimate: totalNFTs,
-    spamPercentage: 0,
-    walletsAffectedBySpam: 0,
-    topSpamCollections: [],
-  };
-
-  const diversityMetrics: NFTDiversityMetrics = {
-    uniqueCollections: 0,
-    averageCollectionsPerWallet: 0,
-    mostDiverseWallet: null,
-    collectionConcentration: 0,
-  };
-
-  return {
-    topCollections,
-    adoption,
-    spamAnalysis,
-    recentAcquisitions,
-    diversityMetrics,
-  };
-}
