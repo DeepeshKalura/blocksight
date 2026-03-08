@@ -139,8 +139,10 @@ export type WalletWithActivity = {
   incomingCount: number;
   outgoingCount: number;
   totalVolume: number;
+  incomingVolume: number;
+  outgoingVolume: number;
   balance: number;
-  lastActivityDate: Date | null;
+  lastActivityDate: string | null;
 };
 
 export type TransactionInsights = {
@@ -163,6 +165,8 @@ export type ActiveWallet = {
   totalVolume: number;
   incomingCount: number;
   outgoingCount: number;
+  incomingVolume: number;
+  outgoingVolume: number;
   averageTransactionSize: number;
   activityIndex: number;
 };
@@ -183,11 +187,11 @@ export type TransactionPatterns = {
 export type GasAnalysis = {
   totalGasSpent: number;
   averageGasPerTransaction: number;
-  estimatedCostUSD: number; // Estimated based on average ETH price
+  estimatedCostUSD: number;
   highestGasTransaction: {
     hash: string;
     gasSpent: number;
-    from: string;
+    from_address: string;
     to: string;
   } | null;
 };

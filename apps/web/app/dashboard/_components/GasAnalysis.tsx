@@ -66,8 +66,8 @@ export default function GasAnalysisCard({ data }: GasAnalysisProps) {
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-500">From:</span>
               <span className="text-sm font-mono text-gray-300">
-                {data.highestGasTransaction.from.slice(0, 6)}...
-                {data.highestGasTransaction.from.slice(-4)}
+                {data.highestGasTransaction.from_address?.slice(0, 6)}...
+                {data.highestGasTransaction.from_address?.slice(-4)}
               </span>
             </div>
             <div className="flex justify-between items-center">

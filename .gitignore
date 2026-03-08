@@ -53,3 +53,5 @@ ENV/
 .coverage
 htmlcov/
 .sca
+
+data
