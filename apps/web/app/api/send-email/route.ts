@@ -1,12 +1,19 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error("RESEND_API_KEY environment variable is not set");
+  }
+  return new Resend(apiKey);
+}
 
 export async function POST(req: Request) {
   const { email, subject, html } = await req.json();
 
   try {
+    const resend = getResendClient();
     const data = await resend.emails.send({
       from: "BlockSight <onboarding@blocksight.dev>",
       to: email,

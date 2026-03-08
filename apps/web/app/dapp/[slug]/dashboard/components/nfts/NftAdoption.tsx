@@ -7,6 +7,13 @@ import {
     CardTitle,
   } from "@/components/ui/card"
   import { Progress } from "@/components/ui/progress"
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip"
+  import { Info } from "lucide-react"
   
   import { NFTAdoption } from "@/app/types/nft"
   
@@ -24,7 +31,7 @@ import {
     return (
       <Card className="bg-card/50 border-border backdrop-blur-sm">
         <CardHeader>
-          <CardTitle className="text-xl">📊 NFT Adoption Metrics</CardTitle>
+          <CardTitle className="text-xl">NFT Adoption Metrics</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Main Stats Grid */}
@@ -39,7 +46,19 @@ import {
             </Card>
             <Card className="bg-card/50">
               <CardHeader className="p-4">
-                <CardDescription>Without NFTs</CardDescription>
+                <CardDescription className="flex items-center gap-1">
+                  Without NFTs
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Info className="h-3.5 w-3.5 text-muted-foreground cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent className="max-w-[200px]">
+                        <p>Includes wallets with no NFTs and wallets that only hold spam NFTs</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </CardDescription>
                 <CardTitle className="text-3xl text-muted-foreground">
                   {data.walletsWithoutNFTs}
                 </CardTitle>

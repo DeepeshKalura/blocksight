@@ -36,7 +36,7 @@ export async function publishIndexingJob(
 export async function publishBatchJobs(
   jobs: IndexingJobPayload[],
 ): Promise<string[]> {
-  const responses = await qstashClient.publishJSONBatch(
+  const responses = await qstashClient.batchJSON(
     jobs.map((job) => ({
       url: `${process.env.NEXT_PUBLIC_APP_URL}/api/queue/process-job`,
       body: job,

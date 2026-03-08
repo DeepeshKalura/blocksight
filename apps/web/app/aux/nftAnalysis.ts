@@ -307,9 +307,12 @@ function calculateSimpleConcentration(values: number[]): number {
  * Get complete NFT analytics
  */
 export function getNFTAnalytics(results: Result[]): NFTAnalytics {
+  const adoption = calculateNFTAdoption(results);
   return {
+    totalNFTs: adoption.totalNFTs,
+    collections: [],
     topCollections: getTopNFTCollections(results, 10),
-    adoption: calculateNFTAdoption(results),
+    adoption,
     spamAnalysis: analyzeSpamNFTs(results),
     recentAcquisitions: getRecentNFTAcquisitions(results, 20),
     diversityMetrics: calculateNFTDiversity(results),

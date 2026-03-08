@@ -33,16 +33,17 @@ export async function createIndexingJob(params: {
     )
     .limit(1);
 
-  if (existingJob.length > 0) {
+  const firstJob = existingJob[0];
+  if (firstJob) {
     return {
-      jobId: existingJob[0].id,
+      jobId: firstJob.id,
       qstashMessageId: "",
       status: "already_queued",
     };
   }
 
   // Create job record
-  const [job] = await db
+  const insertResult = await db
     .insert(indexingJobs)
     .values({
       userId,
@@ -53,6 +54,11 @@ export async function createIndexingJob(params: {
       status: "queued",
     })
     .returning();
+
+  const job = insertResult[0];
+  if (!job) {
+    throw new Error("Failed to create indexing job");
+  }
 
   // Publish to QStash
   const qstashMessageId = await publishIndexingJob({

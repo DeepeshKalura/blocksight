@@ -1,4 +1,4 @@
-import { Transfer, Result, TokenBalance } from "@/app/types/result";
+import { Transfer, Result, TokenBalance, OwnedNFT, NFT } from "@/app/types/result";
 import {
   getContractTransfers,
   getWalletTokenBalances,
@@ -43,10 +43,10 @@ export async function fetchContractData(config: IndexingConfig): Promise<{
 
 export async function fetchWalletDetails(walletAddresses: string[]): Promise<{
   balances: Record<string, TokenBalance>;
-  nfts: Record<string, { ownedNfts: unknown[]; totalCount: number }>;
+  nfts: Record<string, NFT>;
 }> {
   const balances: Record<string, TokenBalance> = {};
-  const nfts: Record<string, { ownedNfts: unknown[]; totalCount: number }> = {};
+  const nfts: Record<string, NFT> = {};
 
   console.log(`Fetching details for ${walletAddresses.length} wallets...`);
 
@@ -59,13 +59,18 @@ export async function fetchWalletDetails(walletAddresses: string[]): Promise<{
 
       balances[address] = {
         data: {
-          tokens: tokenBalances,
+          tokens: tokenBalances.map((tb) => ({
+            address: address,
+            network: "ethereum",
+            tokenAddress: tb.tokenAddress,
+            tokenBalance: tb.tokenBalance,
+          })),
           pageKey: null,
         },
       };
 
       nfts[address] = {
-        ownedNfts: walletNfts as unknown[],
+        ownedNfts: walletNfts as OwnedNFT[],
         totalCount: walletNfts.length,
       };
     } catch (error) {
@@ -77,7 +82,7 @@ export async function fetchWalletDetails(walletAddresses: string[]): Promise<{
         },
       };
       nfts[address] = {
-        ownedNfts: [],
+        ownedNfts: [] as OwnedNFT[],
         totalCount: 0,
       };
     }
@@ -90,7 +95,7 @@ export async function buildIndexingResult(
   contractAddress: string,
   transfers: Transfer[],
   balances: Record<string, TokenBalance>,
-  nfts: Record<string, { ownedNfts: unknown[]; totalCount: number }>,
+  nfts: Record<string, NFT>,
 ): Promise<Result[]> {
   const results: Result[] = [];
 
@@ -104,7 +109,7 @@ export async function buildIndexingResult(
             t.to.toLowerCase() === address.toLowerCase(),
         ),
         tokenBalances: balances[address]!,
-        nfts: nfts[address] || { ownedNfts: [], totalCount: 0 },
+        nfts: nfts[address] || { ownedNfts: [] as OwnedNFT[], totalCount: 0 },
       },
     });
   }

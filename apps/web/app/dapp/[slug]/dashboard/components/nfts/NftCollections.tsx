@@ -24,7 +24,7 @@ export default function TopNFTCollections({
     return (
       <Card className="bg-card/50 border-border backdrop-blur-sm">
         <CardHeader>
-          <CardTitle>🎨 Top NFT Collections</CardTitle>
+          <CardTitle>Top NFT Collections</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground">
@@ -38,7 +38,7 @@ export default function TopNFTCollections({
   return (
     <Card className="bg-card/50 border-border backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-xl">🎨 Top NFT Collections</CardTitle>
+        <CardTitle className="text-xl">Top NFT Collections</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {collections.map((collection, index) => (
