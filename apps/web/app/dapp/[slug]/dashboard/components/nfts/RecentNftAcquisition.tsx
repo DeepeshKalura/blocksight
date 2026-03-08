@@ -35,7 +35,7 @@ export default function RecentNFTAcquisitions({
     return (
       <Card className="bg-card/50 border-border backdrop-blur-sm">
         <CardHeader>
-          <CardTitle>🆕 Recent NFT Acquisitions</CardTitle>
+          <CardTitle>Recent NFT Acquisitions</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground">
@@ -49,7 +49,7 @@ export default function RecentNFTAcquisitions({
   return (
     <Card className="bg-card/50 border-border backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-xl">🆕 Recent NFT Acquisitions</CardTitle>
+        <CardTitle className="text-xl">Recent NFT Acquisitions</CardTitle>
       </CardHeader>
       <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {acquisitions.slice(0, 12).map((acquisition, index) => (

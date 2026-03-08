@@ -237,15 +237,15 @@ async function testNFTClassification(walletAddress: string) {
   console.log(`  Top Collections Found: ${analytics.topCollections.length}`);
   console.log(`  Recent Acquisitions: ${analytics.recentAcquisitions.length}`);
 
-  if (analytics.topCollections.length > 0) {
+  const top = analytics.topCollections[0];
+  if (top) {
     console.log("\n  Top Collection from Analytics:");
-    const top = analytics.topCollections[0];
     console.log(`    - ${top.name} (${top.totalOwned} owned, ${top.holderPercentage.toFixed(1)}% adoption)`);
   }
 
-  if (analytics.recentAcquisitions.length > 0) {
+  const recent = analytics.recentAcquisitions[0];
+  if (recent) {
     console.log("\n  Most Recent Acquisition:");
-    const recent = analytics.recentAcquisitions[0];
     console.log(`    - ${recent.nftName} from ${recent.collectionName}`);
     console.log(`    - Acquired: ${recent.acquiredAt}`);
   }

@@ -94,7 +94,7 @@ export type OwnedNFT = {
   };
 };
 
-type NFT = {
+export type NFT = {
   ownedNfts: OwnedNFT[];
   totalCount: number;
 };

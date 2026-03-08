@@ -24,8 +24,7 @@ import { AlertTriangle } from "lucide-react"
   export default function SpamNFTAnalysis({ data }: SpamNFTAnalysisProps) {
     return (
       <Card className="bg-card/50 border-border backdrop-blur-sm">
-        <CardHeader className="flex-row items-center gap-2">
-          <span className="text-2xl">🚫</span>
+        <CardHeader>
           <CardTitle className="text-xl">Spam NFT Detection</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">

@@ -77,7 +77,31 @@ export async function indexContract(
         },
         nftAnalytics: {
             totalNFTs: 0,
-            collections: []
+            collections: [],
+            topCollections: [],
+            adoption: {
+                walletsWithNFTs: 0,
+                walletsWithoutNFTs: 0,
+                adoptionRate: 0,
+                totalNFTs: 0,
+                totalLegitimateNFTs: 0,
+                averageNFTsPerWallet: 0,
+                averageLegitimateNFTsPerWallet: 0
+            },
+            spamAnalysis: {
+                totalSpam: 0,
+                totalLegitimate: 0,
+                spamPercentage: 0,
+                walletsAffectedBySpam: 0,
+                topSpamCollections: []
+            },
+            recentAcquisitions: [],
+            diversityMetrics: {
+                uniqueCollections: 0,
+                averageCollectionsPerWallet: 0,
+                mostDiverseWallet: null,
+                collectionConcentration: 0
+            }
         }
     };
 }

@@ -50,7 +50,7 @@ export default function NFTDiversityMetricsCard({
   return (
     <Card className="bg-card/50 border-border backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-xl">🌈 NFT Diversity Metrics</CardTitle>
+        <CardTitle className="text-xl">NFT Diversity Metrics</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Main Stats */}
@@ -112,7 +112,6 @@ export default function NFTDiversityMetricsCard({
         {data.mostDiverseWallet && (
           <Card className="bg-linear-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/30 p-4">
             <div className="flex items-start gap-3">
-              <span className="text-2xl">🏆</span>
               <div className="flex-1">
                 <h4 className="text-sm font-medium text-purple-400 mb-2">
                   Most Diverse Wallet

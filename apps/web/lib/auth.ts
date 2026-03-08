@@ -28,7 +28,15 @@
 // export const { handlers, signIn, signOut, auth } = NextAuth(config);
 
 // Mock auth functions for demo
-export const auth = () => Promise.resolve(null);
+type MockSession = {
+  user?: {
+    id?: string;
+    name?: string;
+    email?: string;
+  };
+} | null;
+
+export const auth = (): Promise<MockSession> => Promise.resolve(null);
 export const signIn = () => Promise.resolve(null);
 export const signOut = () => Promise.resolve(null);
 export const handlers = {};
