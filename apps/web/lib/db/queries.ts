@@ -56,8 +56,9 @@ export async function getUserDapps(
     let dashboardData: DashboardData | null = null;
     let status = "pending";
 
-    if (project.length > 0) {
-      dashboardData = project[0].dashboardData as DashboardData;
+    const firstProject = project[0];
+    if (firstProject) {
+      dashboardData = firstProject.dashboardData as DashboardData;
       status = "completed";
     } else {
       // Check for pending request
@@ -73,8 +74,9 @@ export async function getUserDapps(
         .orderBy(desc(indexingRequests.createdAt))
         .limit(1);
 
-      if (request.length > 0) {
-        status = request[0].status.toLowerCase();
+      const firstRequest = request[0];
+      if (firstRequest) {
+        status = firstRequest.status.toLowerCase();
       }
     }
 
@@ -106,19 +108,20 @@ export async function getUserDappBySlug(userId: string, slug: string) {
     .where(and(eq(userDapps.userId, userId), eq(userDapps.slug, slug)))
     .limit(1);
 
-  if (userDapp.length === 0) {
+  const firstUserDapp = userDapp[0];
+  if (!firstUserDapp) {
     return null;
   }
 
   const project = await db
     .select()
     .from(indexedProjects)
-    .where(eq(indexedProjects.contractAddress, userDapp[0].contractAddress))
+    .where(eq(indexedProjects.contractAddress, firstUserDapp.contractAddress))
     .limit(1);
 
   return {
-    userDapp: userDapp[0],
-    indexedProject: project[0] || null,
+    userDapp: firstUserDapp,
+    indexedProject: project[0] ?? null,
   };
 }
 

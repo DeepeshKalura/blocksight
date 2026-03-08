@@ -4,16 +4,14 @@ import {
     TransactionInsights,
     TokenDistributionAnalysis,
 } from "./result";
+import { NFTAnalytics } from "./nft";
 
 export type SocialLinks = {
     website: string;
     twitter: string;
 };
 
-export type NFTAnalytics = {
-    totalNFTs: number;
-    collections: any[];
-};
+export type { NFTAnalytics };
 
 export type DashboardData = {
     overviewStats: OverviewStats;

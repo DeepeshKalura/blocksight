@@ -20,7 +20,7 @@ export type Transfer = {
   };
 };
 
-type OwnedNFT = {
+export type OwnedNFT = {
   contract: {
     address: string;
     name: string;
@@ -94,7 +94,7 @@ type OwnedNFT = {
   };
 };
 
-type NFT = {
+export type NFT = {
   ownedNfts: OwnedNFT[];
   totalCount: number;
 };
