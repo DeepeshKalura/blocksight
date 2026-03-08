@@ -1,8 +1,7 @@
 import { NFTAnalytics } from "@/app/types/nft";
 import { getNFTAnalytics } from "@/app/aux/nftAnalysis";
-import { Result } from "@/app/types/result";
+import { Result, type OwnedNFT } from "@/app/types/result";
 import { getWalletNFTs } from "@/lib/indexing/alchemy-client";
-import type { OwnedNFT } from "@/app/types/result";
 
 type CacheEntry = {
   data: NFTAnalytics;
