@@ -1,757 +1,5 @@
 {
-  "usdt": {
-    "totalNFTs": 732,
-    "collections": [],
-    "topCollections": [
-      {
-        "contractAddress": "0x25bfDcF2Cc9bCa0D8B42e816a6fFD3B5B64d855f",
-        "name": "APECOIN Withdrawal Badge",
-        "symbol": "YUGA Labs APE Distribution",
-        "tokenType": "ERC1155",
-        "totalOwned": 3,
-        "uniqueHolders": 3,
-        "holderPercentage": 30,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0x25bfdcf2cc9bca0d8b42e816a6ffd3b5b64d855f/519568bf9c69448942d146ab33a3879d.gif",
-        "collectionSlug": "apecoin-withdrawal-badge-1",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x9E9FbDE7C7a83c43913BddC8779158F1368F0413",
-        "name": "Pandora",
-        "symbol": "PANDORA",
-        "tokenType": "ERC721",
-        "totalOwned": 3,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 23,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0x9e9fbde7c7a83c43913bddc8779158f1368f0413/68501bd3676a7f618f4ba9a619efec/2468501bd3676a7f618f4ba9a619efec.gif",
-        "collectionSlug": "pandora-replicants",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x2a7AD49C3a2B81B4Dd3D5a4cB78C3858c5cC788C",
-        "name": "wbtc.fi",
-        "symbol": "Visit wbtc.fi to earn rewards.",
-        "tokenType": "ERC1155",
-        "totalOwned": 2,
-        "uniqueHolders": 2,
-        "holderPercentage": 20,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0x2a7ad49c3a2b81b4dd3d5a4cb78c3858c5cc788c/b79cf894009024d049bb43f4d0493b/33b79cf894009024d049bb43f4d0493b.png",
-        "collectionSlug": "wbtc-fi",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xAd5f6CDDa157694439EF9f6DD409424321C74628",
-        "name": "Fewmans",
-        "symbol": "FEW",
-        "tokenType": "ERC721",
-        "totalOwned": 2,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.017,
-        "imageUrl": "https://raw2.seadn.io/ethereum/0xad5f6cdda157694439ef9f6dd409424321c74628/000506a62779d8b15c7d6c72afe89def.svg",
-        "collectionSlug": "fewmans",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x5A219aDc82F51ADe9e10B2a335D6794D4A7b82F1",
-        "name": "Base Metaships",
-        "symbol": "METASHIP",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.00444,
-        "imageUrl": "https://i2c.seadn.io/ethereum/08e71315f0e24fc38bd8cf5cbca8c4b4/52d7a3117d7ab50c3425a93fe60f5a/5152d7a3117d7ab50c3425a93fe60f5a.png",
-        "collectionSlug": "base-metaships",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xa687f2A947E7aFD38C80502aC2e9B431891B41c0",
-        "name": "USDC Northern District of Florida: Case No. 23-cv-24651",
-        "symbol": "UNDOFCN2",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/6536ced16ef1481086f05df8af2f656d/342283089c9788d136fe7cf73d76e6/b2342283089c9788d136fe7cf73d76e6.jpeg",
-        "collectionSlug": "usdc-northern-district-of-florida-case-no-23-cv-24",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x03Ea00B0619e19759eE7ba33E8EB8E914fbF52Ea",
-        "name": "pLOOT",
-        "symbol": "pLOOT",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0e1e77ea0e914d64b292b3788fb873ed/b16e0b694d097a06f9a7ef88cbc4ff/fbb16e0b694d097a06f9a7ef88cbc4ff.png",
-        "collectionSlug": "ploot",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x0e2B3CF40883DD2dBCCBbbd1D21B4b58f37e47EF",
-        "name": "Daisen.fi Genesis Item",
-        "symbol": "Daisen.fi Genesis Item",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/cb152de9df6c404e8b53d32650a24c96/e3614fe54db77743b34bb1dccd8c85/65e3614fe54db77743b34bb1dccd8c85.jpeg",
-        "collectionSlug": "daisen-fi-genesis-item",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x160da290A6b1923257705Cb05c322AE44Ca86ebb",
-        "name": "Atenas",
-        "symbol": "NFT",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/3b4a445b0ff248828a0cb855719e56cb/3c379e2e7d31eee9f1e68ad3e3f7b6/783c379e2e7d31eee9f1e68ad3e3f7b6.png",
-        "collectionSlug": "atenas",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x4f19396bdC5C656FE3fE2F6CC8d19519Fabe0886",
-        "name": "Noox.global Airdrop Recipient",
-        "symbol": "Noox Distribution Protocol",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0xd4cab52604e817f80908d761692bb0e09fd1f2f1/3dff8e582e5cc898a063d1de72fb5d/dc3dff8e582e5cc898a063d1de72fb5d.png",
-        "collectionSlug": "noox-global-airdrop-recipient-890403026",
-        "isSpam": false
-      }
-    ],
-    "adoption": {
-      "walletsWithNFTs": 7,
-      "walletsWithoutNFTs": 3,
-      "adoptionRate": 70,
-      "totalNFTs": 732,
-      "totalLegitimateNFTs": 29,
-      "averageNFTsPerWallet": 73.2,
-      "averageLegitimateNFTsPerWallet": 2.9
-    },
-    "spamAnalysis": {
-      "totalSpam": 703,
-      "totalLegitimate": 29,
-      "spamPercentage": 96.03825136612022,
-      "walletsAffectedBySpam": 10,
-      "topSpamCollections": [
-        {
-          "name": "Gucci",
-          "count": 22,
-          "affectedWallets": 1
-        },
-        {
-          "name": "Ugly Unicorns",
-          "count": 10,
-          "affectedWallets": 1
-        },
-        {
-          "name": "dickpix",
-          "count": 8,
-          "affectedWallets": 1
-        },
-        {
-          "name": "usdgift.org",
-          "count": 7,
-          "affectedWallets": 7
-        },
-        {
-          "name": "originusd.net",
-          "count": 7,
-          "affectedWallets": 7
-        }
-      ]
-    },
-    "recentAcquisitions": [],
-    "diversityMetrics": {
-      "uniqueCollections": 23,
-      "averageCollectionsPerWallet": 3.71,
-      "mostDiverseWallet": {
-        "address": "0xdd3d72c53ff982ff59853da71158bf1538b3ceee",
-        "collectionCount": 8
-      },
-      "collectionConcentration": 0.57
-    }
-  },
-  "usdc": {
-    "totalNFTs": 861,
-    "collections": [],
-    "topCollections": [
-      {
-        "contractAddress": "0x25bfDcF2Cc9bCa0D8B42e816a6fFD3B5B64d855f",
-        "name": "APECOIN Withdrawal Badge",
-        "symbol": "YUGA Labs APE Distribution",
-        "tokenType": "ERC1155",
-        "totalOwned": 5,
-        "uniqueHolders": 5,
-        "holderPercentage": 50,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0x25bfdcf2cc9bca0d8b42e816a6ffd3b5b64d855f/519568bf9c69448942d146ab33a3879d.gif",
-        "collectionSlug": "apecoin-withdrawal-badge-1",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x2a7AD49C3a2B81B4Dd3D5a4cB78C3858c5cC788C",
-        "name": "wbtc.fi",
-        "symbol": "Visit wbtc.fi to earn rewards.",
-        "tokenType": "ERC1155",
-        "totalOwned": 4,
-        "uniqueHolders": 4,
-        "holderPercentage": 40,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0x2a7ad49c3a2b81b4dd3d5a4cb78c3858c5cc788c/b79cf894009024d049bb43f4d0493b/33b79cf894009024d049bb43f4d0493b.png",
-        "collectionSlug": "wbtc-fi",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x0E9f11E9e022cEA43128C9480be215a503C3aB89",
-        "name": "Paxos.gifts",
-        "symbol": "Visit paxos.gifts to claim rewards.",
-        "tokenType": "ERC1155",
-        "totalOwned": 3,
-        "uniqueHolders": 3,
-        "holderPercentage": 30,
-        "floorPrice": 0,
-        "imageUrl": "",
-        "collectionSlug": "paxos-gifts",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x03Ea00B0619e19759eE7ba33E8EB8E914fbF52Ea",
-        "name": "pLOOT",
-        "symbol": "pLOOT",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0e1e77ea0e914d64b292b3788fb873ed/b16e0b694d097a06f9a7ef88cbc4ff/fbb16e0b694d097a06f9a7ef88cbc4ff.png",
-        "collectionSlug": "ploot",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x0e2B3CF40883DD2dBCCBbbd1D21B4b58f37e47EF",
-        "name": "Daisen.fi Genesis Item",
-        "symbol": "Daisen.fi Genesis Item",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/cb152de9df6c404e8b53d32650a24c96/e3614fe54db77743b34bb1dccd8c85/65e3614fe54db77743b34bb1dccd8c85.jpeg",
-        "collectionSlug": "daisen-fi-genesis-item",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x160da290A6b1923257705Cb05c322AE44Ca86ebb",
-        "name": "Atenas",
-        "symbol": "NFT",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/3b4a445b0ff248828a0cb855719e56cb/3c379e2e7d31eee9f1e68ad3e3f7b6/783c379e2e7d31eee9f1e68ad3e3f7b6.png",
-        "collectionSlug": "atenas",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x0c33D83158f44F9af37a3B68A256c792fe554be0",
-        "name": "Feesh",
-        "symbol": "FEESH",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.00689,
-        "imageUrl": "https://i2c.seadn.io/ethereum/02fc96f2b545470dbf40bb10c8050bf4/a55cbe9a656dec68be208865c64044/d2a55cbe9a656dec68be208865c64044.gif",
-        "collectionSlug": "feeshes",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x43e3CB5D4ee5b878146D7304d9F9BdD492058dB6",
-        "name": "Noox.global Airdrop Recipient",
-        "symbol": "Noox Distribution Protocol",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0xd4cab52604e817f80908d761692bb0e09fd1f2f1/3dff8e582e5cc898a063d1de72fb5d/dc3dff8e582e5cc898a063d1de72fb5d.png",
-        "collectionSlug": "noox-global-airdrop-recipient",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x4e9B1C25679AD3E5f522b2A9dA1595a40DFa982B",
-        "name": "MetaX-Creation",
-        "symbol": "MetaXNFT",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0x4e9b1c25679ad3e5f522b2a9da1595a40dfa982b/fbfe070c8f45739dd6f2dd9a29e6c033.jpeg",
-        "collectionSlug": "metax-creation",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x274802163a3d4e5b5b25bb3bDF3ED27472Ba0784",
-        "name": "SPDL Collection",
-        "symbol": "SPDL Collection",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/e56ad4dc8d084885a598b5dc0c2721fe/4d7f13ff4a33e8d0572102ac85dffb/ba4d7f13ff4a33e8d0572102ac85dffb.jpeg",
-        "collectionSlug": "spdl-collection",
-        "isSpam": false
-      }
-    ],
-    "adoption": {
-      "walletsWithNFTs": 8,
-      "walletsWithoutNFTs": 2,
-      "adoptionRate": 80,
-      "totalNFTs": 861,
-      "totalLegitimateNFTs": 32,
-      "averageNFTsPerWallet": 86.1,
-      "averageLegitimateNFTsPerWallet": 3.2
-    },
-    "spamAnalysis": {
-      "totalSpam": 829,
-      "totalLegitimate": 32,
-      "spamPercentage": 96.28339140534263,
-      "walletsAffectedBySpam": 10,
-      "topSpamCollections": [
-        {
-          "name": "Gucci",
-          "count": 35,
-          "affectedWallets": 2
-        },
-        {
-          "name": "usdgift.org",
-          "count": 9,
-          "affectedWallets": 9
-        },
-        {
-          "name": "aeth.gift",
-          "count": 9,
-          "affectedWallets": 9
-        },
-        {
-          "name": "Rolex",
-          "count": 9,
-          "affectedWallets": 2
-        },
-        {
-          "name": "getMATIC.org",
-          "count": 8,
-          "affectedWallets": 8
-        }
-      ]
-    },
-    "recentAcquisitions": [],
-    "diversityMetrics": {
-      "uniqueCollections": 23,
-      "averageCollectionsPerWallet": 4,
-      "mostDiverseWallet": {
-        "address": "0x21a31ee1afc51d94c2efccaa2092ad1028285549",
-        "collectionCount": 7
-      },
-      "collectionConcentration": 0.451
-    }
-  },
-  "weth": {
-    "totalNFTs": 434,
-    "collections": [],
-    "topCollections": [
-      {
-        "contractAddress": "0x4fcfC93E4137139F26c674b7Cd23eA9E3b4C3906",
-        "name": "The Ghouls",
-        "symbol": "THEGHOULS",
-        "tokenType": "ERC721",
-        "totalOwned": 10,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/f505c40c12ea4082b627932683693040/0004ae8a2ef52f887f2f904b7a820e/a90004ae8a2ef52f887f2f904b7a820e.jpeg",
-        "collectionSlug": "the-ghouls-lab",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x8B629944aD47ffdabB5EdE2B0BB7B6F1a1980888",
-        "name": "TheLastGod",
-        "symbol": "TLG",
-        "tokenType": "ERC721",
-        "totalOwned": 10,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.5,
-        "imageUrl": "https://i2c.seadn.io/ethereum/a004348522454e0499a2fce7256c830a/fe044e9a47ecccacbf3c0d1a8755fd/6cfe044e9a47ecccacbf3c0d1a8755fd.png",
-        "collectionSlug": "thelastgod",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x90c70Dc9f3FDa4a1D78a2B7D90CA087088355717",
-        "name": "Satoshi Island Citizenship NFTs",
-        "symbol": "CTZN",
-        "tokenType": "ERC721",
-        "totalOwned": 7,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.00089,
-        "imageUrl": "https://i2c.seadn.io/ethereum/6f7d00cc4ec149b3ad2d6dfd18f73c3b/ed5f75cfaacb8dcbddb9a4028b1045/f4ed5f75cfaacb8dcbddb9a4028b1045.png",
-        "collectionSlug": "satoshi-island-citizenship-nfts",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF",
-        "name": "More Loot",
-        "symbol": "MLOOT",
-        "tokenType": "ERC721",
-        "totalOwned": 6,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.0001,
-        "imageUrl": "https://raw2.seadn.io/ethereum/0x1dfe7ca09e99d10835bf73044a23b73fc20623df/1c215d43bdbaac7a8e39d07a20c6f946.svg",
-        "collectionSlug": "more-loot",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x0381b7EdC73B86FE0A1e85a1ad1f6a70eF7F6F5c",
-        "name": "Penguins2023",
-        "symbol": "PEN2023",
-        "tokenType": "ERC721",
-        "totalOwned": 5,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/64d94e6411714cd1b4807093fcf51364/253a6fdf91da6d5a9639323912e083/22253a6fdf91da6d5a9639323912e083.gif",
-        "collectionSlug": "penguins2023",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x4c804D42865Ff4f6B5B144bc99ECf15064a7672b",
-        "name": "RAREDATA FRAGMENTS",
-        "symbol": "FRAGS",
-        "tokenType": "ERC1155",
-        "totalOwned": 2,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.0029,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0x4c804d42865ff4f6b5b144bc99ecf15064a7672b/95731009f7be79e47ac4bf0fa5218c/7e95731009f7be79e47ac4bf0fa5218c.gif",
-        "collectionSlug": "raredata-fragments",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x2a7AD49C3a2B81B4Dd3D5a4cB78C3858c5cC788C",
-        "name": "wbtc.fi",
-        "symbol": "Visit wbtc.fi to earn rewards.",
-        "tokenType": "ERC1155",
-        "totalOwned": 2,
-        "uniqueHolders": 2,
-        "holderPercentage": 20,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0x2a7ad49c3a2b81b4dd3d5a4cb78c3858c5cc788c/b79cf894009024d049bb43f4d0493b/33b79cf894009024d049bb43f4d0493b.png",
-        "collectionSlug": "wbtc-fi",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xBf69783Fa630Ed65d396dcA51216A391a4BB1fd0",
-        "name": "Maya Spirits",
-        "symbol": "MS",
-        "tokenType": "ERC721",
-        "totalOwned": 2,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.01,
-        "imageUrl": "https://raw2.seadn.io/ethereum/1c677d4931b2447f88061ced11b228c9/25bfb4f4119b5054b18cc408c1ff5d/6425bfb4f4119b5054b18cc408c1ff5d.svg",
-        "collectionSlug": "mayaspirits",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xD2D1c5b398cf9D6F742542786333fA7790b4F761",
-        "name": "The Working Dead",
-        "symbol": "TWD",
-        "tokenType": "ERC721",
-        "totalOwned": 2,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.00199699,
-        "imageUrl": "https://i2c.seadn.io/ethereum/5c960d8852b846d5b2ff516558d85973/b045fb4e395bd648e9b79209d8cba4/8ab045fb4e395bd648e9b79209d8cba4.png",
-        "collectionSlug": "workingdead",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x0227b3FB1582B64d5C455e2A88c006d9F7127414",
-        "name": "Tetro Field",
-        "symbol": "TET",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://raw2.seadn.io/ethereum/0x0227b3fb1582b64d5c455e2a88c006d9f7127414/927c7f5e502be7abb6575adb14e96c/2e927c7f5e502be7abb6575adb14e96c.svg",
-        "collectionSlug": "tetro-field",
-        "isSpam": false
-      }
-    ],
-    "adoption": {
-      "walletsWithNFTs": 6,
-      "walletsWithoutNFTs": 4,
-      "adoptionRate": 60,
-      "totalNFTs": 434,
-      "totalLegitimateNFTs": 81,
-      "averageNFTsPerWallet": 43.4,
-      "averageLegitimateNFTsPerWallet": 8.1
-    },
-    "spamAnalysis": {
-      "totalSpam": 353,
-      "totalLegitimate": 81,
-      "spamPercentage": 81.33640552995391,
-      "walletsAffectedBySpam": 9,
-      "topSpamCollections": [
-        {
-          "name": "BOXFAIRLY.COM",
-          "count": 3,
-          "affectedWallets": 3
-        },
-        {
-          "name": "apyusd.net",
-          "count": 3,
-          "affectedWallets": 3
-        },
-        {
-          "name": "Crypto stamp art",
-          "count": 3,
-          "affectedWallets": 1
-        },
-        {
-          "name": "t3rn.us - New Solutions in WEB3",
-          "count": 2,
-          "affectedWallets": 2
-        },
-        {
-          "name": "Visit ethLP.com to claim rewards",
-          "count": 2,
-          "affectedWallets": 2
-        }
-      ]
-    },
-    "recentAcquisitions": [],
-    "diversityMetrics": {
-      "uniqueCollections": 44,
-      "averageCollectionsPerWallet": 7.5,
-      "mostDiverseWallet": {
-        "address": "0xe3e318edc67f1f1f418182f6dbf758ef754417fc",
-        "collectionCount": 19
-      },
-      "collectionConcentration": 0.929
-    }
-  },
-  "uniswap": {
-    "totalNFTs": 253,
-    "collections": [],
-    "topCollections": [
-      {
-        "contractAddress": "0x347Af8252640b26887182F84CE3191549D3EAb41",
-        "name": "MetaTrustDAO",
-        "symbol": "MTD",
-        "tokenType": "ERC721",
-        "totalOwned": 97,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.00796999,
-        "imageUrl": "https://i2c.seadn.io/ethereum/46304e7a4fad49f4b3b2ad1e88569e9a/c291c569879a3e1dec3df0d155d194/7dc291c569879a3e1dec3df0d155d194.jpeg",
-        "collectionSlug": "metatrustdao",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xbD216513d74C8cf14cf4747E6AaA6420FF64ee9e",
-        "name": "Uniswap v4 Positions NFT",
-        "symbol": "UNI-V4-POSM",
-        "tokenType": "ERC721",
-        "totalOwned": 67,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.00032,
-        "imageUrl": "https://raw2.seadn.io/ethereum/0xbd216513d74c8cf14cf4747e6aaa6420ff64ee9e/4483904e053478ef63502b7e93176c/a84483904e053478ef63502b7e93176c.svg",
-        "collectionSlug": "uniswap-v4-positions-nft-6",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
-        "name": "Uniswap V3 Positions NFT-V1",
-        "symbol": "UNI-V3-POS",
-        "tokenType": "ERC721",
-        "totalOwned": 2,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/ef3d33fd5f4a493e866aa407c5814637/6514c7d0033df8f5633e30b61afd7c/216514c7d0033df8f5633e30b61afd7c.png",
-        "collectionSlug": "uniswap-v3-positions",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xa8F9309FB856139E2Ad0c168Cf875A665AA783a9",
-        "name": "Marvinaut Game Pass",
-        "symbol": "MVG",
-        "tokenType": "ERC721",
-        "totalOwned": 2,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.0145,
-        "imageUrl": "https://i2c.seadn.io/ethereum/f99347bc9a3443d789d5251a11e75c80/2ac65254194185c9842b18f73bda4b/352ac65254194185c9842b18f73bda4b.png",
-        "collectionSlug": "marvinaut-game-pass",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xAa18355BCfC8AE878eE4f65Fea2158BD159EB521",
-        "name": "PocketCows",
-        "symbol": "PKC",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.00839,
-        "imageUrl": "https://i2c.seadn.io/ethereum/e773919bf0034c08a9cb04e2ed700303/2f39022d9306bf5904856ca07fe724/4d2f39022d9306bf5904856ca07fe724.jpeg",
-        "collectionSlug": "pocketcows",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xd5ADD4a5AC90e0E65cC94dE32CdE59f43901170d",
-        "name": "Noox : Uniswap Airdrop Recipient",
-        "symbol": "Noox Distribution Protocol",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0xd5add4a5ac90e0e65cc94de32cde59f43901170d/d1e6aecba59ec954f17aaa92207a297a.png",
-        "collectionSlug": "noox-uniswap-airdrop-recipient",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x1600aaC52f1272ef1fb4036a67b17c7A7E8C42dF",
-        "name": "99Hues",
-        "symbol": "99H",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.07,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0a50628e44de46d89c104ac9f693a47c/82c4bc2667f212fffa81fdca1df82c/6b82c4bc2667f212fffa81fdca1df82c.gif",
-        "collectionSlug": "99hues",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x47583BaD9d6612C5f775F76D97fDE86021B1C6f1",
-        "name": "restoreConnection()",
-        "symbol": "restoreConnection()",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.013,
-        "imageUrl": "https://i2c.seadn.io/ethereum/603e4c8ddc1f4c7bbf165d8cba27b26f/e5a64670d4ecb430bebb7704e9197f/7ae5a64670d4ecb430bebb7704e9197f.gif",
-        "collectionSlug": "restoreconnection",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x611bf1DC4f11F7f8BfB3A403F5a260d082405BE6",
-        "name": "Noth!ng",
-        "symbol": "NTH",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 1.1,
-        "imageUrl": "https://i2c.seadn.io/ethereum/aa6d6c10ad834e54bbdb1763dd60717b/a56de762576c93eb644ab2bf98516f/a7a56de762576c93eb644ab2bf98516f.gif",
-        "collectionSlug": "nth0",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x753752Ce7e0036d5Fce109a081Cb3780332FDf9B",
-        "name": "Monkeys George",
-        "symbol": "MONKEYS",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.075,
-        "imageUrl": "https://i2c.seadn.io/ethereum/ee447e59de364b35a22d89b4ca0b866e/fe93496a1ee8d319e1581215d33f4b/43fe93496a1ee8d319e1581215d33f4b.jpeg",
-        "collectionSlug": "monkeys-george",
-        "isSpam": false
-      }
-    ],
-    "adoption": {
-      "walletsWithNFTs": 3,
-      "walletsWithoutNFTs": 7,
-      "adoptionRate": 30,
-      "totalNFTs": 253,
-      "totalLegitimateNFTs": 174,
-      "averageNFTsPerWallet": 25.3,
-      "averageLegitimateNFTsPerWallet": 17.4
-    },
-    "spamAnalysis": {
-      "totalSpam": 79,
-      "totalLegitimate": 174,
-      "spamPercentage": 31.225296442687743,
-      "walletsAffectedBySpam": 10,
-      "topSpamCollections": [
-        {
-          "name": "Nuts",
-          "count": 16,
-          "affectedWallets": 1
-        },
-        {
-          "name": "SHIBAFAIR. ORG",
-          "count": 3,
-          "affectedWallets": 3
-        },
-        {
-          "name": "THE OMNI-PASS",
-          "count": 2,
-          "affectedWallets": 1
-        },
-        {
-          "name": "aeth.gift",
-          "count": 1,
-          "affectedWallets": 1
-        },
-        {
-          "name": "Unisocks Genesis Airdrop",
-          "count": 1,
-          "affectedWallets": 1
-        }
-      ]
-    },
-    "recentAcquisitions": [],
-    "diversityMetrics": {
-      "uniqueCollections": 10,
-      "averageCollectionsPerWallet": 3.33,
-      "mostDiverseWallet": {
-        "address": "0xd4f69d02ef082f612558588d103994a7e3cf29c9",
-        "collectionCount": 6
-      },
-      "collectionConcentration": 0.616
-    }
-  },
-  "0x": {
+  "0xprotocol": {
     "totalNFTs": 55,
     "collections": [],
     "topCollections": [],
@@ -805,7 +53,279 @@
       "collectionConcentration": 0
     }
   },
-  "across": {
+  "1inchaggregationrouterv6": {
+    "totalNFTs": 120,
+    "collections": [],
+    "topCollections": [
+      {
+        "contractAddress": "0xd5C02bB3e40494D4674778306Da43a56138A383E",
+        "name": "OMNI404",
+        "symbol": "O404",
+        "tokenType": "ERC721",
+        "totalOwned": 6,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/0xd5c02bb3e40494d4674778306da43a56138a383e/b80672c060b296b5209b88670c96fa/19b80672c060b296b5209b88670c96fa.jpeg",
+        "collectionSlug": "omni404-2",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0xd5ADD4a5AC90e0E65cC94dE32CdE59f43901170d",
+        "name": "Noox : Uniswap Airdrop Recipient",
+        "symbol": "Noox Distribution Protocol",
+        "tokenType": "ERC1155",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/0xd5add4a5ac90e0e65cc94de32cde59f43901170d/d1e6aecba59ec954f17aaa92207a297a.png",
+        "collectionSlug": "noox-uniswap-airdrop-recipient",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+        "name": "Uniswap V3 Positions NFT-V1",
+        "symbol": "UNI-V3-POS",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/ef3d33fd5f4a493e866aa407c5814637/6514c7d0033df8f5633e30b61afd7c/216514c7d0033df8f5633e30b61afd7c.png",
+        "collectionSlug": "uniswap-v3-positions",
+        "isSpam": false
+      }
+    ],
+    "adoption": {
+      "walletsWithNFTs": 2,
+      "walletsWithoutNFTs": 8,
+      "adoptionRate": 20,
+      "totalNFTs": 120,
+      "totalLegitimateNFTs": 8,
+      "averageNFTsPerWallet": 12,
+      "averageLegitimateNFTsPerWallet": 0.8
+    },
+    "spamAnalysis": {
+      "totalSpam": 112,
+      "totalLegitimate": 8,
+      "spamPercentage": 93.33333333333333,
+      "walletsAffectedBySpam": 10,
+      "topSpamCollections": [
+        {
+          "name": "SHIBAFAIR. ORG",
+          "count": 3,
+          "affectedWallets": 3
+        },
+        {
+          "name": "BOXFAIRLY.COM",
+          "count": 3,
+          "affectedWallets": 3
+        },
+        {
+          "name": "BOXFAIRLY.COM",
+          "count": 2,
+          "affectedWallets": 2
+        },
+        {
+          "name": "t3rn.us - New Solutions in WEB3!",
+          "count": 2,
+          "affectedWallets": 1
+        },
+        {
+          "name": "maker-protocol.com",
+          "count": 1,
+          "affectedWallets": 1
+        }
+      ]
+    },
+    "recentAcquisitions": [],
+    "diversityMetrics": {
+      "uniqueCollections": 3,
+      "averageCollectionsPerWallet": 1.5,
+      "mostDiverseWallet": {
+        "address": "0xca74f404e0c7bfa35b13b511097df966d5a65597",
+        "collectionCount": 2
+      },
+      "collectionConcentration": 0.333
+    }
+  },
+  "metamask": {
+    "totalNFTs": 171,
+    "collections": [],
+    "topCollections": [
+      {
+        "contractAddress": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+        "name": "Uniswap V3 Positions NFT-V1",
+        "symbol": "UNI-V3-POS",
+        "tokenType": "ERC721",
+        "totalOwned": 81,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/ef3d33fd5f4a493e866aa407c5814637/6514c7d0033df8f5633e30b61afd7c/216514c7d0033df8f5633e30b61afd7c.png",
+        "collectionSlug": "uniswap-v3-positions",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x46A15B0b27311cedF172AB29E4f4766fbE7F4364",
+        "name": "Pancake V3 Positions NFT-V1",
+        "symbol": "PCS-V3-POS",
+        "tokenType": "ERC721",
+        "totalOwned": 26,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.0008,
+        "imageUrl": "https://i2c.seadn.io/ethereum/0x46a15b0b27311cedf172ab29e4f4766fbe7f4364/5c8f434b357301e74f985e3e4756f18e.png",
+        "collectionSlug": "pancake-v3-positions-nft-v1-1",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0xbD216513d74C8cf14cf4747E6AaA6420FF64ee9e",
+        "name": "Uniswap v4 Positions NFT",
+        "symbol": "UNI-V4-POSM",
+        "tokenType": "ERC721",
+        "totalOwned": 10,
+        "uniqueHolders": 2,
+        "holderPercentage": 20,
+        "floorPrice": 0.00032,
+        "imageUrl": "https://raw2.seadn.io/ethereum/0xbd216513d74c8cf14cf4747e6aaa6420ff64ee9e/4483904e053478ef63502b7e93176c/a84483904e053478ef63502b7e93176c.svg",
+        "collectionSlug": "uniswap-v4-positions-nft-6",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0xD4416b13d2b3a9aBae7AcD5D6C2BbDBE25686401",
+        "name": "NameWrapper",
+        "symbol": "",
+        "tokenType": "ERC1155",
+        "totalOwned": 4,
+        "uniqueHolders": 2,
+        "holderPercentage": 20,
+        "floorPrice": 0.000028,
+        "imageUrl": "https://i2c.seadn.io/collection/ens/image/2389b989ec47442bc2c714bcdf3e19/b02389b989ec47442bc2c714bcdf3e19.png",
+        "collectionSlug": "ens",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x853D7546B89dF15950979eb43CE2C60fCeADD1e5",
+        "name": "Aol",
+        "symbol": "AOL",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 1,
+        "imageUrl": "https://i2c.seadn.io/ethereum/f4df6984c1ec4632aa319abc3ca9d9c4/73080f5b5184d37ee2c421dc5604eb/1673080f5b5184d37ee2c421dc5604eb.png",
+        "collectionSlug": "aol-coin-nft",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0xc374a204334d4Edd4C6a62f0867C752d65E9579c",
+        "name": "Project AEON",
+        "symbol": "AEON",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.359886,
+        "imageUrl": "https://i2c.seadn.io/collection/project-aeon/image/fdfb6f0307ee8efa28bcba6b620c1e/5bfdfb6f0307ee8efa28bcba6b620c1e.png",
+        "collectionSlug": "project-aeon",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x2079812353E2C9409a788FBF5f383fa62aD85bE8",
+        "name": "Unknown Collection",
+        "symbol": "",
+        "tokenType": "ERC1155",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.0040809,
+        "imageUrl": "https://i2c.seadn.io/collection/bobutoken/image/cad5e804be4dd7065ba2d2d3d11504/19cad5e804be4dd7065ba2d2d3d11504.gif",
+        "collectionSlug": "bobutoken",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x7feB477600a03fd6ab1fE451cB3c7836a420F4AD",
+        "name": "White Sands Parcel Pass",
+        "symbol": "WSPP",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.03,
+        "imageUrl": "https://i2c.seadn.io/ethereum/85d0c1d4006b476da0c7deaeec4aa99d/7b0e87626f1ad40ba86056f2d768f9/f17b0e87626f1ad40ba86056f2d768f9.gif",
+        "collectionSlug": "white-sands-parcel-pass",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x8F33cD79FD0685e16ceF4c2004eB4cd0D27899D4",
+        "name": "Unisocks NFT",
+        "symbol": "Unisocks",
+        "tokenType": "ERC1155",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.9,
+        "imageUrl": "https://i2c.seadn.io/ethereum/0xe76fdf9662dea67abde5a3fb6fbc8abce40fff32/48690f00828ce53d00e915ab2acf77/3c48690f00828ce53d00e915ab2acf77.png",
+        "collectionSlug": "0x8f33cd79fd0685e16cef4c2004eb4cd0d27899d4",
+        "isSpam": false
+      }
+    ],
+    "adoption": {
+      "walletsWithNFTs": 4,
+      "walletsWithoutNFTs": 6,
+      "adoptionRate": 40,
+      "totalNFTs": 171,
+      "totalLegitimateNFTs": 126,
+      "averageNFTsPerWallet": 17.1,
+      "averageLegitimateNFTsPerWallet": 12.6
+    },
+    "spamAnalysis": {
+      "totalSpam": 45,
+      "totalLegitimate": 126,
+      "spamPercentage": 26.31578947368421,
+      "walletsAffectedBySpam": 10,
+      "topSpamCollections": [
+        {
+          "name": "OpenSea Shared Storefront",
+          "count": 5,
+          "affectedWallets": 1
+        },
+        {
+          "name": "realioprotocol.com",
+          "count": 2,
+          "affectedWallets": 2
+        },
+        {
+          "name": "10000 USD FOR FREE",
+          "count": 2,
+          "affectedWallets": 2
+        },
+        {
+          "name": "getrealio.net",
+          "count": 2,
+          "affectedWallets": 2
+        },
+        {
+          "name": "Realio Mysterybox NFT",
+          "count": 2,
+          "affectedWallets": 2
+        }
+      ]
+    },
+    "recentAcquisitions": [],
+    "diversityMetrics": {
+      "uniqueCollections": 9,
+      "averageCollectionsPerWallet": 2.75,
+      "mostDiverseWallet": {
+        "address": "0xbcfc5defb163c2576143b7d1a53f921c45100f9d",
+        "collectionCount": 6
+      },
+      "collectionConcentration": 0.744
+    }
+  },
+  "acrossprotocol": {
     "totalNFTs": 186,
     "collections": [],
     "topCollections": [
@@ -954,262 +474,235 @@
       "collectionConcentration": 0.75
     }
   },
-  "metamask": {
-    "totalNFTs": 171,
+  "tetherusdt": {
+    "totalNFTs": 697,
     "collections": [],
     "topCollections": [
       {
-        "contractAddress": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
-        "name": "Uniswap V3 Positions NFT-V1",
-        "symbol": "UNI-V3-POS",
+        "contractAddress": "0x743f80dc76F862A27598140196cc610006b2Be68",
+        "name": "Shabu Town Shibas",
+        "symbol": "STS",
         "tokenType": "ERC721",
-        "totalOwned": 81,
+        "totalOwned": 10,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.000298998989,
+        "imageUrl": "https://i2c.seadn.io/ethereum/5961f006649947d38b2f11360f01c87c/7d063284391586138a6e80fd7d676e/287d063284391586138a6e80fd7d676e.png",
+        "collectionSlug": "shabu-town-shibas",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x25bfDcF2Cc9bCa0D8B42e816a6fFD3B5B64d855f",
+        "name": "APECOIN Withdrawal Badge",
+        "symbol": "YUGA Labs APE Distribution",
+        "tokenType": "ERC1155",
+        "totalOwned": 4,
+        "uniqueHolders": 4,
+        "holderPercentage": 40,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/0x25bfdcf2cc9bca0d8b42e816a6ffd3b5b64d855f/519568bf9c69448942d146ab33a3879d.gif",
+        "collectionSlug": "apecoin-withdrawal-badge-1",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x128DA201549e4b17f23A41fDf095Fd9428e7be7d",
+        "name": "Meta Bounty Huntress",
+        "symbol": "MBH II",
+        "tokenType": "ERC721",
+        "totalOwned": 4,
         "uniqueHolders": 1,
         "holderPercentage": 10,
         "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/ef3d33fd5f4a493e866aa407c5814637/6514c7d0033df8f5633e30b61afd7c/216514c7d0033df8f5633e30b61afd7c.png",
-        "collectionSlug": "uniswap-v3-positions",
+        "imageUrl": "https://i2c.seadn.io/ethereum/3278df4b06e74dddbd1be000901b317c/579ae3453d3cfe5a55e98155c5e5ff/23579ae3453d3cfe5a55e98155c5e5ff.gif",
+        "collectionSlug": "meta-bounty-huntress",
         "isSpam": false
       },
       {
-        "contractAddress": "0x46A15B0b27311cedF172AB29E4f4766fbE7F4364",
-        "name": "Pancake V3 Positions NFT-V1",
-        "symbol": "PCS-V3-POS",
+        "contractAddress": "0xAd5f6CDDa157694439EF9f6DD409424321C74628",
+        "name": "Fewmans",
+        "symbol": "FEW",
         "tokenType": "ERC721",
-        "totalOwned": 26,
+        "totalOwned": 2,
         "uniqueHolders": 1,
         "holderPercentage": 10,
-        "floorPrice": 0.0008,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0x46a15b0b27311cedf172ab29e4f4766fbe7f4364/5c8f434b357301e74f985e3e4756f18e.png",
-        "collectionSlug": "pancake-v3-positions-nft-v1-1",
+        "floorPrice": 0.017,
+        "imageUrl": "https://raw2.seadn.io/ethereum/0xad5f6cdda157694439ef9f6dd409424321c74628/000506a62779d8b15c7d6c72afe89def.svg",
+        "collectionSlug": "fewmans",
         "isSpam": false
       },
       {
-        "contractAddress": "0xbD216513d74C8cf14cf4747E6AaA6420FF64ee9e",
-        "name": "Uniswap v4 Positions NFT",
-        "symbol": "UNI-V4-POSM",
-        "tokenType": "ERC721",
-        "totalOwned": 10,
+        "contractAddress": "0x0E9f11E9e022cEA43128C9480be215a503C3aB89",
+        "name": "Paxos.gifts",
+        "symbol": "Visit paxos.gifts to claim rewards.",
+        "tokenType": "ERC1155",
+        "totalOwned": 2,
         "uniqueHolders": 2,
         "holderPercentage": 20,
-        "floorPrice": 0.00032,
-        "imageUrl": "https://raw2.seadn.io/ethereum/0xbd216513d74c8cf14cf4747e6aaa6420ff64ee9e/4483904e053478ef63502b7e93176c/a84483904e053478ef63502b7e93176c.svg",
-        "collectionSlug": "uniswap-v4-positions-nft-6",
+        "floorPrice": 0,
+        "imageUrl": "",
+        "collectionSlug": "paxos-gifts",
         "isSpam": false
       },
       {
-        "contractAddress": "0xD4416b13d2b3a9aBae7AcD5D6C2BbDBE25686401",
-        "name": "NameWrapper",
-        "symbol": "",
+        "contractAddress": "0x2a7AD49C3a2B81B4Dd3D5a4cB78C3858c5cC788C",
+        "name": "wbtc.fi",
+        "symbol": "Visit wbtc.fi to earn rewards.",
         "tokenType": "ERC1155",
-        "totalOwned": 4,
+        "totalOwned": 2,
         "uniqueHolders": 2,
         "holderPercentage": 20,
-        "floorPrice": 0.000028,
-        "imageUrl": "https://i2c.seadn.io/collection/ens/image/2389b989ec47442bc2c714bcdf3e19/b02389b989ec47442bc2c714bcdf3e19.png",
-        "collectionSlug": "ens",
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/0x2a7ad49c3a2b81b4dd3d5a4cb78c3858c5cc788c/b79cf894009024d049bb43f4d0493b/33b79cf894009024d049bb43f4d0493b.png",
+        "collectionSlug": "wbtc-fi",
         "isSpam": false
       },
       {
-        "contractAddress": "0x853D7546B89dF15950979eb43CE2C60fCeADD1e5",
-        "name": "Aol",
-        "symbol": "AOL",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 1,
-        "imageUrl": "https://i2c.seadn.io/ethereum/f4df6984c1ec4632aa319abc3ca9d9c4/73080f5b5184d37ee2c421dc5604eb/1673080f5b5184d37ee2c421dc5604eb.png",
-        "collectionSlug": "aol-coin-nft",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xc374a204334d4Edd4C6a62f0867C752d65E9579c",
-        "name": "Project AEON",
-        "symbol": "AEON",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.359886,
-        "imageUrl": "https://i2c.seadn.io/collection/project-aeon/image/fdfb6f0307ee8efa28bcba6b620c1e/5bfdfb6f0307ee8efa28bcba6b620c1e.png",
-        "collectionSlug": "project-aeon",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x2079812353E2C9409a788FBF5f383fa62aD85bE8",
-        "name": "Unknown Collection",
-        "symbol": "",
+        "contractAddress": "0x5A219aDc82F51ADe9e10B2a335D6794D4A7b82F1",
+        "name": "Base Metaships",
+        "symbol": "METASHIP",
         "tokenType": "ERC1155",
         "totalOwned": 1,
         "uniqueHolders": 1,
         "holderPercentage": 10,
-        "floorPrice": 0.00268999,
-        "imageUrl": "https://i2c.seadn.io/collection/bobutoken/image/cad5e804be4dd7065ba2d2d3d11504/19cad5e804be4dd7065ba2d2d3d11504.gif",
-        "collectionSlug": "bobutoken",
+        "floorPrice": 0.00444,
+        "imageUrl": "https://i2c.seadn.io/ethereum/08e71315f0e24fc38bd8cf5cbca8c4b4/52d7a3117d7ab50c3425a93fe60f5a/5152d7a3117d7ab50c3425a93fe60f5a.png",
+        "collectionSlug": "base-metaships",
         "isSpam": false
       },
       {
-        "contractAddress": "0x7feB477600a03fd6ab1fE451cB3c7836a420F4AD",
-        "name": "White Sands Parcel Pass",
-        "symbol": "WSPP",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0.03,
-        "imageUrl": "https://i2c.seadn.io/ethereum/85d0c1d4006b476da0c7deaeec4aa99d/7b0e87626f1ad40ba86056f2d768f9/f17b0e87626f1ad40ba86056f2d768f9.gif",
-        "collectionSlug": "white-sands-parcel-pass",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0x8F33cD79FD0685e16ceF4c2004eB4cd0D27899D4",
-        "name": "Unisocks NFT",
-        "symbol": "Unisocks",
+        "contractAddress": "0xa687f2A947E7aFD38C80502aC2e9B431891B41c0",
+        "name": "USDC Northern District of Florida: Case No. 23-cv-24651",
+        "symbol": "UNDOFCN2",
         "tokenType": "ERC1155",
         "totalOwned": 1,
         "uniqueHolders": 1,
         "holderPercentage": 10,
-        "floorPrice": 0.9,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0xe76fdf9662dea67abde5a3fb6fbc8abce40fff32/48690f00828ce53d00e915ab2acf77/3c48690f00828ce53d00e915ab2acf77.png",
-        "collectionSlug": "0x8f33cd79fd0685e16cef4c2004eb4cd0d27899d4",
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/6536ced16ef1481086f05df8af2f656d/342283089c9788d136fe7cf73d76e6/b2342283089c9788d136fe7cf73d76e6.jpeg",
+        "collectionSlug": "usdc-northern-district-of-florida-case-no-23-cv-24",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x274802163a3d4e5b5b25bb3bDF3ED27472Ba0784",
+        "name": "SPDL Collection",
+        "symbol": "SPDL Collection",
+        "tokenType": "ERC1155",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/e56ad4dc8d084885a598b5dc0c2721fe/4d7f13ff4a33e8d0572102ac85dffb/ba4d7f13ff4a33e8d0572102ac85dffb.jpeg",
+        "collectionSlug": "spdl-collection",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x33a39af0F83E9D46a055e6eEbde3296D26d916F4",
+        "name": "Space Yetis",
+        "symbol": "YETI",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.0069,
+        "imageUrl": "https://i2c.seadn.io/ethereum/e0b72887d8b1473f8de0a77b8265aa33/0300bfb183a7d231960d27c3f754c5/f10300bfb183a7d231960d27c3f754c5.gif",
+        "collectionSlug": "space-yetis-official",
         "isSpam": false
       }
     ],
     "adoption": {
-      "walletsWithNFTs": 4,
-      "walletsWithoutNFTs": 6,
-      "adoptionRate": 40,
-      "totalNFTs": 171,
-      "totalLegitimateNFTs": 126,
-      "averageNFTsPerWallet": 17.1,
-      "averageLegitimateNFTsPerWallet": 12.6
+      "walletsWithNFTs": 7,
+      "walletsWithoutNFTs": 3,
+      "adoptionRate": 70,
+      "totalNFTs": 697,
+      "totalLegitimateNFTs": 49,
+      "averageNFTsPerWallet": 69.7,
+      "averageLegitimateNFTsPerWallet": 4.9
     },
     "spamAnalysis": {
-      "totalSpam": 45,
-      "totalLegitimate": 126,
-      "spamPercentage": 26.31578947368421,
+      "totalSpam": 648,
+      "totalLegitimate": 49,
+      "spamPercentage": 92.96987087517934,
       "walletsAffectedBySpam": 10,
       "topSpamCollections": [
         {
-          "name": "OpenSea Shared Storefront",
-          "count": 5,
+          "name": "Mars4",
+          "count": 25,
           "affectedWallets": 1
         },
         {
-          "name": "realioprotocol.com",
-          "count": 2,
-          "affectedWallets": 2
+          "name": "Gucci",
+          "count": 22,
+          "affectedWallets": 1
         },
         {
-          "name": "10000 USD FOR FREE",
-          "count": 2,
-          "affectedWallets": 2
+          "name": "Ugly Unicorns",
+          "count": 10,
+          "affectedWallets": 1
         },
         {
-          "name": "getrealio.net",
-          "count": 2,
-          "affectedWallets": 2
+          "name": "originusd.net",
+          "count": 8,
+          "affectedWallets": 8
         },
         {
-          "name": "Realio Mysterybox NFT",
-          "count": 2,
-          "affectedWallets": 2
+          "name": "dickpix",
+          "count": 8,
+          "affectedWallets": 1
         }
       ]
     },
     "recentAcquisitions": [],
     "diversityMetrics": {
-      "uniqueCollections": 9,
-      "averageCollectionsPerWallet": 2.75,
+      "uniqueCollections": 31,
+      "averageCollectionsPerWallet": 5.14,
       "mostDiverseWallet": {
-        "address": "0xbcfc5defb163c2576143b7d1a53f921c45100f9d",
-        "collectionCount": 6
+        "address": "0x56eddb7aa87536c09ccc2793473599fd21a8b17f",
+        "collectionCount": 13
       },
-      "collectionConcentration": 0.744
+      "collectionConcentration": 0.731
     }
   },
-  "1inch": {
-    "totalNFTs": 120,
+  "uniswapv2router": {
+    "totalNFTs": 138,
     "collections": [],
-    "topCollections": [
-      {
-        "contractAddress": "0xd5C02bB3e40494D4674778306Da43a56138A383E",
-        "name": "OMNI404",
-        "symbol": "O404",
-        "tokenType": "ERC721",
-        "totalOwned": 6,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0xd5c02bb3e40494d4674778306da43a56138a383e/b80672c060b296b5209b88670c96fa/19b80672c060b296b5209b88670c96fa.jpeg",
-        "collectionSlug": "omni404-2",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xd5ADD4a5AC90e0E65cC94dE32CdE59f43901170d",
-        "name": "Noox : Uniswap Airdrop Recipient",
-        "symbol": "Noox Distribution Protocol",
-        "tokenType": "ERC1155",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/0xd5add4a5ac90e0e65cc94de32cde59f43901170d/d1e6aecba59ec954f17aaa92207a297a.png",
-        "collectionSlug": "noox-uniswap-airdrop-recipient",
-        "isSpam": false
-      },
-      {
-        "contractAddress": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
-        "name": "Uniswap V3 Positions NFT-V1",
-        "symbol": "UNI-V3-POS",
-        "tokenType": "ERC721",
-        "totalOwned": 1,
-        "uniqueHolders": 1,
-        "holderPercentage": 10,
-        "floorPrice": 0,
-        "imageUrl": "https://i2c.seadn.io/ethereum/ef3d33fd5f4a493e866aa407c5814637/6514c7d0033df8f5633e30b61afd7c/216514c7d0033df8f5633e30b61afd7c.png",
-        "collectionSlug": "uniswap-v3-positions",
-        "isSpam": false
-      }
-    ],
+    "topCollections": [],
     "adoption": {
-      "walletsWithNFTs": 2,
-      "walletsWithoutNFTs": 8,
-      "adoptionRate": 20,
-      "totalNFTs": 120,
-      "totalLegitimateNFTs": 8,
-      "averageNFTsPerWallet": 12,
-      "averageLegitimateNFTsPerWallet": 0.8
+      "walletsWithNFTs": 0,
+      "walletsWithoutNFTs": 10,
+      "adoptionRate": 0,
+      "totalNFTs": 138,
+      "totalLegitimateNFTs": 0,
+      "averageNFTsPerWallet": 13.8,
+      "averageLegitimateNFTsPerWallet": 0
     },
     "spamAnalysis": {
-      "totalSpam": 112,
-      "totalLegitimate": 8,
-      "spamPercentage": 93.33333333333333,
+      "totalSpam": 138,
+      "totalLegitimate": 0,
+      "spamPercentage": 100,
       "walletsAffectedBySpam": 10,
       "topSpamCollections": [
         {
+          "name": "BOXFAIRLY.COM",
+          "count": 5,
+          "affectedWallets": 5
+        },
+        {
           "name": "SHIBAFAIR. ORG",
+          "count": 4,
+          "affectedWallets": 4
+        },
+        {
+          "name": "t3rn.us - New Solutions in WEB3",
           "count": 3,
           "affectedWallets": 3
         },
         {
-          "name": "BOXFAIRLY.COM",
-          "count": 3,
-          "affectedWallets": 3
-        },
-        {
-          "name": "BOXFAIRLY.COM",
+          "name": "ClaimPass",
           "count": 2,
           "affectedWallets": 2
         },
         {
-          "name": "t3rn.us - New Solutions in WEB3!",
-          "count": 2,
-          "affectedWallets": 1
-        },
-        {
-          "name": "maker-protocol.com",
+          "name": "bzeth.com",
           "count": 1,
           "affectedWallets": 1
         }
@@ -1217,13 +710,386 @@
     },
     "recentAcquisitions": [],
     "diversityMetrics": {
-      "uniqueCollections": 3,
-      "averageCollectionsPerWallet": 1.5,
-      "mostDiverseWallet": {
-        "address": "0xca74f404e0c7bfa35b13b511097df966d5a65597",
-        "collectionCount": 2
+      "uniqueCollections": 0,
+      "averageCollectionsPerWallet": 0,
+      "mostDiverseWallet": null,
+      "collectionConcentration": 0
+    }
+  },
+  "usdcoinusdc": {
+    "totalNFTs": 688,
+    "collections": [],
+    "topCollections": [
+      {
+        "contractAddress": "0x25bfDcF2Cc9bCa0D8B42e816a6fFD3B5B64d855f",
+        "name": "APECOIN Withdrawal Badge",
+        "symbol": "YUGA Labs APE Distribution",
+        "tokenType": "ERC1155",
+        "totalOwned": 5,
+        "uniqueHolders": 5,
+        "holderPercentage": 50,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/0x25bfdcf2cc9bca0d8b42e816a6ffd3b5b64d855f/519568bf9c69448942d146ab33a3879d.gif",
+        "collectionSlug": "apecoin-withdrawal-badge-1",
+        "isSpam": false
       },
-      "collectionConcentration": 0.333
+      {
+        "contractAddress": "0x2a7AD49C3a2B81B4Dd3D5a4cB78C3858c5cC788C",
+        "name": "wbtc.fi",
+        "symbol": "Visit wbtc.fi to earn rewards.",
+        "tokenType": "ERC1155",
+        "totalOwned": 3,
+        "uniqueHolders": 3,
+        "holderPercentage": 30,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/0x2a7ad49c3a2b81b4dd3d5a4cb78c3858c5cc788c/b79cf894009024d049bb43f4d0493b/33b79cf894009024d049bb43f4d0493b.png",
+        "collectionSlug": "wbtc-fi",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x0E9f11E9e022cEA43128C9480be215a503C3aB89",
+        "name": "Paxos.gifts",
+        "symbol": "Visit paxos.gifts to claim rewards.",
+        "tokenType": "ERC1155",
+        "totalOwned": 2,
+        "uniqueHolders": 2,
+        "holderPercentage": 20,
+        "floorPrice": 0,
+        "imageUrl": "",
+        "collectionSlug": "paxos-gifts",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x274802163a3d4e5b5b25bb3bDF3ED27472Ba0784",
+        "name": "SPDL Collection",
+        "symbol": "SPDL Collection",
+        "tokenType": "ERC1155",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/e56ad4dc8d084885a598b5dc0c2721fe/4d7f13ff4a33e8d0572102ac85dffb/ba4d7f13ff4a33e8d0572102ac85dffb.jpeg",
+        "collectionSlug": "spdl-collection",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x33a39af0F83E9D46a055e6eEbde3296D26d916F4",
+        "name": "Space Yetis",
+        "symbol": "YETI",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.0069,
+        "imageUrl": "https://i2c.seadn.io/ethereum/e0b72887d8b1473f8de0a77b8265aa33/0300bfb183a7d231960d27c3f754c5/f10300bfb183a7d231960d27c3f754c5.gif",
+        "collectionSlug": "space-yetis-official",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x0689640d190b10765f09310fCfE9C670eDe4E25B",
+        "name": "Furo Vesting",
+        "symbol": "FUROVEST",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://raw2.seadn.io/ethereum/0x0689640d190b10765f09310fcfe9c670ede4e25b/7588dea72a6db4c089af879e0489127b.svg",
+        "collectionSlug": "furo-vesting",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x03Ea00B0619e19759eE7ba33E8EB8E914fbF52Ea",
+        "name": "pLOOT",
+        "symbol": "pLOOT",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/0e1e77ea0e914d64b292b3788fb873ed/b16e0b694d097a06f9a7ef88cbc4ff/fbb16e0b694d097a06f9a7ef88cbc4ff.png",
+        "collectionSlug": "ploot",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x0e2B3CF40883DD2dBCCBbbd1D21B4b58f37e47EF",
+        "name": "Daisen.fi Genesis Item",
+        "symbol": "Daisen.fi Genesis Item",
+        "tokenType": "ERC1155",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/cb152de9df6c404e8b53d32650a24c96/e3614fe54db77743b34bb1dccd8c85/65e3614fe54db77743b34bb1dccd8c85.jpeg",
+        "collectionSlug": "daisen-fi-genesis-item",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x160da290A6b1923257705Cb05c322AE44Ca86ebb",
+        "name": "Atenas",
+        "symbol": "NFT",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/3b4a445b0ff248828a0cb855719e56cb/3c379e2e7d31eee9f1e68ad3e3f7b6/783c379e2e7d31eee9f1e68ad3e3f7b6.png",
+        "collectionSlug": "atenas",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x0075Ce3F8d2CECaE84600D4A1F8675a72819896d",
+        "name": "The AlphaBYTEs",
+        "symbol": "BYTEs",
+        "tokenType": "ERC721",
+        "totalOwned": 1,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/73badf9f8232453aba08235645e48503/281bc582a8ea3ec511110383b4cfd1/bf281bc582a8ea3ec511110383b4cfd1.jpeg",
+        "collectionSlug": "thealphabytes",
+        "isSpam": false
+      }
+    ],
+    "adoption": {
+      "walletsWithNFTs": 6,
+      "walletsWithoutNFTs": 4,
+      "adoptionRate": 60,
+      "totalNFTs": 688,
+      "totalLegitimateNFTs": 26,
+      "averageNFTsPerWallet": 68.8,
+      "averageLegitimateNFTsPerWallet": 2.6
+    },
+    "spamAnalysis": {
+      "totalSpam": 662,
+      "totalLegitimate": 26,
+      "spamPercentage": 96.22093023255815,
+      "walletsAffectedBySpam": 10,
+      "topSpamCollections": [
+        {
+          "name": "Gucci",
+          "count": 22,
+          "affectedWallets": 1
+        },
+        {
+          "name": "Ugly Unicorns",
+          "count": 10,
+          "affectedWallets": 1
+        },
+        {
+          "name": "usdgift.org",
+          "count": 8,
+          "affectedWallets": 8
+        },
+        {
+          "name": "aeth.gift",
+          "count": 7,
+          "affectedWallets": 7
+        },
+        {
+          "name": "MATIC: Airdrop Recipient",
+          "count": 6,
+          "affectedWallets": 6
+        }
+      ]
+    },
+    "recentAcquisitions": [],
+    "diversityMetrics": {
+      "uniqueCollections": 19,
+      "averageCollectionsPerWallet": 4.33,
+      "mostDiverseWallet": {
+        "address": "0x21a31ee1afc51d94c2efccaa2092ad1028285549",
+        "collectionCount": 7
+      },
+      "collectionConcentration": 0.455
+    }
+  },
+  "wrappedetherweth": {
+    "totalNFTs": 333,
+    "collections": [],
+    "topCollections": [
+      {
+        "contractAddress": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+        "name": "Uniswap V3 Positions NFT-V1",
+        "symbol": "UNI-V3-POS",
+        "tokenType": "ERC721",
+        "totalOwned": 95,
+        "uniqueHolders": 2,
+        "holderPercentage": 20,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/ef3d33fd5f4a493e866aa407c5814637/6514c7d0033df8f5633e30b61afd7c/216514c7d0033df8f5633e30b61afd7c.png",
+        "collectionSlug": "uniswap-v3-positions",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x4fcfC93E4137139F26c674b7Cd23eA9E3b4C3906",
+        "name": "The Ghouls",
+        "symbol": "THEGHOULS",
+        "tokenType": "ERC721",
+        "totalOwned": 10,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/f505c40c12ea4082b627932683693040/0004ae8a2ef52f887f2f904b7a820e/a90004ae8a2ef52f887f2f904b7a820e.jpeg",
+        "collectionSlug": "the-ghouls-lab",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x8B629944aD47ffdabB5EdE2B0BB7B6F1a1980888",
+        "name": "TheLastGod",
+        "symbol": "TLG",
+        "tokenType": "ERC721",
+        "totalOwned": 10,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.5,
+        "imageUrl": "https://i2c.seadn.io/ethereum/a004348522454e0499a2fce7256c830a/fe044e9a47ecccacbf3c0d1a8755fd/6cfe044e9a47ecccacbf3c0d1a8755fd.png",
+        "collectionSlug": "thelastgod",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x48ed998e778Ab2663b6C49Bd09DfFF8Efd16B934",
+        "name": "NFTfi Obligation Receipt",
+        "symbol": "ORNFI",
+        "tokenType": "ERC721",
+        "totalOwned": 8,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "",
+        "collectionSlug": "nftfi-obligation-receipt-2",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x90c70Dc9f3FDa4a1D78a2B7D90CA087088355717",
+        "name": "Satoshi Island Citizenship NFTs",
+        "symbol": "CTZN",
+        "tokenType": "ERC721",
+        "totalOwned": 7,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.00089,
+        "imageUrl": "https://i2c.seadn.io/ethereum/6f7d00cc4ec149b3ad2d6dfd18f73c3b/ed5f75cfaacb8dcbddb9a4028b1045/f4ed5f75cfaacb8dcbddb9a4028b1045.png",
+        "collectionSlug": "satoshi-island-citizenship-nfts",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x1dfe7Ca09e99d10835Bf73044a23B73Fc20623DF",
+        "name": "More Loot",
+        "symbol": "MLOOT",
+        "tokenType": "ERC721",
+        "totalOwned": 6,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.0001,
+        "imageUrl": "https://raw2.seadn.io/ethereum/0x1dfe7ca09e99d10835bf73044a23b73fc20623df/1c215d43bdbaac7a8e39d07a20c6f946.svg",
+        "collectionSlug": "more-loot",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x0381b7EdC73B86FE0A1e85a1ad1f6a70eF7F6F5c",
+        "name": "Penguins2023",
+        "symbol": "PEN2023",
+        "tokenType": "ERC721",
+        "totalOwned": 5,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0,
+        "imageUrl": "https://i2c.seadn.io/ethereum/64d94e6411714cd1b4807093fcf51364/253a6fdf91da6d5a9639323912e083/22253a6fdf91da6d5a9639323912e083.gif",
+        "collectionSlug": "penguins2023",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x306b1ea3ecdf94aB739F1910bbda052Ed4A9f949",
+        "name": "Beanz",
+        "symbol": "BEANZ",
+        "tokenType": "ERC721",
+        "totalOwned": 4,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.0529999,
+        "imageUrl": "https://i2c.seadn.io/collection/beanzofficial/image/55051cfd6611e32edc843d7cc5acf7/5c55051cfd6611e32edc843d7cc5acf7.png",
+        "collectionSlug": "beanzofficial",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0x79FCDEF22feeD20eDDacbB2587640e45491b757f",
+        "name": "mfer",
+        "symbol": "MFER",
+        "tokenType": "ERC721",
+        "totalOwned": 3,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.255,
+        "imageUrl": "https://i2c.seadn.io/collection/mfers/image/bc27b08502e1d686f1c220d302494d/01bc27b08502e1d686f1c220d302494d.png",
+        "collectionSlug": "mfers",
+        "isSpam": false
+      },
+      {
+        "contractAddress": "0xBf69783Fa630Ed65d396dcA51216A391a4BB1fd0",
+        "name": "Maya Spirits",
+        "symbol": "MS",
+        "tokenType": "ERC721",
+        "totalOwned": 2,
+        "uniqueHolders": 1,
+        "holderPercentage": 10,
+        "floorPrice": 0.01,
+        "imageUrl": "https://raw2.seadn.io/ethereum/1c677d4931b2447f88061ced11b228c9/25bfb4f4119b5054b18cc408c1ff5d/6425bfb4f4119b5054b18cc408c1ff5d.svg",
+        "collectionSlug": "mayaspirits",
+        "isSpam": false
+      }
+    ],
+    "adoption": {
+      "walletsWithNFTs": 5,
+      "walletsWithoutNFTs": 5,
+      "adoptionRate": 50,
+      "totalNFTs": 333,
+      "totalLegitimateNFTs": 174,
+      "averageNFTsPerWallet": 33.3,
+      "averageLegitimateNFTsPerWallet": 17.4
+    },
+    "spamAnalysis": {
+      "totalSpam": 159,
+      "totalLegitimate": 174,
+      "spamPercentage": 47.74774774774775,
+      "walletsAffectedBySpam": 9,
+      "topSpamCollections": [
+        {
+          "name": "X2Y2 LOAN BORROWER TICKET",
+          "count": 6,
+          "affectedWallets": 1
+        },
+        {
+          "name": "Crypto stamp art",
+          "count": 3,
+          "affectedWallets": 1
+        },
+        {
+          "name": "fraxprotocol.com",
+          "count": 2,
+          "affectedWallets": 2
+        },
+        {
+          "name": "Withdrawal Badge debridgeth.com",
+          "count": 2,
+          "affectedWallets": 2
+        },
+        {
+          "name": "BOXFAIRLY.COM",
+          "count": 2,
+          "affectedWallets": 2
+        }
+      ]
+    },
+    "recentAcquisitions": [],
+    "diversityMetrics": {
+      "uniqueCollections": 31,
+      "averageCollectionsPerWallet": 6.6,
+      "mostDiverseWallet": {
+        "address": "0xe3e318edc67f1f1f418182f6dbf758ef754417fc",
+        "collectionCount": 19
+      },
+      "collectionConcentration": 1.108
     }
   }
 }
