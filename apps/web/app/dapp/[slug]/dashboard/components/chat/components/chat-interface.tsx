@@ -16,8 +16,31 @@ import { Input } from "@/components/ui/input";
 import { ScrollButton } from "@/components/ui/scroll-button";
 import { PromptSuggestions } from "@/components/ui/prompt-suggestions";
 import { cn } from "@/lib/utils";
-import { ArrowUp, Copy, ThumbsDown, ThumbsUp } from "lucide-react";
+import { ArrowUp, Copy, ThumbsDown, ThumbsUp, Loader2 } from "lucide-react";
 import { useState } from "react";
+
+function ThinkingIndicator({ logoUrl, thinkingText }: { logoUrl?: string; thinkingText?: string }) {
+  return (
+    <div className="flex gap-4 max-w-4xl mr-auto">
+      <MessageAvatar
+        src={logoUrl || "/puck-logo.png"}
+        alt="assistant"
+        fallback="AI"
+        className="h-10 w-10 shrink-0"
+      />
+      <div className="flex-1 space-y-2">
+        <div className="rounded-2xl rounded-tl-sm bg-secondary/50 border border-border/50 px-4 py-3">
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            <span className="text-sm italic">
+              {thinkingText || "Thinking..."}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface Message {
   id: string;
@@ -32,6 +55,8 @@ interface ChatInterfaceProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e?: React.FormEvent) => void;
   isGenerating: boolean;
+  showThinking?: boolean;
+  thinkingText?: string;
   stop?: () => void;
   slug?: string;
   logoUrl?: string;
@@ -45,6 +70,8 @@ export function ChatInterface({
   handleInputChange,
   handleSubmit,
   isGenerating,
+  showThinking = false,
+  thinkingText,
   stop,
   slug,
   logoUrl,
@@ -92,7 +119,7 @@ export function ChatInterface({
         <div className="flex-1 relative overflow-hidden">
           <ChatContainerRoot className="h-full w-full">
             <ChatContainerContent className="p-6 space-y-6">
-              {messages.length === 0 ? (
+              {messages.length === 0 && !isGenerating ? (
                 <div className="flex items-center justify-center h-full text-muted-foreground px-4">
                   <PromptSuggestions
                     label={`Ask about ${daoName || "this dApp"}`}
@@ -101,78 +128,83 @@ export function ChatInterface({
                   />
                 </div>
               ) : (
-                messages.map((message) => (
-                  <Message
-                    key={message.id}
-                    className={cn(
-                      "flex gap-4 max-w-4xl",
-                      message.role === "user"
-                        ? "flex-row-reverse ml-auto"
-                        : "mr-auto",
-                    )}
-                  >
-                    <MessageAvatar
-                      src={
+                <>
+                  {messages.map((message) => (
+                    <Message
+                      key={message.id}
+                      className={cn(
+                        "flex gap-4 max-w-4xl",
                         message.role === "user"
-                          ? "/puck-logo.png"
-                          : logoUrl || "/puck-logo.png"
-                      }
-                      alt={message.role}
-                      fallback={message.role === "user" ? "U" : "AI"}
-                      className="h-10 w-10 shrink-0"
-                    />
-                    <div className="flex-1 space-y-2">
-                      <div
-                        className={cn(
-                          "rounded-2xl px-4 py-3",
-                          message.role === "user"
-                            ? "bg-muted text-muted-foreground rounded-tr-sm"
-                            : "bg-secondary text-secondary-foreground rounded-tl-sm",
-                        )}
-                      >
-                        <MessageContent markdown={message.role === "assistant"}>
-                          {message.content}
-                        </MessageContent>
-                      </div>
-
-                      {/* Message Actions */}
-                      {message.role === "assistant" && (
-                        <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7"
-                            onClick={() =>
-                              copyToClipboard(message.content, message.id)
-                            }
-                          >
-                            {copiedId === message.id ? (
-                              <span className="text-xs text-green-500">
-                                Copied!
-                              </span>
-                            ) : (
-                              <Copy className="h-3.5 w-3.5" />
-                            )}
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7"
-                          >
-                            <ThumbsUp className="h-3.5 w-3.5" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-7 w-7"
-                          >
-                            <ThumbsDown className="h-3.5 w-3.5" />
-                          </Button>
-                        </div>
+                          ? "flex-row-reverse ml-auto"
+                          : "mr-auto",
                       )}
-                    </div>
-                  </Message>
-                ))
+                    >
+                      <MessageAvatar
+                        src={
+                          message.role === "user"
+                            ? "/puck-logo.png"
+                            : logoUrl || "/puck-logo.png"
+                        }
+                        alt={message.role}
+                        fallback={message.role === "user" ? "U" : "AI"}
+                        className="h-10 w-10 shrink-0"
+                      />
+                      <div className="flex-1 space-y-2">
+                        <div
+                          className={cn(
+                            "rounded-2xl px-4 py-3",
+                            message.role === "user"
+                              ? "bg-muted text-muted-foreground rounded-tr-sm"
+                              : "bg-secondary text-secondary-foreground rounded-tl-sm",
+                          )}
+                        >
+                          <MessageContent markdown={message.role === "assistant"}>
+                            {message.content}
+                          </MessageContent>
+                        </div>
+
+                        {/* Message Actions */}
+                        {message.role === "assistant" && (
+                          <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
+                              onClick={() =>
+                                copyToClipboard(message.content, message.id)
+                              }
+                            >
+                              {copiedId === message.id ? (
+                                <span className="text-xs text-green-500">
+                                  Copied!
+                                </span>
+                              ) : (
+                                <Copy className="h-3.5 w-3.5" />
+                              )}
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
+                            >
+                              <ThumbsUp className="h-3.5 w-3.5" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
+                            >
+                              <ThumbsDown className="h-3.5 w-3.5" />
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    </Message>
+                  ))}
+                  {showThinking && (
+                    <ThinkingIndicator logoUrl={logoUrl} thinkingText={thinkingText} />
+                  )}
+                </>
               )}
               <ChatContainerScrollAnchor />
             </ChatContainerContent>

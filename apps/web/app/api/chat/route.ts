@@ -1,13 +1,121 @@
 import { mockDapps } from "@/app/dapp/mock-dapp-data";
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { streamText, tool } from "ai";
-import { z } from "zod";
+import Groq from "groq-sdk";
 
-export const maxDuration = 30;
+export const maxDuration = 60;
 
-const google = createGoogleGenerativeAI({
-  apiKey: process.env.GOOGLE_API_KEY || "",
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY || "",
 });
+
+// Tool definitions in Groq format
+const tools: Groq.Chat.ChatCompletionTool[] = [
+  {
+    type: "function",
+    function: {
+      name: "getDappStats",
+      description: "Get overview stats for a dApp including total wallets, transaction volume, and activity metrics",
+      parameters: {
+        type: "object",
+        properties: {
+          dappId: {
+            type: "string",
+            description: "The contract address/ID of the dApp",
+          },
+        },
+        required: ["dappId"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "getTopWallets",
+      description: "Get list of top active wallets (whales) for a dApp",
+      parameters: {
+        type: "object",
+        properties: {
+          dappId: {
+            type: "string",
+            description: "The contract address/ID of the dApp",
+          },
+          limit: {
+            type: "number",
+            description: "Number of wallets to return (default 5)",
+          },
+        },
+        required: ["dappId"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "getTokenDistribution",
+      description: "Get token distribution analysis including whale concentration and balance stats",
+      parameters: {
+        type: "object",
+        properties: {
+          dappId: {
+            type: "string",
+            description: "The contract address/ID of the dApp",
+          },
+        },
+        required: ["dappId"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "getGasAnalysis",
+      description: "Get gas usage and transaction cost analysis including total gas spent, average gas per transaction, estimated USD cost, and highest gas transaction",
+      parameters: {
+        type: "object",
+        properties: {
+          dappId: {
+            type: "string",
+            description: "The contract address/ID of the dApp",
+          },
+        },
+        required: ["dappId"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "getNFTAnalytics",
+      description: "Get NFT holdings analysis including adoption rates, top collections, spam analysis, and diversity metrics",
+      parameters: {
+        type: "object",
+        properties: {
+          dappId: {
+            type: "string",
+            description: "The contract address/ID of the dApp",
+          },
+        },
+        required: ["dappId"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "getTransactionPatterns",
+      description: "Get transaction flow patterns including incoming/outgoing counts and volumes, internal vs external transactions",
+      parameters: {
+        type: "object",
+        properties: {
+          dappId: {
+            type: "string",
+            description: "The contract address/ID of the dApp",
+          },
+        },
+        required: ["dappId"],
+      },
+    },
+  },
+];
 
 async function fetchRealDappData(slug: string, cookie: string | null) {
   try {
@@ -29,6 +137,170 @@ async function fetchRealDappData(slug: string, cookie: string | null) {
     console.log("Failed to fetch real dApp data:", error);
   }
   return null;
+}
+
+// Tool execution functions
+function createToolFunctions(slug: string | null, isDemo: boolean, cookie: string | null) {
+  return {
+    getDappStats: async (args: { dappId: string }) => {
+      console.log("--- TOOL CALL: getDappStats ---");
+      console.log("Input:", args);
+      try {
+        // Try to fetch real data first
+        if (slug && !isDemo) {
+          const realDapp = await fetchRealDappData(slug, cookie);
+          if (realDapp?.dashboardData?.overviewStats) {
+            return realDapp.dashboardData.overviewStats;
+          }
+        }
+
+        // Fallback to demo data
+        const dapp = mockDapps.find((d) => d.id === args.dappId);
+        const result = dapp?.dashboardData.overviewStats || {
+          error: "dApp not found",
+        };
+        console.log("Result:", result);
+        return result;
+      } catch (error) {
+        console.error("Error in getDappStats:", error);
+        return { error: "Failed to fetch dapp stats" };
+      }
+    },
+
+    getTopWallets: async (args: { dappId: string; limit?: number }) => {
+      console.log("--- TOOL CALL: getTopWallets ---");
+      console.log("Input:", args);
+      try {
+        const limit = args.limit || 5;
+
+        // Try to fetch real data first
+        if (slug && !isDemo) {
+          const realDapp = await fetchRealDappData(slug, cookie);
+          if (realDapp?.dashboardData?.walletsWithActivity) {
+            return realDapp.dashboardData.walletsWithActivity.slice(0, limit);
+          }
+        }
+
+        // Fallback to demo data
+        const dapp = mockDapps.find((d) => d.id === args.dappId);
+        const result = dapp?.dashboardData.walletsWithActivity.slice(0, limit) || {
+          error: "dApp not found",
+        };
+        console.log("Result:", result);
+        return result;
+      } catch (error) {
+        console.error("Error in getTopWallets:", error);
+        return { error: "Failed to fetch top wallets" };
+      }
+    },
+
+    getTokenDistribution: async (args: { dappId: string }) => {
+      console.log("--- TOOL CALL: getTokenDistribution ---");
+      console.log("Input:", args);
+      try {
+        // Try to fetch real data first
+        if (slug && !isDemo) {
+          const realDapp = await fetchRealDappData(slug, cookie);
+          if (realDapp?.dashboardData?.tokenDistribution) {
+            return realDapp.dashboardData.tokenDistribution;
+          }
+        }
+
+        // Fallback to demo data
+        const dapp = mockDapps.find((d) => d.id === args.dappId);
+        const result = dapp?.dashboardData.tokenDistribution || {
+          error: "dApp not found",
+        };
+        console.log("Result:", result);
+        return result;
+      } catch (error) {
+        console.error("Error in getTokenDistribution:", error);
+        return { error: "Failed to fetch token distribution" };
+      }
+    },
+
+    getGasAnalysis: async (args: { dappId: string }) => {
+      console.log("--- TOOL CALL: getGasAnalysis ---");
+      console.log("Input:", args);
+      try {
+        // Try to fetch real data first
+        if (slug && !isDemo) {
+          const realDapp = await fetchRealDappData(slug, cookie);
+          if (realDapp?.dashboardData?.transactionInsights?.gasAnalysis) {
+            return realDapp.dashboardData.transactionInsights.gasAnalysis;
+          }
+        }
+
+        // Fallback to demo data
+        const dapp = mockDapps.find((d) => d.id === args.dappId);
+        const result = dapp?.dashboardData.transactionInsights?.gasAnalysis || {
+          error: "Gas analysis data not found",
+        };
+        console.log("Result:", result);
+        return result;
+      } catch (error) {
+        console.error("Error in getGasAnalysis:", error);
+        return { error: "Failed to fetch gas analysis" };
+      }
+    },
+
+    getNFTAnalytics: async (args: { dappId: string }) => {
+      console.log("--- TOOL CALL: getNFTAnalytics ---");
+      console.log("Input:", args);
+      try {
+        // Try to fetch real data first
+        if (slug && !isDemo) {
+          const realDapp = await fetchRealDappData(slug, cookie);
+          if (realDapp?.dashboardData?.nftAnalytics) {
+            return realDapp.dashboardData.nftAnalytics;
+          }
+        }
+
+        // Fallback to demo data
+        const dapp = mockDapps.find((d) => d.id === args.dappId);
+        const result = dapp?.dashboardData.nftAnalytics || {
+          error: "NFT analytics data not found",
+        };
+        console.log("Result:", result);
+        return result;
+      } catch (error) {
+        console.error("Error in getNFTAnalytics:", error);
+        return { error: "Failed to fetch NFT analytics" };
+      }
+    },
+
+    getTransactionPatterns: async (args: { dappId: string }) => {
+      console.log("--- TOOL CALL: getTransactionPatterns ---");
+      console.log("Input:", args);
+      try {
+        // Try to fetch real data first
+        if (slug && !isDemo) {
+          const realDapp = await fetchRealDappData(slug, cookie);
+          if (realDapp?.dashboardData?.transactionInsights?.patterns) {
+            return realDapp.dashboardData.transactionInsights.patterns;
+          }
+        }
+
+        // Fallback to demo data
+        const dapp = mockDapps.find((d) => d.id === args.dappId);
+        const result = dapp?.dashboardData.transactionInsights?.patterns || {
+          error: "Transaction patterns data not found",
+        };
+        console.log("Result:", result);
+        return result;
+      } catch (error) {
+        console.error("Error in getTransactionPatterns:", error);
+        return { error: "Failed to fetch transaction patterns" };
+      }
+    },
+  };
+}
+
+// SSE helper to write events
+function writeSSE(controller: ReadableStreamDefaultController, data: object | string) {
+  const encoder = new TextEncoder();
+  const message = typeof data === "string" ? data : JSON.stringify(data);
+  controller.enqueue(encoder.encode(`data: ${message}\n\n`));
 }
 
 export async function POST(req: Request) {
@@ -58,10 +330,7 @@ export async function POST(req: Request) {
     // Try to fetch real dApp data if available
     if (slug && !activeDapp) {
       try {
-        const realDapp = await fetchRealDappData(
-          slug,
-          req.headers.get("cookie"),
-        );
+        const realDapp = await fetchRealDappData(slug, req.headers.get("cookie"));
         if (realDapp) {
           activeDapp = realDapp;
           isDemo = false;
@@ -74,206 +343,235 @@ export async function POST(req: Request) {
 
     const systemMessage = activeDapp
       ? `You are a helpful AI assistant for the ${activeDapp.name || "Unknown"} dApp on ${activeDapp.chain || "Ethereum"}.
-       ${isDemo ? "NOTE: This is DEMO DATA showing sample analytics." : "NOTE: This is REAL USER DATA from indexed blockchain data."}
-       You handle queries about transaction volume, wallet activity, and token distribution.
-       The current dApp ID is: ${activeDapp.id || "Unknown"}.
-       Always format numbers nicely (e.g., $1.2M, 1,234 txs).
-       Always provide a helpful response summarizing the information from any tools you use.`
+${isDemo ? "NOTE: This is DEMO DATA showing sample analytics." : "NOTE: This is REAL USER DATA from indexed blockchain data."}
+The current dApp ID is: ${activeDapp.id || "Unknown"}.
+
+AVAILABLE TOOLS - Use these to answer user questions:
+- getDappStats: Overall metrics (total wallets, transaction count, volume, active/inactive wallets)
+- getGasAnalysis: Gas costs (total gas spent, average per transaction, USD estimate, highest gas tx)
+- getNFTAnalytics: NFT data (adoption rates, top collections, spam analysis, diversity metrics)
+- getTopWallets: Most active wallet addresses with their activity stats
+- getTokenDistribution: Token concentration, whale analysis, balance distribution
+- getTransactionPatterns: Transaction flow (incoming/outgoing counts and volumes)
+
+RULES:
+1. When user asks about ANY data, ALWAYS call the relevant tool first - never say "I don't have data"
+2. Before calling a tool, output: <thinking>Fetching [data type]...</thinking>
+3. After getting results, summarize clearly WITHOUT thinking tags
+4. Format numbers nicely ($1.2M instead of 1200000, 1,234 txs)
+
+Example:
+User: "What's the gas usage?"
+You: <thinking>Fetching gas analysis...</thinking>
+[call getGasAnalysis]
+[then provide summary of results]`
       : `You are a helpful AI assistant for BlockSight.
-       Users can ask about various dApps.
-       If they ask about a specific dApp stats, ask them to navigate to that dApp's dashboard or chat.
-       Available dApps: ${mockDapps.map((d) => d.name).join(", ")}.
-       Always provide helpful responses.`;
+Users can ask about various dApps.
+If they ask about a specific dApp stats, ask them to navigate to that dApp's dashboard or chat.
+Available dApps: ${mockDapps.map((d) => d.name).join(", ")}.
+
+When you need to call a tool, first output: <thinking>Fetching data...</thinking>
+After receiving tool results, provide your full response WITHOUT thinking tags.`;
 
     console.log("--- SYSTEM MESSAGE ---");
     console.log(systemMessage);
 
-    // Transform messages from AI SDK v6 format to Google AI format
-    const transformedMessages = messages.map((message: any) => {
-      // If message has parts (AI SDK v6 format), extract content
+    // Transform messages from AI SDK format to Groq format
+    const transformedMessages: Groq.Chat.ChatCompletionMessageParam[] = messages.map((message: any) => {
+      let content = "";
       if (message.parts && Array.isArray(message.parts)) {
-        const textContent = message.parts
+        content = message.parts
           .filter((part: any) => part.type === "text")
           .map((part: any) => part.text)
           .join("");
-        return {
-          role: message.role,
-          content: textContent,
-        };
+      } else if (message.content) {
+        content = typeof message.content === "string" ? message.content : JSON.stringify(message.content);
       }
-      // If message already has content (Google AI format), pass through
-      if (message.content) {
-        return {
-          role: message.role,
-          content: message.content,
-        };
-      }
-      // Fallback for any other format
       return {
-        role: message.role,
-        content:
-          typeof message.content === "string"
-            ? message.content
-            : JSON.stringify(message.content),
+        role: message.role as "user" | "assistant",
+        content,
       };
     });
 
-    const result = streamText({
-      model: google("gemini-3-flash-preview"),
-      system: systemMessage,
-      messages: transformedMessages,
-      stopWhen: [],
-      tools: {
-        getDappStats: tool({
-          description: "Get overview stats for a dApp",
-          inputSchema: z.object({
-            dappId: z.string().describe("The ID of the dApp"),
-          }),
-          execute: async (input: unknown) => {
-            console.log("--- TOOL CALL: getDappStats ---");
-            console.log("Input:", input);
-            try {
-              const { dappId } = input as { dappId: string };
+    const modelId = process.env.GROQ_MODEL || "moonshotai/kimi-k2-instruct-0905";
+    console.log(`Using Groq model: ${modelId}`);
 
-              // Try to fetch real data first
-              let realDapp = null;
-              if (slug && !isDemo) {
-                realDapp = await fetchRealDappData(
-                  slug,
-                  req.headers.get("cookie"),
-                );
+    const toolFunctions = createToolFunctions(slug, isDemo, req.headers.get("cookie"));
+
+    // Create streaming response
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          // Build conversation messages
+          const allMessages: Groq.Chat.ChatCompletionMessageParam[] = [
+            { role: "system", content: systemMessage },
+            ...transformedMessages,
+          ];
+
+          let textId = 0;
+          let iteration = 0;
+          const maxIterations = 5;
+
+          // Write initial SSE events
+          writeSSE(controller, { type: "start" });
+          writeSSE(controller, { type: "start-step" });
+
+          // Tool-calling loop
+          while (iteration < maxIterations) {
+            iteration++;
+            console.log(`--- Iteration ${iteration} ---`);
+
+            const response = await groq.chat.completions.create({
+              model: modelId,
+              messages: allMessages,
+              tools,
+              tool_choice: "auto",
+              stream: true,
+            });
+
+            let assistantContent = "";
+            const toolCalls: Array<{
+              id: string;
+              type: "function";
+              function: { name: string; arguments: string };
+            }> = [];
+            const toolCallDeltas: Map<number, { id: string; name: string; arguments: string }> = new Map();
+            let pendingTextBuffer = "";
+            let hasToolCalls = false;
+
+            // Process streamed response - buffer text until we know if tool calls follow
+            for await (const chunk of response) {
+              const delta = chunk.choices[0]?.delta;
+              const finishReason = chunk.choices[0]?.finish_reason;
+
+              // Handle text content - buffer it first
+              if (delta?.content) {
+                pendingTextBuffer += delta.content;
               }
 
-              if (realDapp && realDapp.dashboardData?.overviewStats) {
-                return realDapp.dashboardData.overviewStats;
+              // Handle tool calls
+              if (delta?.tool_calls) {
+                hasToolCalls = true;
+                for (const toolCallDelta of delta.tool_calls) {
+                  const index = toolCallDelta.index;
+                  
+                  if (!toolCallDeltas.has(index)) {
+                    toolCallDeltas.set(index, {
+                      id: toolCallDelta.id || "",
+                      name: toolCallDelta.function?.name || "",
+                      arguments: "",
+                    });
+                  }
+                  
+                  const existing = toolCallDeltas.get(index)!;
+                  if (toolCallDelta.id) existing.id = toolCallDelta.id;
+                  if (toolCallDelta.function?.name) existing.name = toolCallDelta.function.name;
+                  if (toolCallDelta.function?.arguments) {
+                    existing.arguments += toolCallDelta.function.arguments;
+                  }
+                }
               }
 
-              // Fallback to demo data
-              const dapp = mockDapps.find((d) => d.id === dappId);
-              const result = dapp?.dashboardData.overviewStats || {
-                error: "dApp not found",
-              };
-              console.log("Result:", result);
-              return result;
-            } catch (error) {
-              console.error("Error in getDappStats:", error);
-              return {
-                error: "Failed to fetch dapp stats",
-                details: String(error),
-              };
+              // Handle finish - now we know if there are tool calls
+              if (finishReason === "stop" || finishReason === "tool_calls") {
+                if (pendingTextBuffer.trim()) {
+                  // Check if text already has thinking tags
+                  const hasThinkingTags = /<thinking>[\s\S]*?<\/thinking>/.test(pendingTextBuffer);
+                  
+                  if ((hasToolCalls || finishReason === "tool_calls") && !hasThinkingTags) {
+                    // Text before tool calls without thinking tags - wrap it
+                    const wrappedText = `<thinking>${pendingTextBuffer.trim()}</thinking>`;
+                    writeSSE(controller, { type: "text-start", id: `txt-${textId}` });
+                    writeSSE(controller, { type: "text-delta", id: `txt-${textId}`, delta: wrappedText });
+                    writeSSE(controller, { type: "text-end", id: `txt-${textId}` });
+                    textId++;
+                    assistantContent = pendingTextBuffer;
+                  } else {
+                    // Final response or already has thinking tags - stream as-is
+                    writeSSE(controller, { type: "text-start", id: `txt-${textId}` });
+                    writeSSE(controller, { type: "text-delta", id: `txt-${textId}`, delta: pendingTextBuffer });
+                    writeSSE(controller, { type: "text-end", id: `txt-${textId}` });
+                    textId++;
+                    assistantContent = pendingTextBuffer;
+                  }
+                }
+                break;
+              }
             }
-          },
-        }),
-        getTopWallets: tool({
-          description: "Get list of top active wallets (whales)",
-          inputSchema: z.object({
-            dappId: z.string().describe("The ID of the dApp"),
-            limit: z
-              .number()
-              .optional()
-              .describe("Number of wallets to return (default 5)"),
-          }),
-          execute: async (input: unknown) => {
-            console.log("--- TOOL CALL: getTopWallets ---");
-            console.log("Input:", input);
-            try {
-              const { dappId, limit = 5 } = input as {
-                dappId: string;
-                limit?: number;
-              };
 
-              // Try to fetch real data first
-              let realDapp = null;
-              if (slug && !isDemo) {
-                realDapp = await fetchRealDappData(
-                  slug,
-                  req.headers.get("cookie"),
-                );
+            // Convert accumulated tool call deltas to tool calls array
+            for (const [, toolCallData] of toolCallDeltas) {
+              if (toolCallData.name) {
+                toolCalls.push({
+                  id: toolCallData.id,
+                  type: "function",
+                  function: {
+                    name: toolCallData.name,
+                    arguments: toolCallData.arguments,
+                  },
+                });
               }
-
-              if (realDapp && realDapp.dashboardData?.walletsWithActivity) {
-                return realDapp.dashboardData.walletsWithActivity.slice(
-                  0,
-                  limit,
-                );
-              }
-
-              // Fallback to demo data
-              const dapp = mockDapps.find((d) => d.id === dappId);
-              const result = dapp?.dashboardData.walletsWithActivity.slice(
-                0,
-                limit,
-              ) || {
-                error: "dApp not found",
-              };
-              console.log("Result:", result);
-              return result;
-            } catch (error) {
-              console.error("Error in getTopWallets:", error);
-              return {
-                error: "Failed to fetch top wallets",
-                details: String(error),
-              };
             }
-          },
-        }),
-        getTokenDistribution: tool({
-          description:
-            "Get token distribution analysis (whales, concentration)",
-          inputSchema: z.object({
-            dappId: z.string().describe("The ID of the dApp"),
-          }),
-          execute: async (input: unknown) => {
-            console.log("--- TOOL CALL: getTokenDistribution ---");
-            console.log("Input:", input);
-            try {
-              const { dappId } = input as { dappId: string };
 
-              // Try to fetch real data first
-              let realDapp = null;
-              if (slug && !isDemo) {
-                realDapp = await fetchRealDappData(
-                  slug,
-                  req.headers.get("cookie"),
-                );
-              }
-
-              if (realDapp && realDapp.dashboardData?.tokenDistribution) {
-                return realDapp.dashboardData.tokenDistribution;
-              }
-
-              // Fallback to demo data
-              const dapp = mockDapps.find((d) => d.id === dappId);
-              const result = dapp?.dashboardData.tokenDistribution || {
-                error: "dApp not found",
-              };
-              console.log("Result:", result);
-              return result;
-            } catch (error) {
-              console.error("Error in getTokenDistribution:", error);
-              return {
-                error: "Failed to fetch token distribution",
-                details: String(error),
-              };
+            // If no tool calls, we're done
+            if (toolCalls.length === 0) {
+              console.log("No tool calls, finishing");
+              break;
             }
-          },
-        }),
+
+            console.log(`Tool calls: ${toolCalls.map(tc => tc.function.name).join(", ")}`);
+
+            // Add assistant message with tool calls to conversation
+            allMessages.push({
+              role: "assistant",
+              content: assistantContent || null,
+              tool_calls: toolCalls,
+            } as Groq.Chat.ChatCompletionMessageParam);
+
+            // Execute tools and add results
+            for (const toolCall of toolCalls) {
+              const functionName = toolCall.function.name as keyof typeof toolFunctions;
+              const functionArgs = JSON.parse(toolCall.function.arguments || "{}");
+              
+              let result: any;
+              if (toolFunctions[functionName]) {
+                result = await toolFunctions[functionName](functionArgs);
+              } else {
+                result = { error: `Unknown function: ${functionName}` };
+              }
+
+              // Add tool result to conversation
+              allMessages.push({
+                role: "tool",
+                tool_call_id: toolCall.id,
+                content: JSON.stringify(result),
+              } as Groq.Chat.ChatCompletionMessageParam);
+            }
+
+            // Continue loop to get final response after tool execution
+          }
+
+          // Finish SSE stream
+          writeSSE(controller, { type: "finish-step" });
+          writeSSE(controller, { type: "finish", finishReason: "stop" });
+          writeSSE(controller, "[DONE]");
+          controller.close();
+        } catch (error) {
+          console.error("Stream error:", error);
+          writeSSE(controller, { type: "error", message: String(error) });
+          writeSSE(controller, "[DONE]");
+          controller.close();
+        }
       },
     });
 
-    console.log("--- STARTING STREAM RESPONSE ---");
-    console.log("Stream format: UI message stream for useChat hook");
-
-    // @ts-ignore - AI SDK typing issue
-    const response = result.toUIMessageStreamResponse();
-
-    console.log("Response headers:", {
-      contentType: response.headers.get("Content-Type"),
-      cacheControl: response.headers.get("Cache-Control"),
-      connection: response.headers.get("Connection"),
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
     });
-
-    return response;
   } catch (error) {
     console.error("Chat API Error:", error);
     return new Response(JSON.stringify({ error: "Chat service unavailable" }), {
